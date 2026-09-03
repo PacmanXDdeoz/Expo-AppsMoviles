@@ -3,7 +3,25 @@
      BASE
   ============================================================ */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --accent: #D85A30; }
+  :root {
+    --accent: #D85A30;
+
+    /* ===== Sistema tipográfico único (todas las diapositivas) =====
+       Escala ampliada para proyección en resoluciones bajas: los
+       mínimos, coeficientes vw y máximos suben de forma uniforme. */
+    --fs-eyebrow: clamp(14px, 1.5vw, 19px);
+    --fs-title: clamp(30px, 4.6vw, 56px);
+    --fs-lead: clamp(17px, 2.1vw, 26px);
+    --fs-point: clamp(15px, 1.8vw, 22px);
+    --fs-secondary: clamp(13px, 1.5vw, 18px);
+    --fs-primary: clamp(16px, 1.8vw, 22px);
+
+    /* ===== Contenedores y tarjetas unificados ===== */
+    --pad-slide: clamp(24px, 4.5vw, 52px) clamp(24px, 5vw, 60px);
+    --pad-card: clamp(12px, 2vw, 20px);
+    --radius-card: 14px;
+    --card-bg: rgba(255, 255, 255, 0.12);
+  }
   html { overflow-x: hidden; }
   body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -49,16 +67,40 @@
   /* ============================================================
      TIPOGRAFÍA Y COLUMNAS
   ============================================================ */
-  .eyebrow { font-size: clamp(11px, 1.1vw, 15px); letter-spacing: .05em; opacity: .85; margin-bottom: 14px; text-transform: uppercase; }
-  h1 { font-size: clamp(22px, 3.3vw, 42px); font-weight: 700; margin-bottom: 20px; line-height: 1.2; }
-  h2 { font-size: clamp(18px, 2.7vw, 34px); font-weight: 700; margin-bottom: 22px; line-height: 1.25; }
-  .lead { font-size: clamp(13px, 1.6vw, 20px); line-height: 1.6; opacity: .92; max-width: 560px; }
+  .eyebrow {
+    font-size: var(--fs-eyebrow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 12px;
+    opacity: .85;
+  }
+  h1, h2 { font-size: var(--fs-title); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+  .lead { font-size: var(--fs-lead); line-height: 1.5; opacity: .9; margin-bottom: 16px; max-width: 560px; }
   ul.points { list-style: none; }
-  ul.points li { font-size: clamp(12px, 1.5vw, 19px); line-height: 1.9; opacity: .95; padding-left: 26px; position: relative; }
+  ul.points li { font-size: var(--fs-point); line-height: 1.7; margin-bottom: 8px; opacity: .95; padding-left: 26px; position: relative; }
+  ul.points li:last-child { margin-bottom: 0; }
   ul.points li:before { content: "•"; position: absolute; left: 0; font-size: 1.15em; }
-  .text-col { flex: 1.3; padding: clamp(20px, 5vw, 60px) clamp(20px, 5vw, 64px); display: flex; flex-direction: column; justify-content: center; z-index: 2; position: relative; }
+  .text-col {
+    flex: 1.2;
+    padding: var(--pad-slide);
+    display: flex; flex-direction: column; justify-content: center;
+    z-index: 2; position: relative;
+  }
   .art-col { flex: 1; position: relative; z-index: 2; }
-  .hint { margin-top: 16px; font-size: clamp(11px, 1.3vw, 15px); opacity: .72; }
+  .hint { margin-top: 16px; font-size: var(--fs-secondary); opacity: .72; }
+
+  /* ============================================================
+     TARJETAS UNIFICADAS (.card-standard)
+     Mismo relleno, radio, fondo y borde en todas las diapositivas.
+     Cada componente conserva solo su layout, hover y acentos.
+  ============================================================ */
+  .card-standard {
+    padding: var(--pad-card);
+    border-radius: var(--radius-card);
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, .16);
+  }
 
   /* ============================================================
      BADGES
@@ -85,7 +127,7 @@
   .s2 { --accent: #185FA5; background: #185FA5; flex-direction: row-reverse; }
   .s2 .blob-a { width: 22%; height: 40%; background: rgba(255,255,255,.08); bottom: -15%; left: -6%; aspect-ratio:1; }
 
-  .s3 { --accent: #534AB7; background: #534AB7; flex-direction: column; padding: clamp(20px, 5vw, 60px) clamp(20px, 5vw, 70px); justify-content: center; }
+  .s3 { --accent: #534AB7; background: #534AB7; flex-direction: column; padding: var(--pad-slide); justify-content: center; }
   .s3 .blob-a { width: 24%; height: 42%; background: rgba(255,255,255,.06); top: -12%; right: -8%; aspect-ratio:1; }
   .s3 .blob-b { width: 18%; height: 30%; background: rgba(0,0,0,.08); bottom: -14%; left: -6%; aspect-ratio:1; }
   .s3 .eyebrow, .s3 > h2 { position: relative; z-index: 2; }
@@ -99,7 +141,7 @@
   .s5 .blob-b { width: 14%; height: 24%; background: rgba(0,0,0,.1); bottom: -8%; left: 12%; aspect-ratio:1; }
 
   /* Slide 6 — añil profundo */
-  .s6 { --accent: #5DCAA5; background: #2B3A8C; flex-direction: column; padding: clamp(20px, 5vw, 60px) clamp(20px, 5vw, 70px); justify-content: center; }
+  .s6 { --accent: #5DCAA5; background: #2B3A8C; flex-direction: column; padding: var(--pad-slide); justify-content: center; }
   .s6 .blob-a { width: 22%; height: 40%; background: rgba(255,255,255,.07); bottom: -15%; left: -6%; aspect-ratio:1; }
   .s6 .blob-b { width: 18%; height: 30%; background: rgba(0,0,0,.1); top: -12%; right: -8%; aspect-ratio:1; }
   .s6 .eyebrow, .s6 > h2 { position: relative; z-index: 2; }
@@ -289,38 +331,54 @@
      SLIDE 3: tarjetas Antes / Ahora + ciclo con tooltips
   ============================================================ */
   .cards-wrap { position: relative; z-index: 2; }
-  .cards { display: flex; align-items: center; gap: clamp(8px, 2vw, 22px); margin: clamp(14px, 3vw, 24px) 0 clamp(16px, 3.5vw, 30px); }
+  .cards { display: flex; align-items: stretch; gap: clamp(8px, 2vw, 22px); margin: clamp(14px, 3vw, 24px) 0 clamp(16px, 3.5vw, 30px); }
   .card {
     font: inherit; color: #fff; text-align: left; cursor: pointer;
-    background: rgba(255,255,255,.12); border: none; border-radius: 16px;
-    padding: clamp(12px, 2.5vw, 22px) clamp(12px, 2.5vw, 24px); flex: 1;
+    flex: 1;
     display: flex; align-items: center; gap: clamp(8px, 2vw, 18px);
     transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .card:hover { background: rgba(255,255,255,.2); transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,.22); }
   .card:active { transform: translateY(0) scale(.98); }
   .card .circ { width: clamp(34px, 6vw, 62px); height: clamp(34px, 6vw, 62px); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .card .lbl-top { font-size: clamp(9px, 1.2vw, 14px); opacity: .75; margin-bottom: 3px; }
-  .card .lbl-main { font-size: clamp(11px, 1.5vw, 17px); font-weight: 700; }
+  .card .lbl-top { font-size: var(--fs-secondary); opacity: .75; margin-bottom: 3px; }
+  .card .lbl-main { font-size: var(--fs-primary); font-weight: 700; }
   .cards .connect { width: clamp(24px, 4vw, 44px); height: clamp(24px, 4vw, 44px); border-radius: 50%; background: #F0997B; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
+  /* Pop-up modal de las tarjetas Antes / Ahora: un velo oscuro cubre la
+     diapositiva y el diálogo (.card-dialog) se auto-dimensiona para que el
+     recuadro oscuro contenga TODO el texto, de «Antes» al hint de cierre. */
   .card-overlay {
-    position: absolute; inset: 0; z-index: 6;
-    background: rgba(23, 17, 60, .82);
-    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-    border-radius: 16px; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 10px;
-    padding: clamp(14px, 3vw, 28px); text-align: center; cursor: pointer;
-    opacity: 0; visibility: hidden; transform: scale(.94);
-    transition: opacity .25s ease, transform .25s ease, visibility .25s;
+    position: absolute; inset: 0; z-index: 8;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(10, 7, 28, .55);
+    -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+    text-align: center; cursor: pointer;
+    opacity: 0; visibility: hidden;
+    transition: opacity .25s ease, visibility .25s;
   }
-  .card-overlay.open { opacity: 1; visibility: visible; transform: scale(1); }
-  .card-overlay .overlay-tag { font-size: clamp(10px, 1.2vw, 14px); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .8; }
-  .card-overlay .overlay-text { font-size: clamp(12px, 1.5vw, 18px); line-height: 1.65; max-width: 460px; }
-  .card-overlay .overlay-hint { font-size: clamp(10px, 1.1vw, 13px); opacity: .6; margin-top: 6px; }
+  .card-overlay.open { opacity: 1; visibility: visible; }
+  .card-overlay .card-dialog {
+    background: #17113C;
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, .45);
+    width: min(600px, 92%);
+    max-height: 90%;
+    overflow-y: auto;
+    padding: clamp(22px, 2.8vw, 34px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 12px;
+    transform: translateY(10px) scale(.96);
+    transition: transform .28s cubic-bezier(.22, 1, .36, 1);
+  }
+  .card-overlay.open .card-dialog { transform: translateY(0) scale(1); }
+  .card-overlay .overlay-tag { font-size: var(--fs-secondary); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .92; }
+  .card-overlay .overlay-text { font-size: var(--fs-lead); line-height: 1.65; max-width: 460px; }
+  .card-overlay .overlay-hint { font-size: var(--fs-secondary); opacity: .6; margin-top: 6px; }
 
   .cycle-wrap { position: relative; z-index: 2; }
-  .cycle { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(6px, 1.5vw, 14px); font-size: clamp(10px, 1.3vw, 16px); opacity: .85; }
+  .cycle { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(6px, 1.5vw, 14px); font-size: var(--fs-secondary); opacity: .85; }
   .cycle .step {
     font: inherit; color: #fff; cursor: pointer;
     border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.12);
@@ -342,9 +400,9 @@
     transition: opacity .25s ease, transform .25s ease, visibility .25s;
   }
   .tip.show { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
-  .tip .tip-title { font-weight: 700; margin-bottom: 6px; font-size: clamp(12px, 1.4vw, 17px); }
+  .tip .tip-title { font-weight: 700; margin-bottom: 6px; font-size: var(--fs-primary); }
   .tip .tip-title svg.ic { width: 1.1em; height: 1.1em; color: var(--accent); vertical-align: -0.12em; }
-  .tip .tip-text { font-size: clamp(11px, 1.3vw, 15px); line-height: 1.6; opacity: .85; }
+  .tip .tip-text { font-size: var(--fs-secondary); line-height: 1.6; opacity: .85; }
 
   /* ============================================================
      SLIDE 5: diagrama interactivo del Doble Diamante
@@ -360,7 +418,7 @@
   .phase.dim { opacity: .45; }
   .phases { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .phase-chip {
-    font: inherit; color: #fff; font-size: clamp(10px, 1.1vw, 13px); font-weight: 700;
+    font: inherit; color: #fff; font-size: var(--fs-secondary); font-weight: 700;
     border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.12);
     border-radius: 999px; padding: 7px 14px; cursor: pointer;
     transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease;
@@ -371,7 +429,7 @@
   .status-badge {
     position: absolute; top: 8%; right: 2%; z-index: 3;
     background: #fff; color: #7a3008;
-    font-size: clamp(10px, 1.1vw, 13px); font-weight: 700;
+    font-size: var(--fs-secondary); font-weight: 700;
     padding: 7px 13px; border-radius: 999px;
     box-shadow: 0 8px 20px rgba(0,0,0,.25);
     opacity: 0; transform: translateY(6px); pointer-events: none;
@@ -387,18 +445,16 @@
   .tools { display: flex; align-items: stretch; gap: clamp(10px, 2vw, 22px); z-index: 2; position: relative; margin-top: 6px; }
   .tool-card {
     flex: 1; min-width: 0;
-    background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14);
-    border-radius: 16px; padding: clamp(12px, 2vw, 18px);
     display: flex; flex-direction: column; gap: 12px;
     transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
   }
   .tool-card:hover { transform: translateY(-4px); background: rgba(255,255,255,.16); box-shadow: 0 14px 30px rgba(0,0,0,.2); }
   .tool-head { display: flex; align-items: center; gap: 12px; }
   .tool-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 19px; flex-shrink: 0; }
-  .tool-title { font-size: clamp(11px, 1.4vw, 16px); font-weight: 700; margin-bottom: 2px; }
-  .tool-desc { font-size: clamp(9px, 1.1vw, 13px); line-height: 1.5; opacity: .8; }
+  .tool-title { font-size: var(--fs-primary); font-weight: 700; margin-bottom: 2px; }
+  .tool-desc { font-size: var(--fs-secondary); line-height: 1.5; opacity: .8; }
   .tool-body { display: flex; flex-direction: column; align-items: center; gap: 9px; margin-top: auto; }
-  .tool-readout { font-size: clamp(9px, 1.05vw, 12px); opacity: .75; text-align: center; min-height: 1.1em; }
+  .tool-readout { font-size: var(--fs-secondary); opacity: .75; text-align: center; min-height: 1.1em; }
 
   .persona { font: inherit; color: #fff; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .persona-face {
@@ -408,7 +464,7 @@
     transition: transform .2s ease, background .2s ease, border-color .2s ease;
   }
   .persona:hover .persona-face { transform: scale(1.1); background: rgba(255,255,255,.24); border-color: #C8F0E4; }
-  .persona-name { font-size: clamp(10px, 1.1vw, 13px); font-weight: 700; }
+  .persona-name { font-size: var(--fs-secondary); font-weight: 700; }
   .persona-face svg { width: 60%; height: 60%; }
 
   .journey { display: flex; justify-content: center; gap: 7px; }
@@ -428,7 +484,7 @@
 
   .sortrow { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
   .scard {
-    font: inherit; font-size: clamp(9px, 1vw, 12px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.12);
     border-radius: 8px; padding: 6px 11px; cursor: pointer;
     transition: transform .2s ease, background .2s ease, border-color .2s ease;
@@ -453,7 +509,7 @@
   .scale-beam.tip-valor .docs { opacity: .35; }
   .scale-sides { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .scale-side {
-    font: inherit; color: #fff; font-size: clamp(10px, 1.1vw, 13px); font-weight: 700;
+    font: inherit; color: #fff; font-size: var(--fs-secondary); font-weight: 700;
     border: 1px solid rgba(255,255,255,.35); background: rgba(255,255,255,.12);
     border-radius: 999px; padding: 7px 14px; cursor: pointer;
     transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, opacity .2s ease;
@@ -481,16 +537,15 @@
     transition: background .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
   .loop-node:hover .n-ico { transform: scale(1.1); background: rgba(255,255,255,.24); }
-  .loop-node .n-lbl { font-size: clamp(9px, 1.1vw, 13px); font-weight: 700; opacity: .9; }
+  .loop-node .n-lbl { font-size: var(--fs-secondary); font-weight: 700; opacity: .9; }
   .loop-node.hl .n-ico, .loop-node.active .n-ico { background: #5DCAA5; border-color: #5DCAA5; box-shadow: 0 0 0 5px rgba(93,202,165,.25); transform: scale(1.12); }
   .loop-node.dim { opacity: .5; }
   @keyframes spin { to { transform: rotate(360deg); } }
 
   .detail-box svg.ic { vertical-align: -0.15em; }
   .detail-box {
-    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.16);
-    border-radius: 12px; padding: 10px 14px; max-width: 340px;
-    font-size: clamp(10px, 1.2vw, 14px); line-height: 1.55; opacity: .95; text-align: center;
+    max-width: 340px;
+    font-size: var(--fs-secondary); line-height: 1.55; opacity: .95; text-align: center;
   }
   .detail-box.swap { animation: detailSwap .35s ease; }
   @keyframes detailSwap { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
@@ -499,9 +554,7 @@
      SLIDE 9: declaración de hipótesis (variables intercambiables)
   ============================================================ */
   .hypo-formula {
-    background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.18);
-    border-radius: 16px; padding: clamp(14px, 2.5vw, 22px);
-    font-size: clamp(12px, 1.4vw, 17px); line-height: 1.8; max-width: 380px;
+    font-size: var(--fs-lead); line-height: 1.7; max-width: 380px;
   }
   .hypo-var {
     font: inherit; font-weight: 700; color: #FFD54F;
@@ -520,7 +573,7 @@
     border-radius: 999px; background: rgba(0,0,0,.22);
   }
   .mvp-opt {
-    font: inherit; font-size: clamp(10px, 1.1vw, 13px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     border: none; background: transparent; border-radius: 999px; padding: 7px 15px; cursor: pointer;
     transition: background .25s ease, color .25s ease, transform .2s ease;
   }
@@ -537,9 +590,9 @@
   .mvp-stage.show { opacity: 1; visibility: visible; transform: scale(1); }
   .mvp-step { display: flex; flex-direction: column; align-items: center; gap: 5px; }
   .mvp-step svg.mvp-veh { width: clamp(32px, 3.6vw, 48px); height: clamp(32px, 3.6vw, 48px); stroke-width: 1.8; }
-  .mvp-step .mvp-lbl { font-size: clamp(9px, 1.1vw, 12px); opacity: .85; }
+  .mvp-step .mvp-lbl { font-size: var(--fs-secondary); opacity: .85; }
   .mvp-arrow { font-size: clamp(16px, 2vw, 24px); opacity: .7; align-self: center; }
-  .mvp-check, .mvp-x { font-size: clamp(9px, 1.1vw, 12px); font-weight: 700; border-radius: 999px; padding: 5px 11px; align-self: center; display: inline-flex; align-items: center; gap: 6px; }
+  .mvp-check, .mvp-x { font-size: var(--fs-secondary); font-weight: 700; border-radius: 999px; padding: 5px 11px; align-self: center; display: inline-flex; align-items: center; gap: 6px; }
   .mvp-check { background: rgba(93,202,165,.3); border: 1px solid #5DCAA5; }
   .mvp-x { background: rgba(240,153,123,.3); border: 1px solid #F0997B; }
 
@@ -553,14 +606,14 @@
   .gear-wrap svg { display: block; width: 100%; }
   .gear-wrap.a svg { animation: spinA 10s linear infinite; }
   .gear-wrap.b svg { animation: spinB 10s linear infinite; }
-  .gear-lbl { display: block; text-align: center; font-size: clamp(9px, 1.1vw, 12px); font-weight: 700; margin-top: 2px; }
+  .gear-lbl { display: block; text-align: center; font-size: var(--fs-secondary); font-weight: 700; margin-top: 2px; }
   @keyframes spinA { to { transform: rotate(360deg); } }
   @keyframes spinB { to { transform: rotate(-360deg); } }
   .gear-wrap.pulse { animation: gearPulse .5s ease; }
   @keyframes gearPulse { 0% { transform: scale(1); } 40% { transform: scale(1.07); } 100% { transform: scale(1); } }
   .sprint { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
   .sprint-cell {
-    font: inherit; font-size: clamp(9px, 1.1vw, 12px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     width: 40px; height: 34px; border-radius: 10px;
     border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.12); cursor: pointer;
     transition: background .25s ease, border-color .25s ease, transform .2s ease;
@@ -568,7 +621,7 @@
   .sprint-cell:hover { transform: translateY(-2px); background: rgba(255,255,255,.22); }
   .sprint-cell.active { background: #A5D6A7; color: #123416; border-color: #A5D6A7; }
   .sprint-next {
-    font: inherit; font-size: clamp(9px, 1.1vw, 12px); font-weight: 700; color: #123416;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #123416;
     background: #A5D6A7; border: none; border-radius: 999px; padding: 8px 13px; cursor: pointer;
     transition: transform .2s ease, background .2s ease;
   }
@@ -579,19 +632,17 @@
      SLIDE 12: Design Sprint y Pruebas de Usabilidad
      (3 secciones internas + pie de transición)
   ============================================================ */
-  .s12 { --accent: #3EC6E0; background: #0E1B2E; flex-direction: column; padding: clamp(16px, 3vw, 42px) clamp(16px, 3.5vw, 52px); justify-content: center; }
+  .s12 { --accent: #3EC6E0; background: #0E1B2E; flex-direction: column; padding: var(--pad-slide); justify-content: center; }
   .s12 .blob-a { width: 22%; height: 40%; background: rgba(62,198,224,.12); top: -12%; right: -8%; aspect-ratio:1; }
   .s12 .blob-b { width: 16%; height: 28%; background: rgba(255,255,255,.05); bottom: -14%; left: -6%; aspect-ratio:1; }
   .s12 .eyebrow, .s12 > h2, .s12-sub, .s12-grid, .s12-footer, .s12 > .hint { position: relative; z-index: 2; }
-  .s12 > h2 { margin-bottom: 4px; }
-  .s12-sub { font-size: clamp(11px, 1.3vw, 15px); opacity: .85; margin-bottom: 12px; }
+  .s12-sub { font-size: var(--fs-secondary); opacity: .85; margin-bottom: 12px; }
 
   /* Slide 13 — continuación: Prototipado y Validación (misma paleta azul marino/cyan) */
-  .s13 { --accent: #3EC6E0; background: #0E1B2E; flex-direction: column; padding: clamp(16px, 3vw, 42px) clamp(16px, 3.5vw, 52px); justify-content: center; }
+  .s13 { --accent: #3EC6E0; background: #0E1B2E; flex-direction: column; padding: var(--pad-slide); justify-content: center; }
   .s13 .blob-a { width: 22%; height: 40%; background: rgba(62,198,224,.12); top: -12%; right: -8%; aspect-ratio:1; }
   .s13 .blob-b { width: 16%; height: 28%; background: rgba(255,255,255,.05); bottom: -14%; left: -6%; aspect-ratio:1; }
   .s13 .eyebrow, .s13 > h2, .s13 .s12-sub, .s13 .s12-row, .s13 .s12-footer { position: relative; z-index: 2; }
-  .s13 > h2 { margin-bottom: 4px; }
 
   /* Slide 14 — verde esmeralda oscuro */
   .s14 { --accent: #66D9B8; background: #0D4735; }
@@ -604,15 +655,14 @@
   .s15 .blob-b { width: 16%; height: 28%; background: rgba(0,0,0,.14); bottom: -14%; left: -6%; aspect-ratio:1; }
 
   /* Slide 16 — azul petrolero con dorados */
-  .s16 { --accent: #E8C87A; background: #0B2545; flex-direction: column; padding: clamp(18px, 3.2vw, 46px) clamp(18px, 3.8vw, 56px); justify-content: center; }
+  .s16 { --accent: #E8C87A; background: #0B2545; flex-direction: column; padding: var(--pad-slide); justify-content: center; }
   .s16 .blob-a { width: 22%; height: 40%; background: rgba(232,200,122,.09); top: -12%; right: -8%; aspect-ratio:1; }
   .s16 .blob-b { width: 16%; height: 28%; background: rgba(0,0,0,.14); bottom: -14%; left: -6%; aspect-ratio:1; }
   .s16 .eyebrow, .s16 > h2, .s16 .steps, .s16 .quote-card { position: relative; z-index: 2; }
-  .s16 > h2 { margin-bottom: 4px; }
 
-  .s12-grid { display: flex; flex-direction: column; gap: clamp(10px, 1.6vw, 16px); }
-  .s12-sec-label { font-size: clamp(9px, 1.05vw, 12px); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-bottom: 7px; }
-  .s12-row { display: flex; gap: clamp(10px, 1.6vw, 16px); }
+  .s12-grid { display: flex; flex-direction: column; gap: clamp(8px, 1.2vw, 16px); }
+  .s12-sec-label { font-size: var(--fs-secondary); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .7; margin-bottom: clamp(5px, 0.7vw, 7px); }
+  .s12-row { display: flex; gap: clamp(8px, 1.2vw, 16px); }
   .s12-col { flex: 1; min-width: 0; }
   .s12-col.wide { flex: 1.35; }
 
@@ -621,8 +671,6 @@
   .day {
     flex: 1; min-width: 0; position: relative;
     font: inherit; color: #fff; cursor: pointer; text-align: left;
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
-    border-radius: 14px; padding: 15px 16px;
     display: flex; flex-direction: column; gap: 3px;
     transition: background .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
@@ -634,9 +682,9 @@
   }
   .day-ico { font-size: clamp(18px, 1.8vw, 24px); margin-bottom: 3px; }
   .day-ico svg.ic { width: 1.05em; height: 1.05em; }
-  .day-name { font-size: clamp(9px, 1.05vw, 12px); font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .06em; }
-  .day-task { font-size: clamp(11px, 1.3vw, 15px); font-weight: 700; }
-  .day-desc { font-size: clamp(9px, 1.05vw, 12px); line-height: 1.45; opacity: .8; margin-top: 2px; }
+  .day-name { font-size: var(--fs-secondary); font-weight: 700; opacity: .7; text-transform: uppercase; letter-spacing: .06em; }
+  .day-task { font-size: var(--fs-primary); font-weight: 700; }
+  .day-desc { font-size: var(--fs-secondary); line-height: 1.45; opacity: .8; margin-top: 2px; }
 
   /* Sección 2 — prototipado (toggle baja/alta fidelidad) */
   .proto-toggle {
@@ -644,14 +692,14 @@
     background: rgba(0,0,0,.28); margin-bottom: 10px;
   }
   .proto-opt {
-    font: inherit; font-size: clamp(9px, 1.05vw, 12px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     border: none; background: transparent; border-radius: 999px; padding: 6px 13px; cursor: pointer;
     transition: background .25s ease, color .25s ease, transform .2s ease;
   }
   .proto-opt:hover { background: rgba(255,255,255,.14); }
   .proto-opt.active { background: #3EC6E0; color: #06283a; }
   .proto-opt:active { transform: scale(.95); }
-  .proto-stage { position: relative; min-height: 175px; }
+  .proto-stage { position: relative; min-height: clamp(140px, 15.5vw, 175px); }
   .proto-view {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
@@ -659,7 +707,7 @@
     transition: opacity .3s ease, transform .3s ease, visibility .3s;
   }
   .proto-view.show { opacity: 1; visibility: visible; transform: scale(1); }
-  .proto-caption { margin-top: 8px; font-size: clamp(8.5px, 1vw, 12px); opacity: .8; line-height: 1.45; }
+  .proto-caption { margin-top: clamp(5px, 0.8vw, 8px); font-size: var(--fs-secondary); opacity: .8; line-height: 1.45; }
 
   .sketch {
     background: #fff; border: 1.5px solid #cfcbc4; border-radius: 10px;
@@ -690,19 +738,17 @@
   .r-btn { align-self: flex-start; font-size: 10px; font-weight: 700; color: #fff; background: #3EC6E0; border: none; border-radius: 7px; padding: 6px 12px; }
 
   /* Sección 3 — técnicas de validación */
-  .vcards { display: flex; flex-direction: column; gap: 8px; }
+  .vcards { display: flex; flex-direction: column; gap: clamp(5px, 0.8vw, 8px); }
   .vcard {
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
-    border-radius: 12px; padding: 9px 13px;
     transition: background .25s ease, border-color .25s ease, transform .25s ease;
   }
   .vcard:hover { background: rgba(62,198,224,.12); border-color: rgba(62,198,224,.55); transform: translateY(-2px); }
-  .v-title { font-size: clamp(10px, 1.15vw, 13.5px); font-weight: 700; margin-bottom: 3px; }
-  .v-sub { font-size: clamp(8px, .95vw, 11px); line-height: 1.5; opacity: .85; }
+  .v-title { font-size: var(--fs-primary); font-weight: 700; margin-bottom: 3px; }
+  .v-sub { font-size: var(--fs-secondary); line-height: 1.5; opacity: .85; }
   .v-sub span { opacity: .75; }
   .v-chips { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
   .v-chip {
-    font: inherit; font-size: clamp(8px, .9vw, 10.5px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08);
     border-radius: 999px; padding: 4px 10px; cursor: pointer;
     transition: background .2s ease, border-color .2s ease, transform .2s ease;
@@ -715,8 +761,8 @@
   .s12-footer {
     display: flex; align-items: center; justify-content: center; gap: 9px;
     background: rgba(62,198,224,.1); border: 1px solid rgba(62,198,224,.35);
-    border-radius: 999px; padding: 8px 16px;
-    font-size: clamp(9px, 1.05vw, 12.5px); opacity: .95; text-align: center; line-height: 1.4;
+    border-radius: 999px; padding: clamp(6px, 0.7vw, 8px) clamp(14px, 1.5vw, 16px);
+    font-size: var(--fs-secondary); opacity: .95; text-align: center; line-height: 1.4;
   }
 
   /* ============================================================
@@ -725,23 +771,21 @@
   .ds-panel { display: flex; flex-direction: column; gap: 12px; width: min(100%, 360px); }
   .ds-tokens {
     display: flex; flex-direction: column; gap: 7px;
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
-    border-radius: 14px; padding: 12px 14px;
   }
   .ds-token { display: flex; align-items: baseline; gap: 10px; }
   .ds-tag {
-    font-size: clamp(9px, 1vw, 12px); font-weight: 700;
+    font-size: var(--fs-secondary); font-weight: 700;
     background: rgba(255,255,255,.14); border-radius: 6px; padding: 2px 7px;
     color: #66D9B8; flex-shrink: 0;
   }
-  .ds-sample { line-height: 1.15; }
-  .ds-sample.h1 { font-size: clamp(16px, 1.8vw, 22px); font-weight: 700; }
-  .ds-sample.h2 { font-size: clamp(13px, 1.4vw, 17px); font-weight: 700; }
-  .ds-sample.body { font-size: clamp(10px, 1.15vw, 13px); opacity: .85; }
+  .ds-sample { line-height: 1.2; }
+  .ds-sample.h1 { font-size: var(--fs-title); font-weight: 700; }
+  .ds-sample.h2 { font-size: var(--fs-primary); font-weight: 700; }
+  .ds-sample.body { font-size: var(--fs-secondary); opacity: .85; }
   .ds-btn-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
   .ds-states { display: flex; flex-wrap: wrap; gap: 6px; }
   .ds-state {
-    font: inherit; font-size: clamp(8px, .95vw, 11px); font-weight: 700; color: #fff;
+    font: inherit; font-size: var(--fs-secondary); font-weight: 700; color: #fff;
     border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.08);
     border-radius: 999px; padding: 4px 10px; cursor: pointer;
     transition: background .2s ease, border-color .2s ease;
@@ -749,7 +793,7 @@
   .ds-state:hover { border-color: #66D9B8; }
   .ds-state.active { background: #66D9B8; border-color: #66D9B8; color: #05321f; }
   .ds-btn {
-    font: inherit; font-size: clamp(10px, 1.15vw, 13px); font-weight: 700;
+    font: inherit; font-size: var(--fs-primary); font-weight: 700;
     color: #05321f; background: #66D9B8; border: none; border-radius: 10px;
     padding: 9px 18px; cursor: pointer; flex-shrink: 0;
     transition: filter .2s ease, transform .15s ease, box-shadow .2s ease, opacity .2s ease;
@@ -759,15 +803,13 @@
   .ds-btn.state-disabled { opacity: .4; cursor: not-allowed; }
   .ds-card {
     display: flex; align-items: center; gap: 10px;
-    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16);
-    border-radius: 14px; padding: 10px 12px;
   }
   .ds-avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, #66D9B8, #185FA5); flex-shrink: 0; }
   .ds-card-lines { display: flex; flex-direction: column; gap: 5px; flex: 1; }
   .ds-card-lines span { height: 7px; border-radius: 4px; background: rgba(255,255,255,.25); }
   .ds-card-lines span:first-child { width: 55%; }
   .ds-card-lines span:last-child { width: 80%; }
-  .ds-card-tag { font-size: clamp(8px, .9vw, 10.5px); font-weight: 700; color: #66D9B8; border: 1px solid rgba(102,217,184,.4); border-radius: 999px; padding: 3px 9px; flex-shrink: 0; }
+  .ds-card-tag { font-size: var(--fs-secondary); font-weight: 700; color: #66D9B8; border: 1px solid rgba(102,217,184,.4); border-radius: 999px; padding: 3px 9px; flex-shrink: 0; }
 
   /* ============================================================
      SLIDE 15: Marco HEART (dashboard de analítica en vivo)
@@ -788,12 +830,8 @@
   .heart-letter[data-metric="a"].active { background: #B9A6F7; color: #22184a; }
   .heart-letter[data-metric="r"].active { background: #A7E0C4; color: #0c3a24; }
   .heart-letter[data-metric="t"].active { background: #F7D9A8; color: #4a3208; }
-  .heart-panel {
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.15);
-    border-radius: 16px; padding: 14px 16px;
-  }
-  .heart-title { font-size: clamp(13px, 1.5vw, 18px); font-weight: 800; margin-bottom: 3px; }
-  .heart-desc { font-size: clamp(9px, 1.05vw, 12.5px); line-height: 1.5; opacity: .85; margin-bottom: 12px; }
+  .heart-title { font-size: var(--fs-primary); font-weight: 700; margin-bottom: 3px; }
+  .heart-desc { font-size: var(--fs-secondary); line-height: 1.5; opacity: .85; margin-bottom: 12px; }
   .heart-chart { display: flex; align-items: flex-end; gap: 6px; height: 74px; margin-bottom: 10px; }
   .heart-chart .bar {
     flex: 1; border-radius: 4px 4px 2px 2px;
@@ -805,7 +843,7 @@
   @keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
   .heart-kpis { display: flex; flex-wrap: wrap; gap: 7px; }
   .heart-kpi {
-    font-size: clamp(8.5px, .95vw, 11px); font-weight: 700;
+    font-size: var(--fs-secondary); font-weight: 700;
     background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
     border-radius: 999px; padding: 4px 10px;
   }
@@ -813,11 +851,9 @@
   /* ============================================================
      SLIDE 16: cierre — el ciclo integral de la metodología UX
   ============================================================ */
-  .steps { display: flex; align-items: center; gap: clamp(8px, 1.6vw, 18px); margin-bottom: clamp(14px, 2.4vw, 22px); }
+  .steps { display: flex; align-items: stretch; gap: clamp(8px, 1.6vw, 18px); margin-bottom: clamp(12px, 1.8vw, 22px); }
   .step-card {
     flex: 1; min-width: 0;
-    background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16);
-    border-radius: 16px; padding: clamp(12px, 1.8vw, 20px);
     display: flex; gap: 12px; align-items: flex-start;
     transition: background .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
   }
@@ -830,41 +866,21 @@
   .step-body { display: flex; flex-direction: column; gap: 4px; }
   .step-ico { font-size: clamp(16px, 1.8vw, 22px); }
   .step-ico svg.ic { width: 1.05em; height: 1.05em; }
-  .step-title { font-size: clamp(11px, 1.3vw, 15px); font-weight: 800; }
-  .step-text { font-size: clamp(9px, 1.05vw, 12.5px); line-height: 1.5; opacity: .85; }
+  .step-title { font-size: var(--fs-primary); font-weight: 700; }
+  .step-text { font-size: var(--fs-secondary); line-height: 1.5; opacity: .85; }
   .step-arrow { font-size: clamp(14px, 1.6vw, 20px); color: #E8C87A; opacity: .8; flex-shrink: 0; }
   .quote-card {
     border: 1.5px solid rgba(232,200,122,.65); border-radius: 16px;
     background: rgba(232,200,122,.08);
-    padding: clamp(14px, 2.2vw, 22px) clamp(16px, 2.6vw, 26px);
-    font-size: clamp(11px, 1.3vw, 16px); line-height: 1.65; text-align: center;
+    padding: clamp(12px, 1.8vw, 22px) clamp(14px, 2.2vw, 26px);
+    font-size: var(--fs-lead); line-height: 1.65; text-align: center;
     font-style: italic; opacity: .97;
     box-shadow: 0 12px 30px rgba(0,0,0,.22);
   }
 
-  /* ============================================================
-     TIPOGRAFÍA AMPLIADA — slides 12, 13 y 16 (legible en proyector)
-  ============================================================ */
-  .s12 .eyebrow, .s13 .eyebrow, .s16 .eyebrow { font-size: clamp(15px, 1.6vw, 20px); }
-  .s12 > h2, .s13 > h2, .s16 > h2 { font-size: clamp(26px, 3.6vw, 48px); line-height: 1.15; }
-  .s12 .s12-sub, .s13 .s12-sub { font-size: clamp(16px, 1.8vw, 22px); }
-  .s12 .s12-sec-label, .s13 .s12-sec-label { font-size: clamp(13px, 1.4vw, 17px); }
-  .s12 .day-ico { font-size: clamp(22px, 2.2vw, 30px); }
-  .s12 .day-name { font-size: clamp(13px, 1.4vw, 17px); }
-  .s12 .day-task { font-size: clamp(16px, 1.8vw, 22px); }
-  .s12 .day-desc { font-size: clamp(13px, 1.4vw, 17px); }
-  .s12 > .hint { font-size: clamp(15px, 1.7vw, 21px); }
-  .s13 .proto-opt { font-size: clamp(12px, 1.4vw, 16px); }
-  .s13 .proto-caption { font-size: clamp(12px, 1.4vw, 16px); }
-  .s13 .v-title { font-size: clamp(14px, 1.6vw, 19px); }
-  .s13 .v-sub { font-size: clamp(12px, 1.4vw, 16px); }
-  .s13 .v-chip { font-size: clamp(11px, 1.3vw, 15px); }
-  .s13 .s12-footer { font-size: clamp(12px, 1.4vw, 16px); }
-  .s16 .step-num { font-size: clamp(17px, 1.9vw, 23px); }
-  .s16 .step-ico { font-size: clamp(21px, 2.1vw, 29px); }
-  .s16 .step-title { font-size: clamp(16px, 1.8vw, 22px); }
-  .s16 .step-text { font-size: clamp(13px, 1.5vw, 18px); }
-  .s16 .quote-card { font-size: clamp(16px, 1.8vw, 23px); }
+  /* La tipografía es idéntica en todas las diapositivas: el sistema
+     único definido en TIPOGRAFÍA Y COLUMNAS se aplica también a las
+     slides 12, 13 y 16 (antes ampliadas de forma desigual). */
 
   /* ============================================================
      RESPONSIVE: escritorio 16:9 · móvil con scroll cómodo
@@ -886,6 +902,24 @@
       width: min(calc(100vw - 32px), calc((100vh - 32px) / 9 * 16));
       margin: 0;
     }
+  }
+
+  /* Escenario de proyector de baja resolución (p. ej. 1024x768/1024x576):
+     compacta los espacios verticales de las slides en columna para que el
+     contenido no se recorte con la tipografía ampliada. */
+  @media (min-width: 641px) and (max-width: 1150px) and (max-height: 800px) {
+    .s3, .s6, .s12, .s13, .s16 { padding-top: 28px; padding-bottom: 28px; }
+    .s12 > h2, .s13 > h2, .s16 > h2 { margin-bottom: 8px; }
+    .s12 .s12-sub, .s13 .s12-sub { margin-bottom: 8px; }
+    .s12 .s12-grid, .s13 .s12-row { gap: 6px; }
+    .s13 .proto-stage { min-height: 110px; }
+    .s13 .vcards { gap: 4px; }
+    .s13 .vcard { padding-top: 9px; padding-bottom: 9px; }
+    .s13 .v-title { margin-bottom: 2px; }
+    .s13 .v-chip { padding-top: 3px; padding-bottom: 3px; }
+    .s16 .steps { gap: 10px; margin-bottom: 10px; }
+    .s16 .quote-card { padding-top: 10px; padding-bottom: 10px; }
+    .s12-footer { padding-top: 5px; padding-bottom: 5px; }
   }
 
   @media (max-width: 640px) {
@@ -911,6 +945,10 @@
     .s5 .art-col, .s7 .art-col, .s8 .art-col, .s9 .art-col, .s10 .art-col, .s11 .art-col { display: flex; padding: 0 20px 18px; }
     .dd-svg { width: min(320px, 78vw); }
     .s6 .tools { flex-direction: column; align-items: stretch; }
+    /* Scroll vertical contenido solo para las tarjetas/celdas con listas largas */
+    .days, .vcards, .tools { max-height: 46vh; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+    /* Evita desbordes y scroll horizontal en pantallas pequeñas */
+    h1, h2, p, li { overflow-wrap: break-word; }
     .loop { width: min(100%, 260px); }
     .hypo-formula { max-width: 100%; }
     .gears { width: 200px; }
@@ -950,7 +988,7 @@
     .deck { transition: none; }
     .slide .anim, .slide.active .anim { animation: none !important; opacity: 1; translate: none; }
     .slide.active .decor { animation: none; }
-    .nav, .dot, .card, .cat, .step, .cartdot, .badge.wiggle, .mock, .card-overlay, .tip,
+    .nav, .dot, .card, .cat, .step, .cartdot, .badge.wiggle, .mock, .card-overlay, .card-dialog, .tip,
     .loop-ring, .loop-node .n-ico, .gear-wrap svg, .gear-wrap.pulse, .scale-beam, .scale-side,
     .mvp-opt, .mvp-stage, .sprint-cell, .sprint-next, .hypo-var,
     .day, .proto-opt, .proto-view, .v-chip, .heart-letter, .heart-chart .bar,

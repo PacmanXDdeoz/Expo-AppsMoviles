@@ -128,7 +128,7 @@
         <h2 class="anim" style="--d:1">De la tecnología al humano en el centro</h2>
         <div class="cards-wrap anim" style="--d:2">
           <div class="cards">
-            <button type="button" class="card" data-topic="antes">
+            <button type="button" class="card card-standard" data-topic="antes">
               <span class="circ" style="background:#7F77DD;">
                 <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><rect x="7" y="7" width="10" height="10" fill="none" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="3" x2="7" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="3" x2="12" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="3" x2="17" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="18" x2="7" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="18" x2="17" y2="21" stroke="#26215C" stroke-width="1.8"/></svg>
               </span>
@@ -137,14 +137,16 @@
             <div class="connect">
               <svg viewBox="0 0 24 24" style="width:45%;height:45%;"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="#4A1B0C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <button type="button" class="card" data-topic="ahora">
+            <button type="button" class="card card-standard" data-topic="ahora">
               <span class="circ" style="background:#5DCAA5;">
                 <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><path d="M12 21 C 6 15 2 11.5 2 7.8 C2 5 4.2 3 6.8 3 C 9 3 10.8 4.3 12 6.2 C13.2 4.3 15 3 17.2 3 C19.8 3 22 5 22 7.8 C22 11.5 18 15 12 21 Z" fill="#04342C"/></svg>
               </span>
               <span><span class="lbl-top">Ahora</span><br><span class="lbl-main">La tecnología se adapta</span></span>
             </button>
           </div>
-          <div class="card-overlay" id="cardOverlay" aria-hidden="true">
+        </div>
+        <div class="card-overlay" id="cardOverlay" aria-hidden="true">
+          <div class="card-dialog">
             <span class="overlay-tag" id="overlayTag">Antes</span>
             <p class="overlay-text" id="overlayText"></p>
             <span class="overlay-hint">Clic en cualquier parte para cerrar</span>
@@ -244,7 +246,7 @@
         <div class="eyebrow anim" style="--d:0">06 · Herramientas de Investigación</div>
         <h2 class="anim" style="--d:1">Herramientas Clave de UX Research</h2>
         <div class="tools">
-          <div class="tool-card anim" style="--d:2">
+          <div class="tool-card card-standard anim" style="--d:2">
             <div class="tool-head">
               <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-person"></use></svg></span>
               <div>
@@ -260,7 +262,7 @@
               <div class="tool-readout" id="personaReadout">Compra desde el móvil · clic para cambiar</div>
             </div>
           </div>
-          <div class="tool-card anim" style="--d:3">
+          <div class="tool-card card-standard anim" style="--d:3">
             <div class="tool-head">
               <span class="tool-icon" style="background:#F0997B;color:#4A1B0C;"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
               <div>
@@ -273,7 +275,7 @@
               <div class="tool-readout" id="journeyReadout">Toca una carita para marcar un punto de dolor</div>
             </div>
           </div>
-          <div class="tool-card anim" style="--d:4">
+          <div class="tool-card card-standard anim" style="--d:4">
             <div class="tool-head">
               <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-cards"></use></svg></span>
               <div>
@@ -370,7 +372,7 @@
                 <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-bulb"></use></svg></span><span class="n-lbl">Aprender</span>
               </button>
             </div>
-            <div class="detail-box anim" style="--d:3" id="loopDetail">Clic en una fase para ver su micro-explicación</div>
+            <div class="detail-box card-standard anim" style="--d:3" id="loopDetail">Clic en una fase para ver su micro-explicación</div>
           </div>
         </div>
       </section>
@@ -392,11 +394,11 @@
           <p class="hint anim" style="--d:3">Haz clic en las variables de la derecha para simular la hipótesis</p>
         </div>
         <div class="art-col">
-          <div class="hypo-formula anim" style="--d:2">
+          <div class="hypo-formula card-standard anim" style="--d:2">
             Creemos que <button type="button" class="hypo-var" id="varX">un checkout en un solo paso</button>
             logrará <button type="button" class="hypo-var" id="varY">aumentar la conversión un 15%</button>
           </div>
-          <div class="detail-box anim" style="--d:3" id="hypoReadout">Haz clic en las variables para simular la hipótesis <svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></div>
+          <div class="detail-box card-standard anim" style="--d:3" id="hypoReadout">Haz clic en las variables para simular la hipótesis <svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></div>
         </div>
       </section>
 
@@ -498,7 +500,7 @@
             <button type="button" class="sprint-cell" data-s="4">S5</button>
             <button type="button" class="sprint-next" id="sprintNext"><svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg> Siguiente</button>
           </div>
-          <div class="detail-box anim" style="--d:4" id="sprintReadout">Sprint 1 activo · diseño y desarrollo en paralelo <svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></div>
+          <div class="detail-box card-standard anim" style="--d:4" id="sprintReadout">Sprint 1 activo · diseño y desarrollo en paralelo <svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></div>
         </div>
       </section>
 
@@ -517,31 +519,31 @@
           <div class="s12-sec anim" style="--d:3">
             <div class="s12-sec-label">1 · Estructura de 5 Días</div>
             <div class="days">
-              <button type="button" class="day" data-day="mapear">
+              <button type="button" class="day card-standard" data-day="mapear">
                 <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
                 <span class="day-name">Lunes · Día 1</span>
                 <span class="day-task">Mapear</span>
                 <span class="day-desc">Definir objetivo y mapear la experiencia</span>
               </button>
-              <button type="button" class="day" data-day="bocetar">
+              <button type="button" class="day card-standard" data-day="bocetar">
                 <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg></span>
                 <span class="day-name">Martes · Día 2</span>
                 <span class="day-task">Bocetar</span>
                 <span class="day-desc">Generar múltiples soluciones e ideas</span>
               </button>
-              <button type="button" class="day" data-day="decidir">
+              <button type="button" class="day card-standard" data-day="decidir">
                 <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-target"></use></svg></span>
                 <span class="day-name">Miércoles · Día 3</span>
                 <span class="day-task">Decidir</span>
                 <span class="day-desc">Seleccionar la mejor propuesta</span>
               </button>
-              <button type="button" class="day" data-day="prototipar">
+              <button type="button" class="day card-standard" data-day="prototipar">
                 <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-monitor"></use></svg></span>
                 <span class="day-name">Jueves · Día 4</span>
                 <span class="day-task">Prototipar</span>
                 <span class="day-desc">Crear un prototipo realista</span>
               </button>
-              <button type="button" class="day" data-day="probar">
+              <button type="button" class="day card-standard" data-day="probar">
                 <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></span>
                 <span class="day-name">Viernes · Día 5</span>
                 <span class="day-task">Probar</span>
@@ -599,7 +601,7 @@
           <div class="s12-col wide anim" style="--d:4">
             <div class="s12-sec-label">3 · Técnicas de Validación</div>
             <div class="vcards">
-              <div class="vcard">
+              <div class="vcard card-standard">
                 <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg> Pruebas de Usabilidad</div>
                 <div class="v-sub">Moderadas <span>(en vivo · cualitativo)</span> vs No moderadas <span>(automatizadas · cuantitativo)</span></div>
                 <div class="v-chips">
@@ -607,11 +609,11 @@
                   <button type="button" class="v-chip">No moderadas · cuantitativo</button>
                 </div>
               </div>
-              <div class="vcard">
+              <div class="vcard card-standard">
                 <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg> Pruebas A/B</div>
                 <div class="v-sub">Comparación directa de dos variantes <span>(A vs B)</span> frente a usuarios reales.</div>
               </div>
-              <div class="vcard">
+              <div class="vcard card-standard">
                 <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg> Evaluación Heurística</div>
                 <div class="v-sub">Auditoría de expertos bajo las <span>10 Heurísticas de Jakob Nielsen</span>.</div>
               </div>
@@ -644,7 +646,7 @@
         </div>
         <div class="art-col">
           <div class="ds-panel anim" style="--d:2">
-            <div class="ds-tokens">
+            <div class="ds-tokens card-standard">
               <div class="ds-token"><span class="ds-tag">$H1$</span><span class="ds-sample h1">Título principal</span></div>
               <div class="ds-token"><span class="ds-tag">$H2$</span><span class="ds-sample h2">Subtítulo</span></div>
               <div class="ds-token"><span class="ds-tag">$Body$</span><span class="ds-sample body">Cuerpo de texto</span></div>
@@ -658,7 +660,7 @@
               </div>
               <button type="button" class="ds-btn" id="dsBtn">Componente</button>
             </div>
-            <div class="ds-card">
+            <div class="ds-card card-standard">
               <div class="ds-avatar"></div>
               <div class="ds-card-lines"><span></span><span></span></div>
               <span class="ds-card-tag">Card · reutilizable</span>
@@ -694,7 +696,7 @@
               <button type="button" class="heart-letter" data-metric="r">R</button>
               <button type="button" class="heart-letter" data-metric="t">T</button>
             </div>
-            <div class="heart-panel">
+            <div class="heart-panel card-standard">
               <div class="heart-title" id="heartTitle">H · Happiness</div>
               <div class="heart-desc" id="heartDesc">Satisfacción y percepción del usuario (CSAT, SUS).</div>
               <div class="heart-chart" id="heartChart"></div>
@@ -714,7 +716,7 @@
         <div class="eyebrow anim" style="--d:0">16 · Conclusión General</div>
         <h2 class="anim" style="--d:1">El Ciclo Integral de la Metodología UX</h2>
         <div class="steps">
-          <div class="step-card anim" style="--d:2">
+          <div class="step-card card-standard anim" style="--d:2">
             <span class="step-num">1</span>
             <div class="step-body">
               <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg></span>
@@ -723,7 +725,7 @@
             </div>
           </div>
           <span class="step-arrow" aria-hidden="true">→</span>
-          <div class="step-card anim" style="--d:3">
+          <div class="step-card card-standard anim" style="--d:3">
             <span class="step-num">2</span>
             <div class="step-body">
               <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></span>
@@ -732,7 +734,7 @@
             </div>
           </div>
           <span class="step-arrow" aria-hidden="true">→</span>
-          <div class="step-card anim" style="--d:4">
+          <div class="step-card card-standard anim" style="--d:4">
             <span class="step-num">3</span>
             <div class="step-body">
               <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-trend"></use></svg></span>
