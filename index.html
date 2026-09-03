@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Introducción y paradigma del diseño UX · Presentación interactiva</title>
+<link rel="stylesheet" href="static/core.css">
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 3.5h2.2l2.6 12.6a1.2 1.2 0 0 0 1.2 1h9.6l2.2-9.6H6.6"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20.5h9"/><path d="M16.6 3.6a2.2 2.2 0 0 1 3.1 3.1L7 19.5l-4 1 1-4Z"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 3h4"/><path d="M11 3v6l-5.2 9a1.9 1.9 0 0 0 1.7 2.9h9a1.9 1.9 0 0 0 1.7-2.9L13 9V3"/><path d="M7.6 14.5h8.8"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.7-6.4"/><path d="M21 3.5v5.5h-5.5"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.5 18.5h5"/><path d="M10 21.5h4"/><path d="M12 3a6 6 0 0 0-3.7 10.7c.8.6 1.3 1.4 1.4 2.3h4.6c.1-.9.6-1.7 1.4-2.3A6 6 0 0 0 12 3Z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.7 8.3-2.1 5.3-5.3 2.1 2.1-5.3Z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V3.5"/><path d="M5.5 3.5H16l-2 3.8 2 3.7H5.5"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6.5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 16.5h4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.2-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.2" r="2.3"/></symbol>
+  <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="13" rx="2"/><path d="M8 3.5h11a1.5 1.5 0 0 1 1.5 1.5v11"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-3.5M12 20V8M18 20v-6.5"/><path d="M3 20.5h18"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M9.5 20.5h5M12 17v3.5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.2l5.9-.9Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5Z"/></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="4"/><path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.7" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.3" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><path d="M8.2 14.1c1.1 1.8 2.4 2.7 3.8 2.7s2.7-.9 3.8-2.7"/></symbol>
+  <symbol id="i-frown" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.7" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.3" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><path d="M8.2 17.1c1.1-1.8 2.4-2.7 3.8-2.7s2.7.9 3.8 2.7"/></symbol>
+  <symbol id="i-diverge" viewBox="0 0 24 24"><path d="M5 12h14M9 8l-4 4 4 4M15 8l4 4-4 4"/></symbol>
+  <symbol id="i-scooter" viewBox="0 0 24 24"><circle cx="7" cy="15.8" r="2.5"/><circle cx="18" cy="17.2" r="2.6"/><path d="M7 15.8c.3-4.7 2.7-7.5 6.7-7.5h3.1"/><path d="M13.7 8.3 15.2 13l3-1.6"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.6 14.8 6 11.2a2 2 0 0 1 1.9-1.4h8.2a2 2 0 0 1 1.9 1.4l1.4 3.6"/><path d="M4 15h16v2.4a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 17.4Z"/><circle cx="7.4" cy="19.6" r="1.7"/><circle cx="16.6" cy="19.6" r="1.7"/></symbol>
+  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="2.3"/><path d="M12 3.4v4.6M12 16v4.6M3.4 12H8M16 12h4.6"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14.5 7H21v6.5"/></symbol>
+</svg>
+
+
+  <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+  <main class="stage" id="stage" aria-roledescription="carrusel" aria-label="Presentación: Introducción y paradigma del diseño UX">
+
+    <div class="deck" id="deck">
+
+      <!-- ============ SLIDE 1 ============ -->
+      <section class="slide s1">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">01 · Gancho inicial</div>
+          <h1 class="anim" style="--d:1">Introducción y paradigma del diseño UX</h1>
+          <p class="lead anim" style="--d:2">¿Alguna vez dejaste de usar una app porque no entendías cómo funcionaba, aunque el producto fuera bueno?</p>
+        </div>
+        <div class="art-col">
+          <div class="badge wiggle anim" style="--d:3;--rot:0deg;width:15%;aspect-ratio:1;background:#FAC775;top:12%;right:10%;" title="¿Qué está pasando?">
+            <span style="font-size:clamp(20px,3vw,44px);font-weight:700;color:#412402;">?</span>
+          </div>
+          <div class="badge wiggle anim white" style="--d:4;--rot:-6deg;width:28%;aspect-ratio:1;top:22%;left:12%;transform:rotate(-6deg);" title="Confusión: no sé dónde tocar">
+            <svg viewBox="0 0 100 100" class="icon">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#D85A30" stroke-width="6"/>
+              <circle cx="34" cy="42" r="5" fill="#D85A30"/>
+              <circle cx="66" cy="42" r="5" fill="#D85A30"/>
+              <path d="M 30 68 Q 40 58 50 68 Q 60 78 70 68" fill="none" stroke="#D85A30" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="badge wiggle anim" style="--d:5;--rot:0deg;width:10%;aspect-ratio:1;background:#F0997B;bottom:14%;right:18%;" title="Frustración">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M5 5 L19 19 M19 5 L5 19" stroke="#4A1B0C" stroke-width="3" stroke-linecap="round"/></svg>
+          </div>
+          <div class="badge wiggle anim" style="--d:6;--rot:8deg;width:12%;aspect-ratio:1;background:#fff;border-radius:18px;bottom:6%;left:34%;transform:rotate(8deg);" title="…y al final lo abandono">
+            <svg viewBox="0 0 24 24" class="icon">
+              <rect x="7" y="2" width="10" height="20" rx="2" fill="none" stroke="#993C1D" stroke-width="1.6"/>
+              <circle cx="12" cy="18.4" r="1" fill="#993C1D"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 2 ============ -->
+      <section class="slide s2">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">02 · Qué es el diseño UX</div>
+          <h2 class="anim" style="--d:1">Experiencia de usuario, no solo interfaz</h2>
+          <ul class="points anim" style="--d:2">
+            <li>UX = que la interacción sea útil, fácil y agradable</li>
+            <li>UI es la apariencia; UX es todo el recorrido</li>
+            <li>Ej: una app de compras diseña búsqueda, carrito y envío como un solo flujo</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Prueba el prototipo → escribe, filtra y añade al carrito</p>
+        </div>
+        <div class="art-col" style="display:flex;align-items:center;justify-content:center;">
+          <div class="mock anim" style="--d:2">
+            <div class="searchbar">
+              <svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg>
+              <input id="mockSearch" type="text" placeholder="Buscar productos" aria-label="Buscar productos" autocomplete="off">
+            </div>
+            <div class="grid">
+              <button type="button" class="cat anim" style="--d:3;background:#B5D4F4;color:#185FA5;" data-filter="ropa">Ropa</button>
+              <button type="button" class="cat anim" style="--d:4;background:#FAC775;color:#854F0B;" data-filter="audio">Audio</button>
+              <button type="button" class="cat anim" style="--d:5;background:#C0DD97;color:#3B6D11;" data-filter="calzado">Calzado</button>
+              <button type="button" class="cat anim" style="--d:6;background:#F09595;color:#A32D2D;" data-filter="relojes">Relojes</button>
+            </div>
+            <div class="footer">
+              <span class="count" id="cartCount">3 en el carrito</span>
+              <button type="button" class="cartdot" id="cartBtn" aria-label="Añadir al carrito"><svg class="ic" aria-hidden="true"><use href="#i-cart"></use></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 3 ============ -->
+      <section class="slide s3">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="eyebrow anim" style="--d:0">03 · El paradigma del diseño UX</div>
+        <h2 class="anim" style="--d:1">De la tecnología al humano en el centro</h2>
+        <div class="cards-wrap anim" style="--d:2">
+          <div class="cards">
+            <button type="button" class="card" data-topic="antes">
+              <span class="circ" style="background:#7F77DD;">
+                <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><rect x="7" y="7" width="10" height="10" fill="none" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="3" x2="7" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="3" x2="12" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="3" x2="17" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="18" x2="7" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="18" x2="17" y2="21" stroke="#26215C" stroke-width="1.8"/></svg>
+              </span>
+              <span><span class="lbl-top">Antes</span><br><span class="lbl-main">El usuario se adapta</span></span>
+            </button>
+            <div class="connect">
+              <svg viewBox="0 0 24 24" style="width:45%;height:45%;"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="#4A1B0C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <button type="button" class="card" data-topic="ahora">
+              <span class="circ" style="background:#5DCAA5;">
+                <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><path d="M12 21 C 6 15 2 11.5 2 7.8 C2 5 4.2 3 6.8 3 C 9 3 10.8 4.3 12 6.2 C13.2 4.3 15 3 17.2 3 C19.8 3 22 5 22 7.8 C22 11.5 18 15 12 21 Z" fill="#04342C"/></svg>
+              </span>
+              <span><span class="lbl-top">Ahora</span><br><span class="lbl-main">La tecnología se adapta</span></span>
+            </button>
+          </div>
+          <div class="card-overlay" id="cardOverlay" aria-hidden="true">
+            <span class="overlay-tag" id="overlayTag">Antes</span>
+            <p class="overlay-text" id="overlayText"></p>
+            <span class="overlay-hint">Clic en cualquier parte para cerrar</span>
+          </div>
+        </div>
+        <div class="cycle-wrap anim" style="--d:3">
+          <div class="cycle">
+            <button type="button" class="step" data-step="investigar"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg> Investigar</button>
+            <span class="sep" aria-hidden="true">→</span>
+            <button type="button" class="step" data-step="disenar"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg> Diseñar</button>
+            <span class="sep" aria-hidden="true">→</span>
+            <button type="button" class="step" data-step="probar"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg> Probar</button>
+            <span class="sep" aria-hidden="true">→</span>
+            <button type="button" class="step" data-step="iterar"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg> Iterar</button>
+          </div>
+          <div class="tip" id="tip" role="tooltip" aria-hidden="true">
+            <div class="tip-title" id="tipTitle"></div>
+            <div class="tip-text" id="tipText"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 4 ============ -->
+      <section class="slide s4">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">04 · Cierre</div>
+          <h2 class="anim" style="--d:1">No diseñamos para nosotros, diseñamos para el usuario</h2>
+          <p class="lead anim" style="--d:2">Design Thinking, Lean UX y Design Sprint son formas estructuradas de aplicar este paradigma centrado en el humano.</p>
+        </div>
+        <div class="art-col">
+          <div class="anim" style="--d:3;position:absolute;width:20%;aspect-ratio:1;border-radius:50%;border:3px solid rgba(255,255,255,.28);top:22%;left:16%;"></div>
+          <div class="badge wiggle anim white" style="--d:4;--rot:0deg;width:14%;aspect-ratio:1;top:28%;left:23%;" title="Objetivo: el usuario en el centro">
+            <svg viewBox="0 0 100 100" class="icon">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#0F6E56" stroke-width="6"/>
+              <circle cx="50" cy="50" r="24" fill="none" stroke="#0F6E56" stroke-width="6"/>
+              <circle cx="50" cy="50" r="8" fill="#0F6E56"/>
+            </svg>
+          </div>
+          <div class="badge wiggle anim" style="--d:5;--rot:0deg;width:8%;aspect-ratio:1;background:#F0997B;top:12%;right:14%;" title="Insight">
+            <svg class="icon" style="color:#6b2406" aria-hidden="true"><use href="#i-bulb"></use></svg>
+          </div>
+          <div class="badge wiggle anim" style="--d:6;--rot:0deg;width:7%;aspect-ratio:1;background:#EF9F27;bottom:22%;right:20%;" title="Dirección">
+            <svg class="icon" style="color:#6b4700" aria-hidden="true"><use href="#i-compass"></use></svg>
+          </div>
+          <div class="badge wiggle anim white" style="--d:7;--rot:0deg;width:6%;aspect-ratio:1;bottom:32%;left:10%;" title="Meta">
+            <svg class="icon" style="color:#A32D2D" aria-hidden="true"><use href="#i-flag"></use></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 5 ============ -->
+      <section class="slide s5">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">05 · Descubrimiento e Investigación</div>
+          <h2 class="anim" style="--d:1">Metodología del Doble Diamante</h2>
+          <ul class="points anim" style="--d:2">
+            <li><strong>Descubrir</strong> — explorar e investigar al usuario</li>
+            <li><strong>Definir</strong> — sintetizar y acotar el problema real</li>
+            <li><strong>Desarrollar</strong> — ideación y creación de alternativas</li>
+            <li><strong>Entregar</strong> — pruebas de usabilidad y refinamiento</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Pasa el cursor o haz clic en las fases del diagrama</p>
+        </div>
+        <div class="art-col">
+          <div class="status-badge" id="statusBadge">Descubrir · Pensamiento divergente</div>
+          <svg class="dd-svg anim" style="--d:2" viewBox="0 0 220 110" aria-hidden="true">
+            <path class="phase" data-phase="descubrir" d="M10 55 L60 20 L60 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
+            <path class="phase" data-phase="definir" d="M60 20 L110 55 L60 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
+            <path class="phase" data-phase="desarrollar" d="M110 55 L160 20 L160 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
+            <path class="phase" data-phase="entregar" d="M160 20 L210 55 L160 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
+          </svg>
+          <div class="phases anim" style="--d:3">
+            <button type="button" class="phase-chip" data-phase="descubrir">Descubrir</button>
+            <button type="button" class="phase-chip" data-phase="definir">Definir</button>
+            <button type="button" class="phase-chip" data-phase="desarrollar">Desarrollar</button>
+            <button type="button" class="phase-chip" data-phase="entregar">Entregar</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 6 ============ -->
+      <section class="slide s6">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="eyebrow anim" style="--d:0">06 · Herramientas de Investigación</div>
+        <h2 class="anim" style="--d:1">Herramientas Clave de UX Research</h2>
+        <div class="tools">
+          <div class="tool-card anim" style="--d:2">
+            <div class="tool-head">
+              <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-person"></use></svg></span>
+              <div>
+                <div class="tool-title">User Personas</div>
+                <div class="tool-desc">Arquetipos de usuario para diseñar con empatía real.</div>
+              </div>
+            </div>
+            <div class="tool-body">
+              <button type="button" class="persona" id="personaBtn" aria-label="Cambiar de persona">
+                <span class="persona-face" id="personaFace">M</span>
+                <span class="persona-name" id="personaName">María · 32</span>
+              </button>
+              <div class="tool-readout" id="personaReadout">Compra desde el móvil · clic para cambiar</div>
+            </div>
+          </div>
+          <div class="tool-card anim" style="--d:3">
+            <div class="tool-head">
+              <span class="tool-icon" style="background:#F0997B;color:#4A1B0C;"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
+              <div>
+                <div class="tool-title">Customer Journey Map</div>
+                <div class="tool-desc">Mapeo de la experiencia para hallar puntos de dolor.</div>
+              </div>
+            </div>
+            <div class="tool-body">
+              <div class="journey" id="journeyRow"></div>
+              <div class="tool-readout" id="journeyReadout">Toca una carita para marcar un punto de dolor</div>
+            </div>
+          </div>
+          <div class="tool-card anim" style="--d:4">
+            <div class="tool-head">
+              <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-cards"></use></svg></span>
+              <div>
+                <div class="tool-title">Card Sorting</div>
+                <div class="tool-desc">Clasificación de tarjetas para organizar la información.</div>
+              </div>
+            </div>
+            <div class="tool-body">
+              <div class="sortrow" id="sortRow"></div>
+              <div class="tool-readout" id="sortReadout">Toca una tarjeta para reordenarla</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 7 ============ -->
+      <section class="slide s7">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">07 · Filosofía Lean UX</div>
+          <h2 class="anim" style="--d:1">Valor sobre Documentación</h2>
+          <ul class="points anim" style="--d:2">
+            <li><strong>Origen:</strong> Jeff Gothelf — Lean Startup aplicado al diseño</li>
+            <li><strong>Menos:</strong> reportes y documentación extensa</li>
+            <li><strong>Más:</strong> entrega rápida de valor al usuario</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Pasa el cursor o haz clic en la balanza para inclinarla</p>
+        </div>
+        <div class="art-col">
+          <svg class="scale-svg anim" style="--d:2" viewBox="0 0 240 160" aria-hidden="true">
+            <polygon points="104,118 136,118 120,154" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+            <g class="scale-beam">
+              <line x1="26" y1="112" x2="214" y2="112" stroke="rgba(255,255,255,.7)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="26" y1="112" x2="26" y2="130" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
+              <path d="M12 130 Q26 142 40 130 L40 148 Q26 154 12 148 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+              <g class="docs">
+                <rect x="21" y="125" width="16" height="12" rx="1.5" fill="#fff" opacity=".55"/>
+                <rect x="21" y="128" width="16" height="12" rx="1.5" fill="#fff" opacity=".72"/>
+                <rect x="21" y="131" width="16" height="12" rx="1.5" fill="#fff" opacity=".9"/>
+                <path d="M23 133 L35 145 M35 133 L23 145" stroke="#A32D2D" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <line x1="214" y1="112" x2="214" y2="130" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
+              <path d="M200 130 Q214 142 228 130 L228 148 Q214 154 200 148 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+              <circle cx="214" cy="127" r="9.5" fill="#FAC775"/>
+              <circle cx="211" cy="124" r="1.2" fill="#7a3008"/>
+              <circle cx="217" cy="124" r="1.2" fill="#7a3008"/>
+              <path d="M210 129.5 Q214 134 218 129.5" fill="none" stroke="#7a3008" stroke-width="1.2" stroke-linecap="round"/>
+            </g>
+          </svg>
+          <div class="scale-sides anim" style="--d:3">
+            <button type="button" class="scale-side" data-side="docs"><svg class="ic" aria-hidden="true"><use href="#i-file"></use></svg> Menos: documentación</button>
+            <button type="button" class="scale-side" data-side="valor"><svg class="ic" aria-hidden="true"><use href="#i-smile"></use></svg> Más: valor al usuario</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 8 ============ -->
+      <section class="slide s8">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">08 · El Ciclo Continuo</div>
+          <h2 class="anim" style="--d:1">El Motor de Lean UX</h2>
+          <ul class="points anim" style="--d:2">
+            <li>Bucle infinito: <strong>Construir → Medir → Aprender</strong></li>
+            <li>Mejora constante e iterativa, no una línea recta</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Haz clic en cada fase del bucle para ver su detalle</p>
+        </div>
+        <div class="art-col">
+          <div class="loop-wrap">
+            <div class="loop anim" style="--d:2">
+              <div class="loop-ring"></div>
+              <svg class="loop-arrows" viewBox="0 0 300 300" aria-hidden="true">
+                <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="rgba(255,255,255,.7)"/></marker></defs>
+                <path d="M150 40 A110 110 0 0 1 245.3 95" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+                <path d="M245.3 95 A110 110 0 0 1 54.7 95" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+                <path d="M54.7 95 A110 110 0 0 1 150 40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+              </svg>
+              <button type="button" class="loop-node" data-phase="construir" style="top:13.3%;left:50%;">
+                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-tool"></use></svg></span><span class="n-lbl">Construir</span>
+              </button>
+              <button type="button" class="loop-node" data-phase="medir" style="top:31.7%;left:81.8%;">
+                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg></span><span class="n-lbl">Medir</span>
+              </button>
+              <button type="button" class="loop-node" data-phase="aprender" style="top:31.7%;left:18.2%;">
+                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-bulb"></use></svg></span><span class="n-lbl">Aprender</span>
+              </button>
+            </div>
+            <div class="detail-box anim" style="--d:3" id="loopDetail">Clic en una fase para ver su micro-explicación</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 9 ============ -->
+      <section class="slide s9">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">09 · Experimentación</div>
+          <h2 class="anim" style="--d:1">De Asunciones a Experimentos</h2>
+          <ul class="points anim" style="--d:2">
+            <li>Fórmula: «Creemos que <strong>[Interfaz X]</strong> logrará <strong>[Resultado Y]</strong>»</li>
+            <li>Diseñamos experimentos, no certezas absolutas</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Haz clic en las variables de la derecha para simular la hipótesis</p>
+        </div>
+        <div class="art-col">
+          <div class="hypo-formula anim" style="--d:2">
+            Creemos que <button type="button" class="hypo-var" id="varX">un checkout en un solo paso</button>
+            logrará <button type="button" class="hypo-var" id="varY">aumentar la conversión un 15%</button>
+          </div>
+          <div class="detail-box anim" style="--d:3" id="hypoReadout">Haz clic en las variables para simular la hipótesis <svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 10 ============ -->
+      <section class="slide s10">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">10 · Validación Rápida</div>
+          <h2 class="anim" style="--d:1">Producto Mínimo Viable (MVP)</h2>
+          <ul class="points anim" style="--d:2">
+            <li>La versión más simple con <strong>valor funcional desde el día 1</strong></li>
+            <li>Validar con el mercado real con el menor esfuerzo posible</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Alterna las vistas para entender la diferencia</p>
+        </div>
+        <div class="art-col">
+          <div class="mvp-toggle anim" style="--d:2">
+            <button type="button" class="mvp-opt active" data-view="mvp"><svg class="ic" aria-hidden="true"><use href="#i-check"></use></svg> MVP: Patinete → Auto</button>
+            <button type="button" class="mvp-opt" data-view="incompleto"><svg class="ic" aria-hidden="true"><use href="#i-x"></use></svg> Rueda suelta</button>
+          </div>
+          <div class="mvp-view anim" style="--d:3">
+            <div class="mvp-stage show" data-view="mvp">
+              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-scooter"></use></svg><span class="mvp-lbl">Patinete</span></div>
+              <span class="mvp-arrow">→</span>
+              <span class="mvp-arrow">→</span>
+              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-car"></use></svg><span class="mvp-lbl">Auto</span></div>
+              <span class="mvp-check"><svg class="ic" aria-hidden="true"><use href="#i-check"></use></svg> Valor desde el día 1</span>
+            </div>
+            <div class="mvp-stage" data-view="incompleto">
+              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-wheel"></use></svg><span class="mvp-lbl">Rueda suelta</span></div>
+              <span class="mvp-x"><svg class="ic" aria-hidden="true"><use href="#i-x"></use></svg> Falta el resto del vehículo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 11 ============ -->
+      <section class="slide s11">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">11 · UX + Desarrollo</div>
+          <h2 class="anim" style="--d:1">Trabajo Codo a Codo</h2>
+          <ul class="points anim" style="--d:2">
+            <li><strong>Sprints compartidos:</strong> diseñadores y desarrolladores desde el día 1</li>
+            <li><strong>Dual-Track:</strong> diseñar lo de hoy mientras se valida lo del mañana</li>
+          </ul>
+          <p class="hint anim" style="--d:3">Avanza los sprints y mira girar los engranajes en sincronía</p>
+        </div>
+        <div class="art-col">
+          <div class="gears anim" style="--d:2">
+            <div class="gear-wrap a" id="gearA">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <defs><rect id="tooth" x="-5" y="-42" width="10" height="14" rx="3" fill="rgba(255,255,255,.5)"/></defs>
+                <use href="#tooth"/>
+                <use href="#tooth" transform="rotate(45 50 50)"/>
+                <use href="#tooth" transform="rotate(90 50 50)"/>
+                <use href="#tooth" transform="rotate(135 50 50)"/>
+                <use href="#tooth" transform="rotate(180 50 50)"/>
+                <use href="#tooth" transform="rotate(225 50 50)"/>
+                <use href="#tooth" transform="rotate(270 50 50)"/>
+                <use href="#tooth" transform="rotate(315 50 50)"/>
+                <circle cx="50" cy="50" r="34" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="13" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="4" fill="#fff"/>
+              </svg>
+              <span class="gear-lbl">Diseño</span>
+            </div>
+            <div class="gear-wrap b" id="gearB">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <defs><rect id="tooth2" x="-5" y="-42" width="10" height="14" rx="3" fill="rgba(255,255,255,.5)"/></defs>
+                <use href="#tooth2"/>
+                <use href="#tooth2" transform="rotate(45 50 50)"/>
+                <use href="#tooth2" transform="rotate(90 50 50)"/>
+                <use href="#tooth2" transform="rotate(135 50 50)"/>
+                <use href="#tooth2" transform="rotate(180 50 50)"/>
+                <use href="#tooth2" transform="rotate(225 50 50)"/>
+                <use href="#tooth2" transform="rotate(270 50 50)"/>
+                <use href="#tooth2" transform="rotate(315 50 50)"/>
+                <circle cx="50" cy="50" r="34" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="13" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+                <circle cx="50" cy="50" r="4" fill="#fff"/>
+              </svg>
+              <span class="gear-lbl">Desarrollo</span>
+            </div>
+          </div>
+          <div class="sprint anim" style="--d:3">
+            <button type="button" class="sprint-cell active" data-s="0">S1</button>
+            <button type="button" class="sprint-cell" data-s="1">S2</button>
+            <button type="button" class="sprint-cell" data-s="2">S3</button>
+            <button type="button" class="sprint-cell" data-s="3">S4</button>
+            <button type="button" class="sprint-cell" data-s="4">S5</button>
+            <button type="button" class="sprint-next" id="sprintNext"><svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg> Siguiente</button>
+          </div>
+          <div class="detail-box anim" style="--d:4" id="sprintReadout">Sprint 1 activo · diseño y desarrollo en paralelo <svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 12 ============ -->
+      <section class="slide s12">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="eyebrow anim" style="--d:0">12 · Metodología Principal</div>
+        <h2 class="anim" style="--d:1">Design Sprint y Pruebas de Usabilidad</h2>
+        <p class="s12-sub anim" style="--d:2">Metodología de 5 Días · Google Ventures (Jake Knapp)</p>
+
+        <div class="s12-grid">
+          <div class="s12-sec anim" style="--d:3">
+            <div class="s12-sec-label">1 · Estructura de 5 Días</div>
+            <div class="days">
+              <button type="button" class="day" data-day="mapear">
+                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
+                <span class="day-name">Lunes · Día 1</span>
+                <span class="day-task">Mapear</span>
+                <span class="day-desc">Definir objetivo y mapear la experiencia</span>
+              </button>
+              <button type="button" class="day" data-day="bocetar">
+                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg></span>
+                <span class="day-name">Martes · Día 2</span>
+                <span class="day-task">Bocetar</span>
+                <span class="day-desc">Generar múltiples soluciones e ideas</span>
+              </button>
+              <button type="button" class="day" data-day="decidir">
+                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-target"></use></svg></span>
+                <span class="day-name">Miércoles · Día 3</span>
+                <span class="day-task">Decidir</span>
+                <span class="day-desc">Seleccionar la mejor propuesta</span>
+              </button>
+              <button type="button" class="day" data-day="prototipar">
+                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-monitor"></use></svg></span>
+                <span class="day-name">Jueves · Día 4</span>
+                <span class="day-task">Prototipar</span>
+                <span class="day-desc">Crear un prototipo realista</span>
+              </button>
+              <button type="button" class="day" data-day="probar">
+                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></span>
+                <span class="day-name">Viernes · Día 5</span>
+                <span class="day-task">Probar</span>
+                <span class="day-desc">Validar con 5 usuarios reales</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="hint anim" style="--d:4">Pasa el cursor o haz clic en cada día para resaltarlo</p>
+      </section>
+
+      <!-- ============ SLIDE 13 ============ -->
+      <section class="slide s13">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="eyebrow anim" style="--d:0">13 · Prototipado y Validación</div>
+        <h2 class="anim" style="--d:1">Validar Antes de Construir</h2>
+        <p class="s12-sub anim" style="--d:2">Del boceto de papel al test con usuarios reales</p>
+
+        <div class="s12-row">
+          <div class="s12-col anim" style="--d:3">
+            <div class="s12-sec-label">2 · Prototipado</div>
+            <div class="proto-toggle">
+              <button type="button" class="proto-opt active" data-mode="baja"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg> Baja fidelidad</button>
+              <button type="button" class="proto-opt" data-mode="alta"><svg class="ic" aria-hidden="true"><use href="#i-star"></use></svg> Alta fidelidad</button>
+            </div>
+            <div class="proto-stage">
+              <div class="proto-view show" data-mode="baja">
+                <div class="sketch">
+                  <div class="sk-line"></div>
+                  <div class="sk-line short"></div>
+                  <div class="sk-block"></div>
+                  <div class="sk-block tall"></div>
+                  <div class="sk-line dash"></div>
+                  <div class="sk-btn"></div>
+                </div>
+              </div>
+              <div class="proto-view" data-mode="alta">
+                <div class="rendered">
+                  <div class="r-top"><span class="r-logo"></span><span class="r-pill"><svg class="ic" aria-hidden="true"><use href="#i-cart"></use></svg> 2</span></div>
+                  <div class="r-title"></div>
+                  <div class="r-title short"></div>
+                  <div class="r-desc"></div>
+                  <div class="r-desc short"></div>
+                  <button type="button" class="r-btn">Comprar ahora</button>
+                </div>
+              </div>
+            </div>
+            <div class="proto-caption" id="protoCaption">Papel, lápiz y Balsamiq — valida flujos e ideas rápido, sin gastar recursos.</div>
+          </div>
+
+          <div class="s12-col wide anim" style="--d:4">
+            <div class="s12-sec-label">3 · Técnicas de Validación</div>
+            <div class="vcards">
+              <div class="vcard">
+                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg> Pruebas de Usabilidad</div>
+                <div class="v-sub">Moderadas <span>(en vivo · cualitativo)</span> vs No moderadas <span>(automatizadas · cuantitativo)</span></div>
+                <div class="v-chips">
+                  <button type="button" class="v-chip active">Moderadas · cualitativo</button>
+                  <button type="button" class="v-chip">No moderadas · cuantitativo</button>
+                </div>
+              </div>
+              <div class="vcard">
+                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg> Pruebas A/B</div>
+                <div class="v-sub">Comparación directa de dos variantes <span>(A vs B)</span> frente a usuarios reales.</div>
+              </div>
+              <div class="vcard">
+                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg> Evaluación Heurística</div>
+                <div class="v-sub">Auditoría de expertos bajo las <span>10 Heurísticas de Jakob Nielsen</span>.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="s12-footer anim" style="--d:5">
+“Para que todos estos diseños probados se mantengan organizados y sean medibles a escala, se aplican los Sistemas de Diseño y Métricas UX…”
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 14 ============ -->
+      <section class="slide s14">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">14 · Construcción del Sistema</div>
+          <h2 class="anim" style="--d:1">Escalabilidad en UX</h2>
+          <p class="lead anim" style="--d:2">Interfaces capaces de crecer en funciones, datos y usuarios sin romperse ni volverse caóticas.</p>
+          <ul class="points anim" style="--d:3">
+            <li><strong>Design Systems:</strong> componentes reutilizables integrados a código (React, Vue)</li>
+            <li><strong>Design Tokens:</strong> variables globales de color, tipografía y espaciado</li>
+            <li><strong>Arquitectura Flexible:</strong> menús y layouts adaptables a nuevos módulos</li>
+          </ul>
+          <p class="hint anim" style="--d:4">Prueba los estados del botón y mira los tokens tipográficos</p>
+        </div>
+        <div class="art-col">
+          <div class="ds-panel anim" style="--d:2">
+            <div class="ds-tokens">
+              <div class="ds-token"><span class="ds-tag">$H1$</span><span class="ds-sample h1">Título principal</span></div>
+              <div class="ds-token"><span class="ds-tag">$H2$</span><span class="ds-sample h2">Subtítulo</span></div>
+              <div class="ds-token"><span class="ds-tag">$Body$</span><span class="ds-sample body">Cuerpo de texto</span></div>
+            </div>
+            <div class="ds-btn-row">
+              <div class="ds-states">
+                <button type="button" class="ds-state active" data-state="normal">Normal</button>
+                <button type="button" class="ds-state" data-state="hover">Hover</button>
+                <button type="button" class="ds-state" data-state="active">Active</button>
+                <button type="button" class="ds-state" data-state="disabled">Disabled</button>
+              </div>
+              <button type="button" class="ds-btn" id="dsBtn">Componente</button>
+            </div>
+            <div class="ds-card">
+              <div class="ds-avatar"></div>
+              <div class="ds-card-lines"><span></span><span></span></div>
+              <span class="ds-card-tag">Card · reutilizable</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 15 ============ -->
+      <section class="slide s15">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="text-col">
+          <div class="eyebrow anim" style="--d:0">15 · Evaluación Cuantitativa</div>
+          <h2 class="anim" style="--d:1">Métricas UX & Marco HEART</h2>
+          <p class="lead anim" style="--d:2">Validar si una interfaz funciona con datos objetivos e indicadores clave.</p>
+          <ul class="points anim" style="--d:3">
+            <li><strong>Task Success Rate</strong> — % de tareas completadas</li>
+            <li><strong>Time on Task</strong> — tiempo por tarea</li>
+            <li><strong>SUS Score</strong> — usabilidad percibida (0–100 pts)</li>
+          </ul>
+          <p class="hint anim" style="--d:4">Haz clic en las letras H·E·A·R·T para explorar cada métrica</p>
+        </div>
+        <div class="art-col">
+          <div class="heart anim" style="--d:2">
+            <div class="heart-letters">
+              <button type="button" class="heart-letter active" data-metric="h">H</button>
+              <button type="button" class="heart-letter" data-metric="e">E</button>
+              <button type="button" class="heart-letter" data-metric="a">A</button>
+              <button type="button" class="heart-letter" data-metric="r">R</button>
+              <button type="button" class="heart-letter" data-metric="t">T</button>
+            </div>
+            <div class="heart-panel">
+              <div class="heart-title" id="heartTitle">H · Happiness</div>
+              <div class="heart-desc" id="heartDesc">Satisfacción y percepción del usuario (CSAT, SUS).</div>
+              <div class="heart-chart" id="heartChart"></div>
+              <div class="heart-kpis" id="heartKpis"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SLIDE 16 ============ -->
+      <section class="slide s16">
+        <div class="decor">
+          <div class="dots"></div>
+          <div class="blob blob-a"></div>
+          <div class="blob blob-b"></div>
+        </div>
+        <div class="eyebrow anim" style="--d:0">16 · Conclusión General</div>
+        <h2 class="anim" style="--d:1">El Ciclo Integral de la Metodología UX</h2>
+        <div class="steps">
+          <div class="step-card anim" style="--d:2">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg></span>
+              <span class="step-title">Descubrimiento y Entendimiento</span>
+              <span class="step-text">Entender al usuario antes de programar (User Research).</span>
+            </div>
+          </div>
+          <span class="step-arrow" aria-hidden="true">→</span>
+          <div class="step-card anim" style="--d:3">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></span>
+              <span class="step-title">Validación e Iteración Rápida</span>
+              <span class="step-text">Prototipar y probar continuamente (Lean UX) para evitar reescribir código.</span>
+            </div>
+          </div>
+          <span class="step-arrow" aria-hidden="true">→</span>
+          <div class="step-card anim" style="--d:4">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-trend"></use></svg></span>
+              <span class="step-title">Escalabilidad e Impacto Medible</span>
+              <span class="step-text">Crecer con Design Systems y medir resultados con datos reales.</span>
+            </div>
+          </div>
+        </div>
+        <div class="quote-card anim" style="--d:5">
+          “El diseño UX no es solo estética visual; es una metodología estructurada que conecta la investigación con la arquitectura del software. Aplicar este ciclo nos garantiza crear productos web escalables, funcionales y respaldados por datos reales.”
+        </div>
+      </section>
+
+    </div><!-- /deck -->
+
+    <!-- Controles del slider -->
+    <button type="button" class="nav prev" id="prevBtn" aria-label="Diapositiva anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"/></svg>
+    </button>
+    <button type="button" class="nav next" id="nextBtn" aria-label="Diapositiva siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"/></svg>
+    </button>
+    <div class="counter" id="counter" aria-live="polite">1 / 16</div>
+    <div class="pager" id="pager" role="group" aria-label="Ir a la diapositiva"></div>
+
+    <!-- Pantalla completa (también con la tecla F) -->
+    <button type="button" class="fs-btn" id="fsBtn" aria-label="Pantalla completa (F)" aria-pressed="false" title="Pantalla completa (F)">
+      <svg class="in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+      <svg class="out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+    </button>
+
+  </main>
+
+  <!--
+    CÓMO AÑADIR UNA DIAPOSITIVA:
+    1) Copia un bloque <section class="slide sN"> dentro de #deck.
+    2) Define su paleta en el CSS:  .sN { --accent: <color>; background: <color>; }
+       (o cualquier clase nueva que declare ambas propiedades).
+    3) Reutiliza las utilidades existentes: .decor > .dots/.blob, .text-col,
+       .art-col, .eyebrow, h1/h2, .lead, ul.points, .badge y .anim con --d para el escalonado.
+    4) El slider detecta las secciones automáticamente: contador, puntos,
+       barra de progreso y paleta de controles se actualizan solos.
+  -->
+
+  <script src="static/index.js" defer></script>
+</body>
+</html>
