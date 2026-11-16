@@ -51,6 +51,12 @@
 
   --accent: var(--ios-blue);
 
+  /* Ritmo de animaciones (entradas y transiciones de diapositiva) */
+  --anim-slide: .9s;
+  --anim-enter: 1s;
+  --anim-stagger: 120ms;
+  --anim-soft: .55s;
+
   font-synthesis: none;
 }
 
@@ -80,7 +86,7 @@ body {
 .deck {
   display: flex;
   align-items: flex-start;
-  transition: transform .65s cubic-bezier(.22, 1, .36, 1);
+  transition: transform var(--anim-slide) cubic-bezier(.22, 1, .36, 1);
   will-change: transform;
 }
 
@@ -472,14 +478,14 @@ svg.ic {
   background: rgba(255, 255, 255, .18); color: #fff;
 }
 .tab-panel[hidden] { display: none; }
-.tab-panel { animation: fadeUp .3s ease both; }
+.tab-panel { animation: fadeUp var(--anim-soft) ease both; }
 
 /* ============================================================
    REVEAL (nodos SVG / tarjetas que despliegan detalle)
    ============================================================ */
 .reveal { display: grid; gap: clamp(8px, 1vw, 14px); }
 .reveal-panel { display: none; }
-.reveal-panel.is-on { display: block; animation: fadeUp .32s cubic-bezier(.22, 1, .36, 1) both; }
+.reveal-panel.is-on { display: block; animation: fadeUp var(--anim-soft) cubic-bezier(.22, 1, .36, 1) both; }
 
 .hot {
   cursor: pointer;
@@ -584,8 +590,8 @@ svg.ic {
 /* Animación de entrada escalonada */
 .slide .anim { opacity: 0; translate: 0 18px; }
 .slide.active .anim {
-  animation: rise .5s cubic-bezier(.22, 1, .36, 1) forwards;
-  animation-delay: calc(var(--d, 0) * 80ms);
+  animation: rise var(--anim-enter) cubic-bezier(.22, 1, .36, 1) forwards;
+  animation-delay: calc(var(--d, 0) * var(--anim-stagger));
 }
 @keyframes rise { to { opacity: 1; translate: 0 0; } }
 
@@ -877,7 +883,7 @@ svg.ic {
   background: color-mix(in srgb, var(--ios-orange) 14%, transparent);
   border: 1px dashed color-mix(in srgb, var(--ios-orange) 55%, transparent);
   font-size: var(--fs-micro); font-weight: 650; color: #8A5200;
-  animation: fadeUp .3s ease both;
+  animation: fadeUp var(--anim-soft) ease both;
 }
 [data-tone="dark"] .queue-item { color: #FFC978; }
 .queue-item.done {
@@ -1036,7 +1042,7 @@ svg.ic {
 .quiz-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
 .quiz-bar { height: 6px; border-radius: var(--pill); background: #E8EDF8; overflow: hidden; margin-bottom: 8px; }
 .quiz-bar > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--ios-blue), var(--ios-indigo)); transition: width .4s ease; }
-.quiz-q { animation: fadeUp .3s ease both; }
+.quiz-q { animation: fadeUp var(--anim-soft) ease both; }
 .q-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
 .q-head-main { flex: 1 1 460px; min-width: 0; }
 .quiz-q .q-tag {
@@ -1125,7 +1131,7 @@ svg.ic {
   margin-top: 2px; padding: 9px 12px; border-radius: 12px;
   background: #FFF4E5; border: 1px solid #FFD9A8; color: #8A4B00;
   font-size: var(--fs-small); font-weight: 600;
-  animation: fadeUp .25s ease both;
+  animation: fadeUp var(--anim-soft) ease both;
 }
 .time-up[hidden] { display: none; }
 .time-up .ic { width: 18px; height: 18px; flex: none; }
@@ -1143,7 +1149,7 @@ svg.ic {
   margin-top: 10px; border-radius: 14px; padding: 11px 13px;
   background: #F2F6FF; border: 1px solid #DCE7FC;
   font-size: var(--fs-small); line-height: 1.6;
-  animation: fadeUp .3s ease both;
+  animation: fadeUp var(--anim-soft) ease both;
 }
 .explain .ex-title { font-weight: 800; display: flex; align-items: center; gap: 6px; margin-bottom: 3px; font-size: var(--fs-small); }
 .explain.good { background: #F0FBF4; border-color: #CFEFDA; }
