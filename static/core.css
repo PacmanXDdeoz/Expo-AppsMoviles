@@ -1034,7 +1034,6 @@ svg.ic {
   padding: clamp(14px, 2vw, 20px);
 }
 .quiz-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
-.quiz-pills { display: flex; gap: 6px; flex-wrap: wrap; }
 .quiz-bar { height: 6px; border-radius: var(--pill); background: #E8EDF8; overflow: hidden; margin-bottom: 8px; }
 .quiz-bar > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--ios-blue), var(--ios-indigo)); transition: width .4s ease; }
 .quiz-q { animation: fadeUp .3s ease both; }
@@ -1147,15 +1146,10 @@ svg.ic {
   animation: fadeUp .3s ease both;
 }
 .explain .ex-title { font-weight: 800; display: flex; align-items: center; gap: 6px; margin-bottom: 3px; font-size: var(--fs-small); }
-.explain.bad { background: #FFF4F2; border-color: #FBD9D4; }
-.explain.bad .ex-title { color: #B3261E; }
 .explain.good { background: #F0FBF4; border-color: #CFEFDA; }
 .explain.good .ex-title { color: #0E7A34; }
 .quiz-actions { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-.score-wrap { display: flex; align-items: center; gap: clamp(14px, 3vw, 26px); flex-wrap: wrap; }
-.score-ring { width: 120px; height: 120px; flex: none; }
-.score-ring text { fill: var(--ink); font-family: inherit; }
 .result-list { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
 .result-item {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
@@ -1165,7 +1159,6 @@ svg.ic {
 .result-item .ri-tag { min-width: 0; }
 .result-item .ri-mark { margin-left: auto; font-weight: 800; }
 .result-item.ok .ri-mark { color: #0E7A34; }
-.result-item.no .ri-mark { color: #B3261E; }
 
 /* ============================================================
    RESPONSIVE
@@ -1296,7 +1289,6 @@ svg.ic {
 
 @media (max-width: 420px) {
   .quiz-shell { padding: 14px; border-radius: 22px; }
-  .score-ring { width: 100px; height: 100px; }
   .cover-members { grid-template-columns: 1fr; }
   .timer-ring { width: 70px; height: 70px; }
   .timer-ring text { font-size: 18px; }
