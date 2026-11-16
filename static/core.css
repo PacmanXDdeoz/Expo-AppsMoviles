@@ -1175,6 +1175,18 @@ svg.ic {
    El apilado móvil llega hasta 820 px para que las tablets en
    vertical no reciban una diapositiva 16:9 diminuta. */
 @media (min-width: 821px) {
+  :root {
+    /* Ligeramente mayor en escritorio, manteniendo escala fluida */
+    --fs-eyebrow: clamp(11px, .9vw, 13px);
+    --fs-title: clamp(23px, 2.5vw, 40px);
+    --fs-h3: clamp(14px, 1.25vw, 19px);
+    --fs-body: clamp(12.5px, 1.08vw, 16px);
+    --fs-small: clamp(11px, .92vw, 14px);
+    --fs-micro: clamp(10px, .82vw, 12.5px);
+    --fs-lead: clamp(13px, 1.15vw, 17px);
+    --pad-slide: clamp(18px, 2.6vw, 32px) clamp(24px, 3.6vw, 48px);
+    --pad-card: clamp(10px, 1.15vw, 16px);
+  }
   body {
     padding: 0;
     min-height: 100vh;
@@ -1189,6 +1201,7 @@ svg.ic {
     margin: 0;
   }
   .quiz-view { width: 100%; }
+  .slide h1 { font-size: clamp(32px, 4.8vw, 66px); }
 }
 
 /* Portátiles / proyectores de poca altura: compacta sin recortar */
@@ -1203,7 +1216,7 @@ svg.ic {
   .thread-track { height: 18px; }
   .inp-readout .num { font-size: 24px; }
   .summary-card { padding: 7px 8px; }
-  .slide h2 { font-size: clamp(18px, 2vw, 26px); }
+  .slide h2 { font-size: clamp(19px, 2.1vw, 28px); }
 }
 
 /* Diagrama de flujo de red: altura acotada para que el simulador
@@ -1251,8 +1264,8 @@ svg.ic {
   .cwv { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .cover-members { grid-template-columns: 1fr 1fr; }
 
-  .slide h1 { font-size: clamp(26px, 7.6vw, 36px); }
-  .slide h2 { font-size: clamp(19px, 5.6vw, 25px); }
+  .slide h1 { font-size: clamp(28px, 7.8vw, 38px); }
+  .slide h2 { font-size: clamp(20px, 5.8vw, 27px); }
   .lead { font-size: 13.5px; }
   body .lead { max-width: none; }
   ul.points li { font-size: 13px; }
