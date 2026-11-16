@@ -1288,13 +1288,6 @@ svg.ic {
   .slide-scroll::-webkit-scrollbar { display: none; }
 
   .modal-sheet { max-height: 88svh; }
-  .btn { min-height: 46px; }
-  .acc-btn { min-height: 46px; }
-  .segmented > button { min-height: 38px; }
-  .phone-mock { width: min(100%, 200px); }
-  .cwv-card { padding: 7px 6px; }
-  .cwv-card .cwv-name { font-size: 11px; }
-  .thread-track { height: 24px; }
 
   /* Dinámica por equipos: una columna y cronómetro a todo el ancho */
   .quiz-view { padding: 12px 10px 24px; }
@@ -1311,6 +1304,32 @@ svg.ic {
   .quiz-cta { width: 100%; margin-left: 0; }
   .quiz-cta .btn { flex: 1 1 100%; }
   .option.is-correct .opt-flag { display: inline-flex; }
+}
+
+/* Pantallas pequeñas: compacta sin perder legibilidad */
+@media (max-width: 480px) {
+  .slide-scroll {
+    padding: 52px 14px 84px;
+    gap: 12px;
+  }
+  .cover .slide-scroll { padding-right: 14px; }
+  .slide h1 { font-size: clamp(24px, 7vw, 32px); }
+  .slide h2 { font-size: clamp(18px, 5.2vw, 24px); }
+  .cover-title { font-size: clamp(24px, 7.2vw, 34px); }
+  .lead { font-size: 12.5px; }
+  body .lead { max-width: none; }
+  ul.points li { font-size: 12px; }
+  .nav { width: 40px; height: 40px; }
+  .counter { top: 10px; right: 10px; font-size: 9px; }
+  .pager { bottom: 14px; max-width: calc(100vw - 96px); }
+  .modal-sheet { max-height: 90svh; }
+  .btn { min-height: 46px; }
+  .acc-btn { min-height: 46px; }
+  .segmented > button { min-height: 38px; }
+  .phone-mock { width: min(100%, 200px); }
+  .cwv-card { padding: 7px 6px; }
+  .cwv-card .cwv-name { font-size: 11px; }
+  .thread-track { height: 24px; }
 }
 
 @media (max-width: 420px) {
