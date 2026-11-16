@@ -1026,7 +1026,8 @@ svg.ic {
 .view[hidden] { display: none; }
 
 .quiz-view {
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex; align-items: flex-start; justify-content: center;
   padding: clamp(12px, 2.2vw, 20px) clamp(12px, 4vw, 32px);
 }
@@ -1214,20 +1215,26 @@ svg.ic {
   body {
     padding: 0;
     background: #F2F5FB;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
+  /* En móvil, el fondo del body toma el tono de la diapositiva activa
+     para que no queden franjas claras al desplazarse en slides oscuros. */
+  body:has(.slide.active[data-tone="dark"]) { background: #080C17; }
   .stage { max-width: 100%; }
 
   .slide {
     aspect-ratio: auto;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     border-radius: 0;
     box-shadow: none;
     width: 100%;
   }
   .slide-scroll {
     height: auto;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 58px 18px 96px;
     gap: 14px;
     overflow: visible;
