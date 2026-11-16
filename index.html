@@ -2,783 +2,1467 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Introducción y paradigma del diseño UX · Presentación interactiva</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Presentación interactiva sobre clasificación, ecosistemas, arquitectura web, aplicaciones, rendimiento y seguridad de los dispositivos móviles.">
+<title>Clasificación y Aplicaciones de los dispositivos moviles · Presentación interactiva</title>
 <link rel="stylesheet" href="static/core.css">
 </head>
 <body>
 
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></symbol>
-  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 3.5h2.2l2.6 12.6a1.2 1.2 0 0 0 1.2 1h9.6l2.2-9.6H6.6"/></symbol>
-  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M12 20.5h9"/><path d="M16.6 3.6a2.2 2.2 0 0 1 3.1 3.1L7 19.5l-4 1 1-4Z"/></symbol>
-  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 3h4"/><path d="M11 3v6l-5.2 9a1.9 1.9 0 0 0 1.7 2.9h9a1.9 1.9 0 0 0 1.7-2.9L13 9V3"/><path d="M7.6 14.5h8.8"/></symbol>
-  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.7-6.4"/><path d="M21 3.5v5.5h-5.5"/></symbol>
-  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9.5 18.5h5"/><path d="M10 21.5h4"/><path d="M12 3a6 6 0 0 0-3.7 10.7c.8.6 1.3 1.4 1.4 2.3h4.6c.1-.9.6-1.7 1.4-2.3A6 6 0 0 0 12 3Z"/></symbol>
-  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.7 8.3-2.1 5.3-5.3 2.1 2.1-5.3Z"/></symbol>
-  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V3.5"/><path d="M5.5 3.5H16l-2 3.8 2 3.7H5.5"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6.5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V9Z"/><path d="M14 3v6h6"/><path d="M9 13h6M9 16.5h4"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.2-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.8 12 21 12 21Z"/><circle cx="12" cy="10.2" r="2.3"/></symbol>
-  <symbol id="i-cards" viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="13" rx="2"/><path d="M8 3.5h11a1.5 1.5 0 0 1 1.5 1.5v11"/></symbol>
-  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M6 20v-3.5M12 20V8M18 20v-6.5"/><path d="M3 20.5h18"/></symbol>
-  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></symbol>
-  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
-  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M9.5 20.5h5M12 17v3.5"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.2l5.9-.9Z"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5L19.5 7"/></symbol>
+<!-- Sprite de iconos: SVG inline, sin librerías externas -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4.5 12.5 5 5L19.5 7"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5Z"/></symbol>
-  <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8.2" r="4"/><path d="M4.5 20.5c1.4-3.6 4.2-5.5 7.5-5.5s6.1 1.9 7.5 5.5"/></symbol>
-  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.7" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.3" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><path d="M8.2 14.1c1.1 1.8 2.4 2.7 3.8 2.7s2.7-.9 3.8-2.7"/></symbol>
-  <symbol id="i-frown" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="8.7" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><circle cx="15.3" cy="9.2" r="1.1" fill="currentColor" stroke="none"/><path d="M8.2 17.1c1.1-1.8 2.4-2.7 3.8-2.7s2.7.9 3.8 2.7"/></symbol>
-  <symbol id="i-diverge" viewBox="0 0 24 24"><path d="M5 12h14M9 8l-4 4 4 4M15 8l4 4-4 4"/></symbol>
-  <symbol id="i-scooter" viewBox="0 0 24 24"><circle cx="7" cy="15.8" r="2.5"/><circle cx="18" cy="17.2" r="2.6"/><path d="M7 15.8c.3-4.7 2.7-7.5 6.7-7.5h3.1"/><path d="M13.7 8.3 15.2 13l3-1.6"/></symbol>
-  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.6 14.8 6 11.2a2 2 0 0 1 1.9-1.4h8.2a2 2 0 0 1 1.9 1.4l1.4 3.6"/><path d="M4 15h16v2.4a1.6 1.6 0 0 1-1.6 1.6H5.6A1.6 1.6 0 0 1 4 17.4Z"/><circle cx="7.4" cy="19.6" r="1.7"/><circle cx="16.6" cy="19.6" r="1.7"/></symbol>
-  <symbol id="i-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="2.3"/><path d="M12 3.4v4.6M12 16v4.6M3.4 12H8M16 12h4.6"/></symbol>
-  <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14.5 7H21v6.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="2"/><rect x="10" y="10" width="4" height="4" rx="1"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2.5" y="7.5" width="16" height="9" rx="2.5"/><path d="M21 10.5v3"/><path d="M6 10.5v3M9.5 10.5v3"/></symbol>
+  <symbol id="i-gps" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.4-6.5-10.3a6.5 6.5 0 0 1 13 0C18.5 15.6 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.3"/></symbol>
+  <symbol id="i-gyro" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><ellipse cx="12" cy="12" rx="8.5" ry="3.4"/><path d="M12 3.5v17"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8.5h3l1.5-2h9l1.5 2h3v10H3Z"/><circle cx="12" cy="13.5" r="3.2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M10.5 5h3M12 18.6h.01"/></symbol>
+  <symbol id="i-tablet" viewBox="0 0 24 24"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M12 18.5h.01"/></symbol>
+  <symbol id="i-fold" viewBox="0 0 24 24"><path d="M4 3h7v18H4zM13 3h7v18h-7z" opacity=".55"/><path d="M11 3h2v18h-2"/></symbol>
+  <symbol id="i-watch" viewBox="0 0 24 24"><rect x="7" y="6.5" width="10" height="11" rx="3"/><path d="M9.5 3h5l.7 3.5M9.5 21h5l.7-3.5"/></symbol>
+  <symbol id="i-glasses" viewBox="0 0 24 24"><rect x="2.5" y="7" width="8" height="6.5" rx="2"/><rect x="13.5" y="7" width="8" height="6.5" rx="2"/><path d="M10.5 10h3M2.5 9.5 1 8M21.5 9.5 23 8"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 9h6v6H9z" opacity=".6"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.4 4 5.6 4 9s-1.4 6.6-4 9c-2.6-2.4-4-5.6-4-9s1.4-6.6 4-9Z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 4.5-9 4.5L3 7.5Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10.5" rx="2.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/><path d="M12 14v2.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2.5 20 6v6c0 4.6-3.4 8-8 9.5C7.4 20 4 16.6 4 12V6Z"/><path d="m8.5 12 2.5 2.5 4.5-4.5"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 8.5a14 14 0 0 1 19 0M5.5 12a10 10 0 0 1 13 0M8.5 15.5a6 6 0 0 1 7 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18.5a4.5 4.5 0 0 1-.5-9A6 6 0 0 1 18 9.5a4.5 4.5 0 0 1 .5 9Z"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 5 2 6 2 6H4s2-1 2-6Z"/><path d="M10 19a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V9M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.5"/><path d="m11.5 11.5 8 8M16 16l2-2M19 19l2-2"/></symbol>
+  <symbol id="i-nfc" viewBox="0 0 24 24"><path d="M6 4.5a13 13 0 0 1 0 15M10.5 7a8.5 8.5 0 0 1 0 10M15 9.5a4.5 4.5 0 0 1 0 5"/><path d="M19.5 12h.01"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 22 20H2Z"/><path d="M12 9v5M12 17h.01"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.7-6.4"/><path d="M21 3.5V9h-5.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10.5 9-7 9 7V21H3Z"/><path d="M9.5 21v-7h5v7"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 14H11l-1 7.5L19.5 10H13Z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.8-6.5 10-6.5S22 12 22 12s-3.8 6.5-10 6.5S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="M8 12V6.5a1.6 1.6 0 0 1 3.2 0V11M11.2 10.5V5.6a1.6 1.6 0 0 1 3.2 0V11M14.4 11V7.2a1.6 1.6 0 0 1 3.2 0V14a7 7 0 0 1-7 7h-.8A6 6 0 0 1 4 15V11a1.7 1.7 0 0 1 3.4 0v2"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 6 6-2.5 6 2.5 6-2.5v14.5L15 20.5 9 18l-6 2.5Z"/><path d="M9 3.5V18M15 6v14.5"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><rect x="2" y="8" width="20" height="8" rx="2" transform="rotate(-8 12 12)"/><path d="M6 10v4M10 9.5v4M14 9v4M18 8.5v4"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="12.5" rx="2"/><path d="M9 20.5h6M12 16.5v4"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="16" rx="2.5"/><path d="m7 9 3 3-3 3M13 15h4"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.6"/><path d="M2.5 20c1.2-3.2 3.6-4.8 6.5-4.8s5.3 1.6 6.5 4.8"/><path d="M16 5.2a3.6 3.6 0 0 1 0 6.6M17.5 15.5c2 .6 3.4 2.1 4 4.5"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 2.5c3.5 2 5.5 5.5 5.5 9.5L12 17.5 6.5 12C6.5 8 8.5 4.5 12 2.5Z"/><circle cx="12" cy="9" r="2.2"/><path d="M8 16c-1.5 1-2 2.5-1.5 5 2-.2 3.5-1 4.5-2.5M16 16c1.5 1 2 2.5 1.5 5-2-.2-3.5-1-4.5-2.5"/></symbol>
 </svg>
 
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
-  <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+<main class="stage" id="stage" aria-roledescription="carrusel" aria-label="Presentación: Clasificación y aplicaciones de los dispositivos móviles">
 
-  <main class="stage" id="stage" aria-roledescription="carrusel" aria-label="Presentación: Introducción y paradigma del diseño UX">
+  <div class="deck" id="deck">
 
-    <div class="deck" id="deck">
+    <!-- ============================ 0 · PORTADA ============================ -->
+    <section class="slide cover" data-tone="light" aria-label="Portada">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <p class="eyebrow anim" style="--d:0">Seminario · Desarrollo Web Móvil</p>
+        <h1 class="cover-title anim" style="--d:1">Clasificación y Aplicaciones de los dispositivos moviles</h1>
+        <p class="lead anim" style="--d:2">Un recorrido técnico por el hardware, los ecosistemas, la arquitectura web, los sectores de aplicación y los límites de rendimiento y seguridad del móvil.</p>
 
-      <!-- ============ SLIDE 1 ============ -->
-      <section class="slide s1">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">01 · Gancho inicial</div>
-          <h1 class="anim" style="--d:1">Introducción y paradigma del diseño UX</h1>
-          <p class="lead anim" style="--d:2">¿Alguna vez dejaste de usar una app porque no entendías cómo funcionaba, aunque el producto fuera bueno?</p>
-        </div>
-        <div class="art-col">
-          <div class="badge wiggle anim" style="--d:3;--rot:0deg;width:15%;aspect-ratio:1;background:#FAC775;top:12%;right:10%;" title="¿Qué está pasando?">
-            <span style="font-size:clamp(20px,3vw,44px);font-weight:700;color:#412402;">?</span>
+        <div class="cover-members anim" style="--d:3" aria-label="Integrantes del equipo y bloque asignado">
+          <div class="member">
+            <span class="avatar" aria-hidden="true">DR</span>
+            <span><span class="m-name">Diaz Vazquez Regina Valeria</span><span class="m-role">Bloque 1 · Clasificación</span></span>
           </div>
-          <div class="badge wiggle anim white" style="--d:4;--rot:-6deg;width:28%;aspect-ratio:1;top:22%;left:12%;transform:rotate(-6deg);" title="Confusión: no sé dónde tocar">
-            <svg viewBox="0 0 100 100" class="icon">
-              <circle cx="50" cy="50" r="42" fill="none" stroke="#D85A30" stroke-width="6"/>
-              <circle cx="34" cy="42" r="5" fill="#D85A30"/>
-              <circle cx="66" cy="42" r="5" fill="#D85A30"/>
-              <path d="M 30 68 Q 40 58 50 68 Q 60 78 70 68" fill="none" stroke="#D85A30" stroke-width="6" stroke-linecap="round"/>
-            </svg>
+          <div class="member">
+            <span class="avatar" aria-hidden="true">CJ</span>
+            <span><span class="m-name">Cruz Contreras Jonathan Ivan</span><span class="m-role">Bloque 2 · Ecosistemas</span></span>
           </div>
-          <div class="badge wiggle anim" style="--d:5;--rot:0deg;width:10%;aspect-ratio:1;background:#F0997B;bottom:14%;right:18%;" title="Frustración">
-            <svg viewBox="0 0 24 24" class="icon"><path d="M5 5 L19 19 M19 5 L5 19" stroke="#4A1B0C" stroke-width="3" stroke-linecap="round"/></svg>
+          <div class="member">
+            <span class="avatar" aria-hidden="true">EE</span>
+            <span><span class="m-name">Enriquez de la Cruz Emmanuel</span><span class="m-role">Bloque 3 · Arquitectura web</span></span>
           </div>
-          <div class="badge wiggle anim" style="--d:6;--rot:8deg;width:12%;aspect-ratio:1;background:#fff;border-radius:18px;bottom:6%;left:34%;transform:rotate(8deg);" title="…y al final lo abandono">
-            <svg viewBox="0 0 24 24" class="icon">
-              <rect x="7" y="2" width="10" height="20" rx="2" fill="none" stroke="#993C1D" stroke-width="1.6"/>
-              <circle cx="12" cy="18.4" r="1" fill="#993C1D"/>
-            </svg>
+          <div class="member">
+            <span class="avatar" aria-hidden="true">JA</span>
+            <span><span class="m-name">Juarez Olivarez Armando Enrique</span><span class="m-role">Bloque 4 · Aplicaciones</span></span>
+          </div>
+          <div class="member">
+            <span class="avatar" aria-hidden="true">VC</span>
+            <span><span class="m-name">Vazquez García Carlos Angel</span><span class="m-role">Bloque 5 · Rendimiento y seguridad</span></span>
           </div>
         </div>
-      </section>
 
-      <!-- ============ SLIDE 2 ============ -->
-      <section class="slide s2">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
+        <div class="cover-cta anim" style="--d:4">
+          <button type="button" class="btn btn-primary" id="startBtn">
+            <svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg> Iniciar presentación
+          </button>
+          <span class="chip">5 bloques · 16 diapositivas · dinámica final</span>
         </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">02 · Qué es el diseño UX</div>
-          <h2 class="anim" style="--d:1">Experiencia de usuario, no solo interfaz</h2>
-          <ul class="points anim" style="--d:2">
-            <li>UX = que la interacción sea útil, fácil y agradable</li>
-            <li>UI es la apariencia; UX es todo el recorrido</li>
-            <li>Ej: una app de compras diseña búsqueda, carrito y envío como un solo flujo</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Prueba el prototipo → escribe, filtra y añade al carrito</p>
-        </div>
-        <div class="art-col" style="display:flex;align-items:center;justify-content:center;">
-          <div class="mock anim" style="--d:2">
-            <div class="searchbar">
-              <svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg>
-              <input id="mockSearch" type="text" placeholder="Buscar productos" aria-label="Buscar productos" autocomplete="off">
-            </div>
-            <div class="grid">
-              <button type="button" class="cat anim" style="--d:3;background:#B5D4F4;color:#185FA5;" data-filter="ropa">Ropa</button>
-              <button type="button" class="cat anim" style="--d:4;background:#FAC775;color:#854F0B;" data-filter="audio">Audio</button>
-              <button type="button" class="cat anim" style="--d:5;background:#C0DD97;color:#3B6D11;" data-filter="calzado">Calzado</button>
-              <button type="button" class="cat anim" style="--d:6;background:#F09595;color:#A32D2D;" data-filter="relojes">Relojes</button>
-            </div>
-            <div class="footer">
-              <span class="count" id="cartCount">3 en el carrito</span>
-              <button type="button" class="cartdot" id="cartBtn" aria-label="Añadir al carrito"><svg class="ic" aria-hidden="true"><use href="#i-cart"></use></svg></button>
-            </div>
-          </div>
-        </div>
-      </section>
+      </div>
 
-      <!-- ============ SLIDE 3 ============ -->
-      <section class="slide s3">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="eyebrow anim" style="--d:0">03 · El paradigma del diseño UX</div>
-        <h2 class="anim" style="--d:1">De la tecnología al humano en el centro</h2>
-        <div class="cards-wrap anim" style="--d:2">
-          <div class="cards">
-            <button type="button" class="card card-standard" data-topic="antes">
-              <span class="circ" style="background:#7F77DD;">
-                <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><rect x="7" y="7" width="10" height="10" fill="none" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="3" x2="7" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="3" x2="12" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="3" x2="17" y2="6" stroke="#26215C" stroke-width="1.8"/><line x1="7" y1="18" x2="7" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="12" y1="18" x2="12" y2="21" stroke="#26215C" stroke-width="1.8"/><line x1="17" y1="18" x2="17" y2="21" stroke="#26215C" stroke-width="1.8"/></svg>
-              </span>
-              <span><span class="lbl-top">Antes</span><br><span class="lbl-main">El usuario se adapta</span></span>
-            </button>
-            <div class="connect">
-              <svg viewBox="0 0 24 24" style="width:45%;height:45%;"><path d="M5 12 H19 M13 6 L19 12 L13 18" fill="none" stroke="#4A1B0C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <button type="button" class="card card-standard" data-topic="ahora">
-              <span class="circ" style="background:#5DCAA5;">
-                <svg viewBox="0 0 24 24" style="width:56%;height:56%;"><path d="M12 21 C 6 15 2 11.5 2 7.8 C2 5 4.2 3 6.8 3 C 9 3 10.8 4.3 12 6.2 C13.2 4.3 15 3 17.2 3 C19.8 3 22 5 22 7.8 C22 11.5 18 15 12 21 Z" fill="#04342C"/></svg>
-              </span>
-              <span><span class="lbl-top">Ahora</span><br><span class="lbl-main">La tecnología se adapta</span></span>
-            </button>
-          </div>
-        </div>
-        <div class="card-overlay" id="cardOverlay" aria-hidden="true">
-          <div class="card-dialog">
-            <span class="overlay-tag" id="overlayTag">Antes</span>
-            <p class="overlay-text" id="overlayText"></p>
-            <span class="overlay-hint">Clic en cualquier parte para cerrar</span>
-          </div>
-        </div>
-        <div class="cycle-wrap anim" style="--d:3">
-          <div class="cycle">
-            <button type="button" class="step" data-step="investigar"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg> Investigar</button>
-            <span class="sep" aria-hidden="true">→</span>
-            <button type="button" class="step" data-step="disenar"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg> Diseñar</button>
-            <span class="sep" aria-hidden="true">→</span>
-            <button type="button" class="step" data-step="probar"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg> Probar</button>
-            <span class="sep" aria-hidden="true">→</span>
-            <button type="button" class="step" data-step="iterar"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg> Iterar</button>
-          </div>
-          <div class="tip" id="tip" role="tooltip" aria-hidden="true">
-            <div class="tip-title" id="tipTitle"></div>
-            <div class="tip-text" id="tipText"></div>
-          </div>
-        </div>
-      </section>
+      <svg class="cover-aside dia anim" style="--d:5" viewBox="0 0 300 380" aria-hidden="true">
+        <circle cx="150" cy="185" r="118" fill="none" stroke="rgba(0,122,255,.18)" stroke-width="1.4"/>
+        <circle cx="150" cy="185" r="82" fill="none" stroke="rgba(88,86,214,.22)" stroke-width="1.4" stroke-dasharray="5 6"/>
+        <rect x="108" y="96" width="84" height="172" rx="22" fill="rgba(255,255,255,.85)" stroke="rgba(11,16,32,.22)" stroke-width="2"/>
+        <rect x="116" y="116" width="68" height="132" rx="13" fill="rgba(0,122,255,.1)" stroke="rgba(0,122,255,.35)" stroke-width="1.2"/>
+        <path d="M132 108h36" stroke="rgba(11,16,32,.3)" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="150" cy="258" r="4" fill="rgba(11,16,32,.28)"/>
+        <g fill="none" stroke="rgba(0,122,255,.5)" stroke-width="1.4">
+          <rect x="124" y="130" width="52" height="24" rx="8"/>
+          <rect x="124" y="164" width="34" height="14" rx="7"/>
+          <rect x="124" y="186" width="52" height="14" rx="7"/>
+          <rect x="124" y="208" width="42" height="22" rx="8"/>
+        </g>
+        <g>
+          <circle cx="150" cy="67" r="15" fill="#007AFF"/>
+          <text x="150" y="72" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">5G</text>
+          <circle cx="45" cy="150" r="15" fill="#5856D6"/>
+          <text x="45" y="155" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">SVG</text>
+          <circle cx="256" cy="150" r="15" fill="#34C759"/>
+          <text x="256" y="155" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">API</text>
+          <circle cx="72" cy="288" r="15" fill="#FF9F0A"/>
+          <text x="72" y="293" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">PWA</text>
+          <circle cx="232" cy="288" r="15" fill="#30B0C7"/>
+          <text x="232" y="293" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">INP</text>
+        </g>
+        <g stroke="rgba(11,16,32,.16)" stroke-width="1.2" stroke-dasharray="3 5">
+          <path d="M150 82v14M60 152h48M240 152h-48M84 278l24-14M216 278l-24-14"/>
+        </g>
+      </svg>
 
-      <!-- ============ SLIDE 4 ============ -->
-      <section class="slide s4">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">04 · Cierre</div>
-          <h2 class="anim" style="--d:1">No diseñamos para nosotros, diseñamos para el usuario</h2>
-          <p class="lead anim" style="--d:2">Design Thinking, Lean UX y Design Sprint son formas estructuradas de aplicar este paradigma centrado en el humano.</p>
-        </div>
-        <div class="art-col">
-          <div class="anim" style="--d:3;position:absolute;width:20%;aspect-ratio:1;border-radius:50%;border:3px solid rgba(255,255,255,.28);top:22%;left:16%;"></div>
-          <div class="badge wiggle anim white" style="--d:4;--rot:0deg;width:14%;aspect-ratio:1;top:28%;left:23%;" title="Objetivo: el usuario en el centro">
-            <svg viewBox="0 0 100 100" class="icon">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#0F6E56" stroke-width="6"/>
-              <circle cx="50" cy="50" r="24" fill="none" stroke="#0F6E56" stroke-width="6"/>
-              <circle cx="50" cy="50" r="8" fill="#0F6E56"/>
-            </svg>
-          </div>
-          <div class="badge wiggle anim" style="--d:5;--rot:0deg;width:8%;aspect-ratio:1;background:#F0997B;top:12%;right:14%;" title="Insight">
-            <svg class="icon" style="color:#6b2406" aria-hidden="true"><use href="#i-bulb"></use></svg>
-          </div>
-          <div class="badge wiggle anim" style="--d:6;--rot:0deg;width:7%;aspect-ratio:1;background:#EF9F27;bottom:22%;right:20%;" title="Dirección">
-            <svg class="icon" style="color:#6b4700" aria-hidden="true"><use href="#i-compass"></use></svg>
-          </div>
-          <div class="badge wiggle anim white" style="--d:7;--rot:0deg;width:6%;aspect-ratio:1;bottom:32%;left:10%;" title="Meta">
-            <svg class="icon" style="color:#A32D2D" aria-hidden="true"><use href="#i-flag"></use></svg>
-          </div>
-        </div>
-      </section>
+      <button type="button" class="cover-corner" id="infoBtn">Vista móvil / Info</button>
+    </section>
 
-      <!-- ============ SLIDE 5 ============ -->
-      <section class="slide s5">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">05 · Descubrimiento e Investigación</div>
-          <h2 class="anim" style="--d:1">Metodología del Doble Diamante</h2>
-          <ul class="points anim" style="--d:2">
-            <li><strong>Descubrir</strong> — explorar e investigar al usuario</li>
-            <li><strong>Definir</strong> — sintetizar y acotar el problema real</li>
-            <li><strong>Desarrollar</strong> — ideación y creación de alternativas</li>
-            <li><strong>Entregar</strong> — pruebas de usabilidad y refinamiento</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Pasa el cursor o haz clic en las fases del diagrama</p>
-        </div>
-        <div class="art-col">
-          <div class="status-badge" id="statusBadge">Descubrir · Pensamiento divergente</div>
-          <svg class="dd-svg anim" style="--d:2" viewBox="0 0 220 110" aria-hidden="true">
-            <path class="phase" data-phase="descubrir" d="M10 55 L60 20 L60 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
-            <path class="phase" data-phase="definir" d="M60 20 L110 55 L60 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
-            <path class="phase" data-phase="desarrollar" d="M110 55 L160 20 L160 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
-            <path class="phase" data-phase="entregar" d="M160 20 L210 55 L160 90 Z" fill="rgba(255,255,255,.16)" stroke="rgba(255,255,255,.6)" stroke-width="1.5"/>
-          </svg>
-          <div class="phases anim" style="--d:3">
-            <button type="button" class="phase-chip" data-phase="descubrir">Descubrir</button>
-            <button type="button" class="phase-chip" data-phase="definir">Definir</button>
-            <button type="button" class="phase-chip" data-phase="desarrollar">Desarrollar</button>
-            <button type="button" class="phase-chip" data-phase="entregar">Entregar</button>
-          </div>
-        </div>
-      </section>
+    <!-- ============================ 1.1 ============================ -->
+    <section class="slide" data-tone="light" data-accent="indigo" aria-label="Clasificación de dispositivos">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 1 · Diaz Vazquez Regina Valeria</p>
+          <h2>Clasificación de dispositivos: tres ejes, no una lista</h2>
+          <p class="lead">Un móvil se define por la intersección de su potencia física, su geometría y la forma en que recibe órdenes. Toca cada eje del diagrama.</p>
+        </header>
 
-      <!-- ============ SLIDE 6 ============ -->
-      <section class="slide s6">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="eyebrow anim" style="--d:0">06 · Herramientas de Investigación</div>
-        <h2 class="anim" style="--d:1">Herramientas Clave de UX Research</h2>
-        <div class="tools">
-          <div class="tool-card card-standard anim" style="--d:2">
-            <div class="tool-head">
-              <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-person"></use></svg></span>
-              <div>
-                <div class="tool-title">User Personas</div>
-                <div class="tool-desc">Arquetipos de usuario para diseñar con empatía real.</div>
-              </div>
-            </div>
-            <div class="tool-body">
-              <button type="button" class="persona" id="personaBtn" aria-label="Cambiar de persona">
-                <span class="persona-face" id="personaFace">M</span>
-                <span class="persona-name" id="personaName">María · 32</span>
-              </button>
-              <div class="tool-readout" id="personaReadout">Compra desde el móvil · clic para cambiar</div>
-            </div>
-          </div>
-          <div class="tool-card card-standard anim" style="--d:3">
-            <div class="tool-head">
-              <span class="tool-icon" style="background:#F0997B;color:#4A1B0C;"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
-              <div>
-                <div class="tool-title">Customer Journey Map</div>
-                <div class="tool-desc">Mapeo de la experiencia para hallar puntos de dolor.</div>
-              </div>
-            </div>
-            <div class="tool-body">
-              <div class="journey" id="journeyRow"></div>
-              <div class="tool-readout" id="journeyReadout">Toca una carita para marcar un punto de dolor</div>
-            </div>
-          </div>
-          <div class="tool-card card-standard anim" style="--d:4">
-            <div class="tool-head">
-              <span class="tool-icon" style="background:#C8F0E4;color:#0F6E56;"><svg class="ic" aria-hidden="true"><use href="#i-cards"></use></svg></span>
-              <div>
-                <div class="tool-title">Card Sorting</div>
-                <div class="tool-desc">Clasificación de tarjetas para organizar la información.</div>
-              </div>
-            </div>
-            <div class="tool-body">
-              <div class="sortrow" id="sortRow"></div>
-              <div class="tool-readout" id="sortReadout">Toca una tarjeta para reordenarla</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ SLIDE 7 ============ -->
-      <section class="slide s7">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">07 · Filosofía Lean UX</div>
-          <h2 class="anim" style="--d:1">Valor sobre Documentación</h2>
-          <ul class="points anim" style="--d:2">
-            <li><strong>Origen:</strong> Jeff Gothelf — Lean Startup aplicado al diseño</li>
-            <li><strong>Menos:</strong> reportes y documentación extensa</li>
-            <li><strong>Más:</strong> entrega rápida de valor al usuario</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Pasa el cursor o haz clic en la balanza para inclinarla</p>
-        </div>
-        <div class="art-col">
-          <svg class="scale-svg anim" style="--d:2" viewBox="0 0 240 160" aria-hidden="true">
-            <polygon points="104,118 136,118 120,154" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
-            <g class="scale-beam">
-              <line x1="26" y1="112" x2="214" y2="112" stroke="rgba(255,255,255,.7)" stroke-width="4" stroke-linecap="round"/>
-              <line x1="26" y1="112" x2="26" y2="130" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
-              <path d="M12 130 Q26 142 40 130 L40 148 Q26 154 12 148 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
-              <g class="docs">
-                <rect x="21" y="125" width="16" height="12" rx="1.5" fill="#fff" opacity=".55"/>
-                <rect x="21" y="128" width="16" height="12" rx="1.5" fill="#fff" opacity=".72"/>
-                <rect x="21" y="131" width="16" height="12" rx="1.5" fill="#fff" opacity=".9"/>
-                <path d="M23 133 L35 145 M35 133 L23 145" stroke="#A32D2D" stroke-width="2" stroke-linecap="round"/>
+        <div class="reveal split anim" data-reveal style="--d:1">
+          <div class="card center" style="display:flex;align-items:center;justify-content:center">
+            <svg class="dia" viewBox="0 0 300 300" role="group" aria-label="Diagrama de los tres ejes de clasificación">
+              <path d="M120 78C80 78 74 62 74 62M188 140c40 0 46-30 46-30M126 236c-40 0-46 14-46 14" fill="none" stroke="var(--border)" stroke-width="1.4" stroke-dasharray="4 5"/>
+              <rect x="108" y="62" width="86" height="176" rx="21" fill="var(--surface-solid)" stroke="var(--fg)" stroke-width="2"/>
+              <rect x="117" y="84" width="68" height="132" rx="12" fill="var(--soft)" stroke="var(--border)" stroke-width="1"/>
+              <path d="M133 74h36" stroke="var(--muted)" stroke-width="2.6" stroke-linecap="round"/>
+              <circle cx="151" cy="228" r="4" fill="var(--muted)"/>
+              <g fill="none" stroke="var(--accent)" stroke-width="1.4" opacity=".85">
+                <circle cx="151" cy="112" r="9"/><path d="M151 103v18M142 112h18"/>
+                <rect x="132" y="140" width="38" height="16" rx="5"/>
+                <path d="M132 176h38M132 186h26"/>
               </g>
-              <line x1="214" y1="112" x2="214" y2="130" stroke="rgba(255,255,255,.5)" stroke-width="2"/>
-              <path d="M200 130 Q214 142 228 130 L228 148 Q214 154 200 148 Z" fill="rgba(255,255,255,.15)" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
-              <circle cx="214" cy="127" r="9.5" fill="#FAC775"/>
-              <circle cx="211" cy="124" r="1.2" fill="#7a3008"/>
-              <circle cx="217" cy="124" r="1.2" fill="#7a3008"/>
-              <path d="M210 129.5 Q214 134 218 129.5" fill="none" stroke="#7a3008" stroke-width="1.2" stroke-linecap="round"/>
+
+              <g class="hot node-chip" data-key="hw" role="button" tabindex="0" aria-pressed="true" aria-label="Eje hardware">
+                <rect x="8" y="30" width="100" height="30" rx="15" fill="var(--surface-solid)" stroke="var(--accent)" stroke-width="1.6"/>
+                <circle cx="25" cy="45" r="5" fill="var(--accent)"/>
+                <text x="38" y="49" font-size="10.5" font-weight="700">Hardware</text>
+              </g>
+              <g class="hot node-chip" data-key="form" role="button" tabindex="0" aria-pressed="false" aria-label="Eje factor de forma">
+                <rect x="192" y="106" width="102" height="30" rx="15" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.4"/>
+                <circle cx="209" cy="121" r="5" fill="var(--ios-teal)"/>
+                <text x="222" y="125" font-size="10.5" font-weight="700">Factor de forma</text>
+              </g>
+              <g class="hot node-chip" data-key="ui" role="button" tabindex="0" aria-pressed="false" aria-label="Eje capacidades de interfaz">
+                <rect x="8" y="244" width="118" height="30" rx="15" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.4"/>
+                <circle cx="25" cy="259" r="5" fill="var(--ios-green)"/>
+                <text x="38" y="263" font-size="10.5" font-weight="700">Interfaz</text>
+              </g>
+              <text x="150" y="292" text-anchor="middle" font-size="9" class="t-muted">Toca un eje para ver el detalle</text>
+            </svg>
+          </div>
+
+          <div class="reveal-panels stack">
+            <article class="reveal-panel card is-on" data-panel="hw">
+              <div class="row" style="margin-bottom:6px">
+                <span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-cpu"></use></svg></span>
+                <h3>Hardware: el techo real de la experiencia</h3>
+              </div>
+              <p class="small muted">La potencia de CPU/GPU define cuánto JavaScript puede ejecutarse antes de bloquear el hilo principal; la batería y la temperatura imponen un presupuesto que ninguna optimización de CSS puede ignorar.</p>
+              <div class="row wrap" style="margin-top:8px">
+                <span class="tag">CPU / GPU</span><span class="tag">RAM</span><span class="tag">Batería</span><span class="tag">GPS</span><span class="tag">Giroscopio</span><span class="tag">Acelerómetro</span><span class="tag">Cámara</span><span class="tag">Luz ambiental</span>
+              </div>
+              <p class="micro muted" style="margin-top:8px">Consecuencia web: sensores accesibles solo bajo HTTPS y con permiso explícito (Geolocation, DeviceMotion, getUserMedia).</p>
+            </article>
+            <article class="reveal-panel card" data-panel="form">
+              <div class="row" style="margin-bottom:6px">
+                <span class="icon-badge orange"><svg class="ic" aria-hidden="true"><use href="#i-ruler"></use></svg></span>
+                <h3>Factor de forma: ergonomía antes que píxeles</h3>
+              </div>
+              <p class="small muted">Tamaño físico, peso y geometría del panel. La zona de alcance del pulgar determina dónde colocar acciones primarias; el formato del panel cambia el layout utilizable.</p>
+              <ul class="points" style="margin-top:6px">
+                <li><strong>Plano:</strong> barra superior y navegación inferior alcanzables con una mano.</li>
+                <li><strong>Circular:</strong> relojes; información en una sola capa, interacción de 2–3 s.</li>
+                <li><strong>Articulado:</strong> plegables; el viewport cambia en caliente y el layout debe reflow sin perder estado.</li>
+              </ul>
+            </article>
+            <article class="reveal-panel card" data-panel="ui">
+              <div class="row" style="margin-bottom:6px">
+                <span class="icon-badge green"><svg class="ic" aria-hidden="true"><use href="#i-hand"></use></svg></span>
+                <h3>Interfaz: cómo entra la intención</h3>
+              </div>
+              <p class="small muted">La capacidad de entrada define el tamaño de los objetivos táctiles, la necesidad de alternativas al <span class="mono">:hover</span> y el diseño de la retroalimentación.</p>
+              <div class="row wrap" style="margin-top:8px">
+                <span class="chip">Táctil · 44×44 px</span><span class="chip">Stylus · precisión fina</span><span class="chip">Voz</span><span class="chip">Gestos</span><span class="chip">Eye tracking · dwell</span>
+              </div>
+              <p class="micro muted" style="margin-top:8px">Regla práctica: si la acción crítica depende de hover o de un objetivo menor a 44 px, no es usable en móvil.</p>
+            </article>
+            <p class="hint micro muted">Tres ejes · un detalle a la vez.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 1.2 ============================ -->
+    <section class="slide" data-tone="tint" aria-label="Categorías principales de dispositivos">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 1 · Categorías</p>
+          <h2>Cinco categorías, cinco contratos de uso</h2>
+          <p class="lead">El tamaño no es un detalle estético: cambia el número de manos, la postura, la duración de la sesión y el tipo de dato que el usuario espera ver.</p>
+        </header>
+
+        <div class="reveal anim" data-reveal style="--d:1">
+          <div class="reveal-triggers grid" style="grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+            <button type="button" class="cat-btn" data-key="phone" aria-pressed="true">
+              <svg viewBox="0 0 40 52" aria-hidden="true"><rect class="body" x="10" y="3" width="20" height="46" rx="5"/><path class="zone" d="M12 30a12 12 0 0 0 16 0 14 14 0 0 0-16 0Z"/></svg>
+              Smartphone
+            </button>
+            <button type="button" class="cat-btn" data-key="tablet" aria-pressed="false">
+              <svg viewBox="0 0 40 52" aria-hidden="true"><rect class="body" x="4" y="5" width="32" height="42" rx="4"/><path class="zone" d="M5 26a16 16 0 0 0 30 0"/><path class="zone" d="M5 26a16 16 0 0 1 30 0"/></svg>
+              Tablet
+            </button>
+            <button type="button" class="cat-btn" data-key="fold" aria-pressed="false">
+              <svg viewBox="0 0 40 52" aria-hidden="true"><rect class="body" x="7" y="3" width="12" height="46" rx="3"/><rect class="body" x="21" y="3" width="12" height="46" rx="3"/><path class="zone" d="M14 12v28M26 12v28"/></svg>
+              Plegable
+            </button>
+            <button type="button" class="cat-btn" data-key="wear" aria-pressed="false">
+              <svg viewBox="0 0 40 52" aria-hidden="true"><rect class="body" x="11" y="15" width="18" height="22" rx="6"/><path class="body" d="M14 6h12l1 9M14 46h12l1-9"/><path class="zone" d="M20 26a7 7 0 0 1 7 7"/></svg>
+              Wearable
+            </button>
+            <button type="button" class="cat-btn" data-key="iot" aria-pressed="false">
+              <svg viewBox="0 0 40 52" aria-hidden="true"><rect class="body" x="5" y="12" width="30" height="22" rx="4"/><path class="body" d="M15 42h10M20 34v8"/><path class="zone" d="M13 20h14v10H13z"/></svg>
+              IoT / Embebido
+            </button>
+          </div>
+
+          <div class="split" style="margin-top:8px">
+            <div class="card">
+              <svg class="dia" viewBox="0 0 340 220" role="img" aria-label="Comparativa de siluetas y zonas de alcance del pulgar">
+                <line x1="12" y1="186" x2="328" y2="186" stroke="var(--border)" stroke-width="1.4"/>
+                <g opacity=".95">
+                  <rect x="18" y="58" width="46" height="106" rx="11" fill="var(--surface-solid)" stroke="var(--muted)" stroke-width="1.4"/>
+                  <path d="M22 118a24 24 0 0 0 38 0c8 30-8 46-19 46s-27-16-19-46Z" fill="rgba(0,122,255,.14)" stroke="#007AFF" stroke-width="1.2"/>
+                  <text x="41" y="180" text-anchor="middle" font-size="8.5" font-weight="700">5"–7"</text>
+                </g>
+                <g opacity=".95">
+                  <rect x="92" y="40" width="76" height="126" rx="10" fill="var(--surface-solid)" stroke="var(--muted)" stroke-width="1.4"/>
+                  <path d="M96 100a38 38 0 0 0 68 0" fill="rgba(88,86,214,.13)" stroke="#5856D6" stroke-width="1.2"/>
+                  <path d="M96 100a38 38 0 0 1 68 0" fill="rgba(88,86,214,.13)" stroke="#5856D6" stroke-width="1.2"/>
+                  <text x="130" y="180" text-anchor="middle" font-size="8.5" font-weight="700">8"–13"</text>
+                </g>
+                <g opacity=".95">
+                  <rect x="194" y="52" width="44" height="114" rx="9" fill="var(--surface-solid)" stroke="var(--muted)" stroke-width="1.4"/>
+                  <path d="M238 52h18v114h-18z" fill="rgba(52,199,89,.12)" stroke="#34C759" stroke-width="1.2" stroke-dasharray="4 3"/>
+                  <text x="216" y="180" text-anchor="middle" font-size="8.5" font-weight="700">plegable</text>
+                </g>
+                <g opacity=".95">
+                  <rect x="268" y="118" width="34" height="40" rx="9" fill="var(--surface-solid)" stroke="var(--muted)" stroke-width="1.4"/>
+                  <circle cx="285" cy="138" r="10" fill="rgba(255,159,10,.16)" stroke="#FF9F0A" stroke-width="1.2"/>
+                  <text x="285" y="180" text-anchor="middle" font-size="8.5" font-weight="700">1.4"–2"</text>
+                </g>
+                <text x="170" y="205" text-anchor="middle" font-size="8.5" class="t-muted">Zona sombreada = área de alcance cómoda · no equivale a zona segura de toque</text>
+              </svg>
+            </div>
+
+            <div class="reveal-panels stack">
+              <article class="reveal-panel card is-on" data-panel="phone">
+                <div class="row between"><h3>Smartphone</h3><span class="chip solid">5"–7"</span></div>
+                <p class="small muted" style="margin:4px 0 8px">Uso vertical, una mano, sesiones cortas y frecuentes. La acción principal vive en el tercio inferior.</p>
+                <dl>
+                  <div class="spec-row"><dt>Ergonomía</dt><dd>Pulgar · 60% inferior alcanzable</dd></div>
+                  <div class="spec-row"><dt>Zona de pulgar</dt><dd>Arco desde la esquina inferior</dd></div>
+                  <div class="spec-row"><dt>Objetivo táctil</dt><dd>Mín. 44×44 px · 8 px de separación</dd></div>
+                  <div class="spec-row"><dt>Prioridad de diseño</dt><dd>Navegación inferior y contenido escaneable</dd></div>
+                </dl>
+              </article>
+
+              <article class="reveal-panel card" data-panel="tablet">
+                <div class="row between"><h3>Tablet</h3><span class="chip solid">8"–13"</span></div>
+                <p class="small muted" style="margin:4px 0 8px">Dos manos, stylus y teclado. Sesiones largas: el layout puede permitir dos paneles simultáneos.</p>
+                <dl>
+                  <div class="spec-row"><dt>Ergonomía</dt><dd>Bimanual · bordes como zonas de descanso</dd></div>
+                  <div class="spec-row"><dt>Zona de pulgar</dt><dd>Laterales; centro reservado a contenido</dd></div>
+                  <div class="spec-row"><dt>Objetivo táctil</dt><dd>48×48 px recomendado</dd></div>
+                  <div class="spec-row"><dt>Prioridad de diseño</dt><dd>Split view, arrastrar y soltar, precisión de stylus</dd></div>
+                </dl>
+              </article>
+
+              <article class="reveal-panel card" data-panel="fold">
+                <div class="row between"><h3>Plegables / Foldables</h3><span class="chip solid">2 formatos</span></div>
+                <p class="small muted" style="margin:4px 0 8px">Pantalla flexible que alterna entre móvil y tablet. El viewport puede cambiar sin recargar: estado, scroll y foco deben sobrevivir.</p>
+                <dl>
+                  <div class="spec-row"><dt>Ergonomía</dt><dd>Una mano cerrado · dos manos abierto</dd></div>
+                  <div class="spec-row"><dt>Zona de pulgar</dt><dd>Cambia con la bisagra y el ángulo</dd></div>
+                  <div class="spec-row"><dt>Objetivo táctil</dt><dd>44 px + margen ante el pliegue</dd></div>
+                  <div class="spec-row"><dt>Prioridad de diseño</dt><dd>Layouts fluidos, sin posiciones absolutas</dd></div>
+                </dl>
+              </article>
+
+              <article class="reveal-panel card" data-panel="wear">
+                <div class="row between"><h3>Wearables · AR / VR</h3><span class="chip solid">1.4"–2" · gaze</span></div>
+                <p class="small muted" style="margin:4px 0 8px">Relojes: toques rápidos y voz, lectura de un vistazo. Gafas: gestos en el aire y mirada; no hay cursor preciso.</p>
+                <dl>
+                  <div class="spec-row"><dt>Ergonomía</dt><dd>Muñeca · sesiones de 2–5 s</dd></div>
+                  <div class="spec-row"><dt>Zona de pulgar</dt><dd>Toda la pantalla; el límite es el tiempo</dd></div>
+                  <div class="spec-row"><dt>Objetivo táctil</dt><dd>Áreas grandes, sin texto denso</dd></div>
+                  <div class="spec-row"><dt>Prioridad de diseño</dt><dd>Glanceable, alto contraste, una acción por pantalla</dd></div>
+                </dl>
+              </article>
+
+              <article class="reveal-panel card" data-panel="iot">
+                <div class="row between"><h3>Embebidos / IoT</h3><span class="chip solid">contexto físico</span></div>
+                <p class="small muted" style="margin:4px 0 8px">Pantallas en autos, electrodomésticos o kioscos. El usuario está de pie, a distancia y con las manos ocupadas.</p>
+                <dl>
+                  <div class="spec-row"><dt>Ergonomía</dt><dd>Toque a 40–80 cm · guantes posibles</dd></div>
+                  <div class="spec-row"><dt>Zona de pulgar</dt><dd>No aplica: zonas amplias y periféricas</dd></div>
+                  <div class="spec-row"><dt>Objetivo táctil</dt><dd>60 px o más · alto contraste</dd></div>
+                  <div class="spec-row"><dt>Prioridad de diseño</dt><dd>Legibilidad a distancia y tolerancia a errores</dd></div>
+                </dl>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 1.3 ============================ -->
+    <section class="slide" data-tone="light" aria-label="Implicaciones en el diseño web">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 1 · Del dispositivo al CSS</p>
+          <h2>Lo que el hardware le exige a tu hoja de estilos</h2>
+          <p class="lead">Cuatro decisiones de CSS y HTML separan una interfaz que se adapta de una que se recorta. Abre cada viñeta o usa el inspector.</p>
+        </header>
+
+        <div class="split anim" style="--d:1">
+          <div class="acc">
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="true" aria-controls="acc13a">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-monitor"></use></svg></span>Viewport y unidades dinámicas</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="acc13a">
+                El viewport es el área visible en píxeles lógicos, no la resolución física. La barra de URL móvil aparece y desaparece: <span class="mono">100vh</span> se calcula con el viewport más grande y provoca recortes. Usa <span class="mono">100dvh</span> para altura real y <span class="mono">100svh</span> para el mínimo estable. Diseña Mobile-First con Grid y Flexbox antes de añadir <span class="mono">@media</span>.
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc13b">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-camera"></use></svg></span>Densidad de píxeles (DPR)</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="acc13b" hidden>
+                El DPR relaciona píxeles físicos con lógicos (2×, 3×). Un PNG de 300 px puede verse borroso en 900 px físicos. Sirve SVG para iconos y <span class="mono">srcset</span> + <span class="mono">sizes</span> para fotos; reserva el 3× a imágenes críticas y deja que el navegador elija.
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc13c">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-ruler"></use></svg></span>Relación de aspecto</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="acc13c" hidden>
+                Conviven 20:9, 4:3, 1:1 y pantallas plegables. Evita alturas fijas y usa <span class="mono">aspect-ratio</span>, <span class="mono">min-height</span> con <span class="mono">dvh</span> y contenedores que puedan crecer. Prueba en horizontal: no bloquees la orientación sin una razón funcional.
+              </div>
+            </div>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="acc13d">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-hand"></use></svg></span>Interacción táctil</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="acc13d" hidden>
+                Objetivo mínimo de <strong>44×44 px</strong> con 8 px de separación, sin depender de <span class="mono">:hover</span>: en táctil no existe. Diseña estados <span class="mono">:active</span> y <span class="mono">:focus-visible</span>, soporta swipe y zoom, y evita <span class="mono">user-scalable=no</span>.
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="between" style="margin-bottom:8px">
+              <h3>Inspector de viewport</h3>
+              <div class="segmented tiny" role="group" aria-label="Unidad de altura">
+                <button type="button" data-vp="vh" aria-pressed="true">100vh</button>
+                <button type="button" data-vp="dvh" aria-pressed="false">100dvh</button>
+              </div>
+            </div>
+            <div class="vp-phone" id="vpPhone">
+              <span class="notch" aria-hidden="true"></span>
+              <div class="vp-bars" aria-hidden="true"><i></i><i style="width:64%"></i></div>
+              <div class="vp-screen">
+                <span class="vp-tag" id="vpTag">100vh · barras superpuestas</span>
+                <span class="vp-overflow">contenido recortado</span>
+              </div>
+              <div class="vp-bars" aria-hidden="true"><i></i><i style="width:80%"></i></div>
+            </div>
+            <div class="tap-row" style="margin-top:12px">
+              <span class="tap-demo" aria-hidden="true"><svg class="ic"><use href="#i-check"></use></svg></span>
+              <span class="tap-demo small" aria-hidden="true"><svg class="ic"><use href="#i-x"></use></svg></span>
+              <span class="small muted">Compara 44×44 px con 24×24 px: el segundo incumple el mínimo táctil.</span>
+            </div>
+            <p class="micro muted" style="margin-top:10px">En móvil, <span class="mono">dvh</span> ajusta la altura cuando aparecen las barras del navegador; <span class="mono">vh</span> mantiene la medida grande y esconde la última fila.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 2.1 ============================ -->
+    <section class="slide" data-tone="light" data-accent="teal" aria-label="Ecosistemas y cuota de mercado">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 2 · Cruz Contreras Jonathan Ivan</p>
+          <h2>Ecosistemas: la cuota define a quién optimizas</h2>
+          <p class="lead">La distribución mundial no es una curiosidad estadística: decide qué motor, qué APIs y qué modelo de monetización encuentras en producción.</p>
+        </header>
+
+        <div class="reveal split anim" data-reveal style="--d:1">
+          <div class="card center">
+            <div class="donut-wrap">
+              <svg class="dia donut-svg" viewBox="0 0 200 200" role="img" aria-label="Cuota mundial: Android 72.4 por ciento, iOS 27.5 por ciento, otros 0.1 por ciento">
+                <circle cx="100" cy="100" r="70" fill="none" stroke="var(--soft)" stroke-width="26"/>
+                <g transform="rotate(-90 100 100)" fill="none" stroke-linecap="butt">
+                  <circle class="donut-seg" data-key="android" cx="100" cy="100" r="70" stroke="#34C759" stroke-width="26" stroke-dasharray="318.4 439.8" stroke-dashoffset="0"/>
+                  <circle class="donut-seg" data-key="ios" cx="100" cy="100" r="70" stroke="#007AFF" stroke-width="26" stroke-dasharray="120.9 439.8" stroke-dashoffset="-318.4" opacity=".92"/>
+                  <circle class="donut-seg" data-key="other" cx="100" cy="100" r="70" stroke="#FF9F0A" stroke-width="26" stroke-dasharray="1.4 439.8" stroke-dashoffset="-439.3" opacity=".95"/>
+                </g>
+                <text x="100" y="98" text-anchor="middle" class="donut-center-num" id="donutNum">72.4%</text>
+                <text x="100" y="116" text-anchor="middle" class="donut-center-lbl t-muted" id="donutLbl">Android · mundial</text>
+              </svg>
+              <div class="legend" role="group" aria-label="Seleccionar ecosistema">
+                <button type="button" class="legend-item" data-key="android" aria-pressed="true">
+                  <span class="legend-dot" style="background:#34C759"></span>
+                  <span><span class="l-name">Android</span><span class="l-sub">AOSP · multiformato</span></span>
+                  <span class="l-val">72.4%</span>
+                </button>
+                <button type="button" class="legend-item" data-key="ios" aria-pressed="false">
+                  <span class="legend-dot" style="background:#007AFF"></span>
+                  <span><span class="l-name">iOS</span><span class="l-sub">cerrado · Apple</span></span>
+                  <span class="l-val">27.5%</span>
+                </button>
+                <button type="button" class="legend-item" data-key="other" aria-pressed="false">
+                  <span class="legend-dot" style="background:#FF9F0A"></span>
+                  <span><span class="l-name">Ligeros</span><span class="l-sub">KaiOS · Android Go</span></span>
+                  <span class="l-val">0.1%</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal-panels stack">
+            <article class="reveal-panel card is-on" data-panel="android">
+              <div class="row between"><h3>Android · 72.4%</h3><span class="chip ok">volumen global y México</span></div>
+              <p class="small muted" style="margin:5px 0 7px">Código abierto (Linux + AOSP) sobre hardware de cientos de marcas y gamas. Esa fragmentación es la fortaleza del alcance y la causa de la variabilidad de rendimiento.</p>
+              <ul class="points">
+                <li><strong>Arquitectura:</strong> kernel Linux, HAL, ART y apps; el fabricante añade capas.</li>
+                <li><strong>Distribución:</strong> Play Store + tiendas alternativas + APK.</li>
+                <li><strong>Monetización:</strong> suscripciones, anuncios y compras; ticket medio más bajo que iOS.</li>
+              </ul>
+            </article>
+            <article class="reveal-panel card" data-panel="ios">
+              <div class="row between"><h3>iOS · 27.5%</h3><span class="chip">retención y monetización</span></div>
+              <p class="small muted" style="margin:5px 0 7px">Ecosistema cerrado y exclusivo de Apple: control total de hardware y software, con soporte prolongado y una base que actualiza rápido.</p>
+              <ul class="points">
+                <li><strong>Arquitectura:</strong> SoC propio, WebKit obligatorio para todo navegador.</li>
+                <li><strong>Distribución:</strong> App Store como única vía general.</li>
+                <li><strong>Monetización:</strong> mayor ARPU y conversión; usuarios concentrados en gamas altas.</li>
+              </ul>
+            </article>
+            <article class="reveal-panel card" data-panel="other">
+              <div class="row between"><h3>SO ligeros · 0.1%</h3><span class="chip warn">512 MB–2 GB RAM</span></div>
+              <p class="small muted" style="margin:5px 0 7px">KaiOS y Android Go priorizan arranque rápido y bajo consumo. Ejecutan apps ligeras basadas en HTML5, CSS y JavaScript.</p>
+              <ul class="points">
+                <li><strong>Contexto:</strong> mercados emergentes, dispositivos de entrada y feature phones.</li>
+                <li><strong>Restricción:</strong> poca memoria, CPU lenta y almacenamiento mínimo.</li>
+                <li><strong>Oportunidad:</strong> una PWA bien medida ofrece más valor que una app nativa pesada.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 2.2 ============================ -->
+    <section class="slide" data-tone="dark" data-accent="orange" aria-label="Motores de renderizado y estándares">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 2 · Motores de renderizado</p>
+          <h2>Dos motores, dos ciclos de vida</h2>
+          <p class="lead">El motor decide qué APIs puedes usar hoy y cuándo llegan las correcciones. Compara por criterio, no por preferencia.</p>
+        </header>
+
+        <div class="row wrap anim" style="--d:1">
+          <span class="chip solid">Blink · ~72% móvil</span>
+          <span class="chip">WebKit · ~26% móvil</span>
+          <span class="chip">Resto · motores propios y WebViews antiguos</span>
+        </div>
+
+        <div class="anim" style="--d:2">
+          <div class="tabs-role" role="tablist" aria-label="Criterios de comparación de motores">
+            <button type="button" role="tab" id="tab-engine-up" aria-controls="panel-engine-up" aria-selected="true">Ciclo de actualizaciones</button>
+            <button type="button" role="tab" id="tab-engine-api" aria-controls="panel-engine-api" aria-selected="false" tabindex="-1">APIs modernas</button>
+            <button type="button" role="tab" id="tab-engine-ios" aria-controls="panel-engine-ios" aria-selected="false" tabindex="-1">Restricción en iOS</button>
+          </div>
+
+          <div role="tabpanel" id="panel-engine-up" aria-labelledby="tab-engine-up" class="tab-panel" style="margin-top:8px">
+            <div class="grid-2">
+              <div class="card">
+                <div class="engine-head" style="margin-bottom:8px">
+                  <span class="logo" style="background:#E4F8EC;color:#0E7A34">B</span>
+                  <div><h3>Blink · Chromium</h3><p class="micro muted">Chrome, Edge, Opera, Samsung Internet, WebView</p></div>
+                </div>
+                <div class="pipeline" style="margin-bottom:8px">
+                  <span class="pip">Commit upstream</span><span class="arr">→</span><span class="pip">Canary / Beta</span><span class="arr">→</span><span class="pip">Play Store</span><span class="arr">→</span><span class="pip">WebView</span>
+                </div>
+                <p class="small muted">Actualizaciones independientes del sistema operativo. Una corrección de seguridad puede llegar en semanas, no en años; también puedes adoptar APIs nuevas antes.</p>
+              </div>
+              <div class="card">
+                <div class="engine-head" style="margin-bottom:8px">
+                  <span class="logo" style="background:#E7F0FF;color:#0A5FCC">W</span>
+                  <div><h3>WebKit · Safari</h3><p class="micro muted">Safari y todo navegador dentro de iOS</p></div>
+                </div>
+                <div class="pipeline" style="margin-bottom:8px">
+                  <span class="pip">Commit upstream</span><span class="arr">→</span><span class="pip">Beta</span><span class="arr">→</span><span class="pip">Actualización del SO</span>
+                </div>
+                <p class="small muted">El motor viaja con la versión de iOS. Sin actualización del sistema no hay motor nuevo: usuarios en versiones antiguas condicionan el <em>browser support matrix</em>.</p>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-engine-api" aria-labelledby="tab-engine-api" class="tab-panel" hidden style="margin-top:8px">
+            <div class="grid-2">
+              <div class="card">
+                <h3 style="margin-bottom:6px">Blink adopta antes</h3>
+                <ul class="points">
+                  <li>PWA instalables, Push y Background Sync maduros.</li>
+                  <li>WebGPU disponible de forma amplia; Wasm con soporte completo.</li>
+                  <li>Web Bluetooth, Web NFC y File System Access en Chromium.</li>
+                </ul>
+              </div>
+              <div class="card">
+                <h3 style="margin-bottom:6px">WebKit prioriza privacidad y batería</h3>
+                <ul class="points">
+                  <li>Push web limitado y sin Background Sync clásico.</li>
+                  <li>Web Bluetooth y Web NFC no disponibles en Safari.</li>
+                  <li>WebGPU llegó más tarde y con cobertura parcial.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-engine-ios" aria-labelledby="tab-engine-ios" class="tab-panel" hidden style="margin-top:8px">
+            <div class="card">
+              <div class="row" style="margin-bottom:6px"><span class="icon-badge red"><svg class="ic" aria-hidden="true"><use href="#i-alert"></use></svg></span><h3>Un solo motor para todos los navegadores</h3></div>
+              <p class="small muted">En iOS, Chrome, Firefox y Edge usan WebKit como motor de renderizado. No puedes desplegar una capacidad que WebKit no implemente, aunque el usuario tenga otro navegador instalado.</p>
+              <div class="grid-3" style="margin-top:8px">
+                <div class="kpi"><b>1 motor</b><span>sin elección real en iOS</span></div>
+                <div class="kpi"><b>Atado al SO</b><span>las APIs llegan con la versión</span></div>
+                <div class="kpi"><b>Doble ruta</b><span>feature detection + fallback</span></div>
+              </div>
+              <p class="micro muted" style="margin-top:8px">Consecuencia práctica: define la experiencia base con APIs estables y mejora progresivamente (<span class="mono">progressive enhancement</span>); nunca asumas paridad entre plataformas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 3.1 ============================ -->
+    <section class="slide" data-tone="light" data-accent="green" aria-label="Sitios responsivos y adaptativos">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 3 · Enriquez de la Cruz Emmanuel</p>
+          <h2>Responsivo vs. adaptativo: flujo continuo o saltos</h2>
+          <p class="lead">Ambos usan breakpoints; la diferencia es qué ocurre entre ellos. Cambia el ancho y el modo para verlo.</p>
+        </header>
+
+        <div class="split anim" style="--d:1">
+          <div class="card">
+            <div class="between" style="margin-bottom:8px">
+              <div class="segmented tiny" role="group" aria-label="Ancho del dispositivo">
+                <button type="button" data-vw="mobile" aria-pressed="true">Móvil</button>
+                <button type="button" data-vw="tablet" aria-pressed="false">Tablet</button>
+                <button type="button" data-vw="desktop" aria-pressed="false">Escritorio</button>
+              </div>
+              <div class="segmented tiny" role="group" aria-label="Modo de diseño">
+                <button type="button" data-mode="rwd" aria-pressed="true">RWD</button>
+                <button type="button" data-mode="awd" aria-pressed="false">AWD</button>
+              </div>
+            </div>
+
+            <div class="rwd-stage">
+              <div class="rwd-frame" id="rwdFrame" style="width:36%">
+                <span class="bar" aria-hidden="true"></span>
+                <div class="rwd-grid" id="rwdGrid" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="rwd-caption" id="rwdCaption">340 px · 1 columna</div>
+              </div>
+            </div>
+
+            <div class="row wrap" style="margin-top:10px">
+              <span class="chip" id="rwdMode">RWD · cuadrícula fluida</span>
+              <span class="chip" id="rwdWidth">ancho 340 px</span>
+            </div>
+            <p class="micro muted" style="margin-top:8px" id="rwdExplain">Las columnas se recalculan con <span class="mono">minmax()</span> y <span class="mono">auto-fit</span>: el layout respira en cualquier punto intermedio.</p>
+          </div>
+
+          <div class="stack">
+            <div class="card">
+              <div class="row" style="margin-bottom:5px"><span class="icon-badge green"><svg class="ic" aria-hidden="true"><use href="#i-layers"></use></svg></span><h3>Diseño responsivo (RWD)</h3></div>
+              <p class="small muted">Cuadrículas fluidas, unidades relativas y <span class="mono">@media</span> para ajustes finos. Un solo documento se adapta de forma continua; es el enfoque que sostiene el Mobile-First.</p>
+            </div>
+            <div class="card">
+              <div class="row" style="margin-bottom:5px"><span class="icon-badge orange"><svg class="ic" aria-hidden="true"><use href="#i-monitor"></use></svg></span><h3>Diseño adaptativo (AWD)</h3></div>
+              <p class="small muted">Layouts estáticos servidos para breakpoints predefinidos. Predecible y fácil de probar, pero entre dos breakpoints el contenido puede quedar desproporcionado o con espacio muerto.</p>
+            </div>
+            <div class="card">
+              <div class="row" style="margin-bottom:5px"><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-rocket"></use></svg></span><h3>Mobile-First</h3></div>
+              <p class="small muted">Diseñar primero para la pantalla más restrictiva obliga a priorizar jerarquía, contenido y peso. Después se escala: añadir columnas es más barato que recortarlas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 3.2 ============================ -->
+    <section class="slide" data-tone="tint" data-accent="teal" aria-label="Progressive Web Apps">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 3 · Progressive Web Apps</p>
+          <h2>Una app web que se comporta como nativa</h2>
+          <p class="lead">Instalable, offline y notificable sin tienda. Toca cada nodo de la arquitectura para ver el contrato técnico.</p>
+        </header>
+
+        <div class="reveal split anim" data-reveal style="--d:1">
+          <div class="card">
+            <svg class="dia" viewBox="0 0 340 250" role="group" aria-label="Arquitectura de una PWA">
+              <path d="M170 92v22M170 156v18M96 156v18M244 156v18" class="wire dash"/>
+              <g class="hot node-chip" data-key="ui" role="button" tabindex="0" aria-pressed="true" aria-label="App UI">
+                <rect x="96" y="24" width="148" height="66" rx="18" fill="var(--surface-solid)" stroke="var(--accent)" stroke-width="1.8"/>
+                <text x="170" y="52" text-anchor="middle" font-size="11" font-weight="700">App UI</text>
+                <text x="170" y="68" text-anchor="middle" font-size="9" class="t-muted">HTML · CSS · JS</text>
+              </g>
+              <g class="hot node-chip" data-key="sw" role="button" tabindex="0" aria-pressed="false" aria-label="Service Worker">
+                <rect x="110" y="116" width="120" height="42" rx="14" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="170" y="135" text-anchor="middle" font-size="10.5" font-weight="700">Service Worker</text>
+                <text x="170" y="149" text-anchor="middle" font-size="8.5" class="t-muted">proxy programable</text>
+              </g>
+              <g class="hot node-chip" data-key="manifest" role="button" tabindex="0" aria-pressed="false" aria-label="Web App Manifest">
+                <rect x="24" y="176" width="126" height="42" rx="14" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="87" y="195" text-anchor="middle" font-size="10.5" font-weight="700">manifest.json</text>
+                <text x="87" y="209" text-anchor="middle" font-size="8.5" class="t-muted">instalación · iconos</text>
+              </g>
+              <g class="hot node-chip" data-key="cache" role="button" tabindex="0" aria-pressed="false" aria-label="Cache API e IndexedDB">
+                <rect x="190" y="176" width="126" height="42" rx="14" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="253" y="195" text-anchor="middle" font-size="10.5" font-weight="700">Cache + IndexedDB</text>
+                <text x="253" y="209" text-anchor="middle" font-size="8.5" class="t-muted">assets · datos</text>
+              </g>
+              <text x="170" y="238" text-anchor="middle" font-size="8.5" class="t-muted">Toca un nodo para inspeccionar su función</text>
+            </svg>
+          </div>
+
+          <div class="reveal-panels stack">
+            <article class="reveal-panel card is-on" data-panel="ui">
+              <h3>App UI · la capa visible</h3>
+              <p class="small muted" style="margin-top:4px">Interfaz construida con estándares web. Debe funcionar sin conexión para las rutas críticas y mostrar estados honestos: sin conexión, datos en caché o pendientes de sincronizar.</p>
+              <div class="row wrap" style="margin-top:7px"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JS</span><span class="tag">responsive</span></div>
+            </article>
+            <article class="reveal-panel card" data-panel="sw">
+              <h3>Service Worker · proxy en segundo plano</h3>
+              <p class="small muted" style="margin-top:4px">Script independiente del DOM que intercepta <span class="mono">fetch</span>, decide caché o red, y recibe eventos como <span class="mono">push</span> y <span class="mono">sync</span>. Solo funciona bajo HTTPS y no puede acceder al DOM directamente.</p>
+              <div class="row wrap" style="margin-top:7px"><span class="tag">fetch</span><span class="tag">cache-first</span><span class="tag">sync</span><span class="tag">push</span></div>
+            </article>
+            <article class="reveal-panel card" data-panel="manifest">
+              <h3>Web App Manifest · identidad instalable</h3>
+              <p class="small muted" style="margin-top:4px">JSON con nombre, iconos, colores y <span class="mono">display</span>. Permite instalar en la pantalla de inicio y abrir en modo <span class="mono">standalone</span>, sin barra del navegador.</p>
+              <div class="row wrap" style="margin-top:7px"><span class="tag">name</span><span class="tag">icons</span><span class="tag">theme_color</span><span class="tag">standalone</span></div>
+            </article>
+            <article class="reveal-panel card" data-panel="cache">
+              <h3>Cache API + IndexedDB · memoria persistente</h3>
+              <p class="small muted" style="margin-top:4px">Cache almacena respuestas HTTP (HTML, CSS, fuentes, imágenes); IndexedDB guarda datos estructurados y colas de operaciones. Las cuotas son del navegador y pueden ser desalojadas.</p>
+              <div class="row wrap" style="margin-top:7px"><span class="tag">Cache API</span><span class="tag">IndexedDB</span><span class="tag">Background Sync</span></div>
+            </article>
+            <p class="micro muted" id="pwaHint">Ventaja medible: primera carga controlada por red; siguientes, controladas por caché.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 3.3 ============================ -->
+    <section class="slide" data-tone="light" aria-label="Aplicaciones híbridas y nativas">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 3 · Híbridas vs. nativas</p>
+          <h2>Un código base contra el acceso total al hardware</h2>
+          <p class="lead">La decisión no es ideológica: es un intercambio entre costo, tiempo y control del dispositivo. Selecciona un criterio.</p>
+        </header>
+
+        <div class="split wide-right anim" style="--d:1">
+          <div class="card">
+            <h3 style="margin-bottom:8px">Capas de una app híbrida</h3>
+            <svg class="dia" viewBox="0 0 240 220" role="img" aria-label="Diagrama de capas: WebView, puente JavaScript y APIs nativas">
+              <rect x="20" y="14" width="200" height="58" rx="14" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="120" y="38" text-anchor="middle" font-size="10.5" font-weight="700">HTML5 · CSS3 · JS</text>
+              <text x="120" y="54" text-anchor="middle" font-size="8.5" class="t-muted">Ionic · Capacitor · Cordova</text>
+              <path d="M120 72v22" class="wire" stroke-dasharray="4 4"/>
+              <rect x="20" y="94" width="200" height="46" rx="14" fill="var(--soft)" stroke="var(--border)" stroke-width="1.5"/>
+              <text x="120" y="113" text-anchor="middle" font-size="10.5" font-weight="700">Contenedor WebView</text>
+              <text x="120" y="128" text-anchor="middle" font-size="8.5" class="t-muted">motor del sistema · sandbox</text>
+              <path d="M120 140v22" class="wire" stroke-dasharray="4 4"/>
+              <rect x="20" y="162" width="200" height="44" rx="14" fill="var(--surface-solid)" stroke="var(--accent)" stroke-width="1.6"/>
+              <text x="120" y="181" text-anchor="middle" font-size="10.5" font-weight="700">JavaScript Bridge</text>
+              <text x="120" y="195" text-anchor="middle" font-size="8.5" class="t-muted">mensajes serializados ↔ nativo</text>
+              <path d="M120 206v0" class="wire"/>
+            </svg>
+            <p class="micro muted">El puente es potente y delicado: cada mensaje cruza una frontera de seguridad y de rendimiento.</p>
+          </div>
+
+          <div class="stack">
+            <div class="segmented" role="group" aria-label="Criterio de comparación">
+              <button type="button" data-crit="perf" aria-pressed="true">Rendimiento</button>
+              <button type="button" data-crit="cost" aria-pressed="false">Costo</button>
+              <button type="button" data-crit="ttm" aria-pressed="false">Time-to-Market</button>
+              <button type="button" data-crit="hw" aria-pressed="false">Hardware</button>
+            </div>
+
+            <table class="matrix" aria-label="Matriz comparativa entre enfoque nativo e híbrido">
+              <thead><tr><th scope="col">Criterio</th><th scope="col">Nativo</th><th scope="col">Híbrido / WebView</th></tr></thead>
+              <tbody>
+                <tr data-row="perf" class="is-on"><td>Rendimiento</td><td class="win">Máximo · GPU directa</td><td class="lose">Depende del WebView</td></tr>
+                <tr data-row="cost"><td>Costo</td><td class="lose">Dos desarrollos</td><td class="win">Un código base</td></tr>
+                <tr data-row="ttm"><td>Time-to-Market</td><td class="lose">Más lento</td><td class="win">Rápido · hot reload</td></tr>
+                <tr data-row="hw"><td>Acceso a hardware</td><td class="win">Total y estable</td><td class="lose">Vía plugins y puente</td></tr>
+              </tbody>
+            </table>
+
+            <div class="card tonal">
+              <p class="small" id="critNote"><strong>Rendimiento:</strong> Swift/Kotlin compilan a nativo y dibujan con acceso directo a GPU. Un WebView añade una capa de composición y puente; para animaciones complejas o juego, la diferencia se nota.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 4.1 ============================ -->
+    <section class="slide" data-tone="tint" data-accent="indigo" aria-label="Áreas de aplicación por sector">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 4 · Juarez Olivarez Armando Enrique</p>
+          <h2>Dónde la web móvil ya reemplaza a la app</h2>
+          <p class="lead">Cuatro sectores donde el navegador gana por fricción de instalación, acceso a hardware o consumo de datos.</p>
+        </header>
+
+        <div class="anim" style="--d:1">
+          <div class="tabs-role" role="tablist" aria-label="Sectores de aplicación">
+            <button type="button" role="tab" id="tab-sec-shop" aria-controls="panel-sec-shop" aria-selected="true">Comercio y Fintech</button>
+            <button type="button" role="tab" id="tab-sec-move" aria-controls="panel-sec-move" aria-selected="false" tabindex="-1">Movilidad y Mapas</button>
+            <button type="button" role="tab" id="tab-sec-health" aria-controls="panel-sec-health" aria-selected="false" tabindex="-1">Salud y Fitness</button>
+            <button type="button" role="tab" id="tab-sec-media" aria-controls="panel-sec-media" aria-selected="false" tabindex="-1">Consumo Multimedia</button>
+          </div>
+
+          <div role="tabpanel" id="panel-sec-shop" aria-labelledby="tab-sec-shop" class="tab-panel" style="margin-top:8px">
+            <div class="split">
+              <div class="phone-mock" aria-hidden="true">
+                <span class="pm-notch"></span>
+                <div class="pm-body">
+                  <span class="pm-bar w70"></span><span class="pm-bar w45"></span>
+                  <div class="pm-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 3.5h2l2.4 12h9.4L19 8H6"/></svg></div>
+                  <div class="pm-row"><span></span><span></span><span></span></div>
+                  <span class="pm-cta"></span>
+                </div>
+              </div>
+              <div class="stack">
+                <h3>Comercio electrónico y Fintech</h3>
+                <ul class="points">
+                  <li><strong>Conversión rápida:</strong> cada paso extra de instalación pierde usuarios; la web abre directo desde el anuncio.</li>
+                  <li><strong>Pagos en un clic:</strong> <span class="mono">Payment Request API</span> reutiliza tarjeta y dirección del navegador.</li>
+                  <li><strong>Biometría:</strong> <span class="mono">WebAuthn</span> permite autenticación con huella o rostro sin contraseña.</li>
+                  <li><strong>Catálogos offline:</strong> Cache API e IndexedDB para consultar sin señal.</li>
+                </ul>
+                <div class="row wrap"><span class="tag">Payment Request</span><span class="tag">WebAuthn</span><span class="tag">IndexedDB</span></div>
+                <p class="micro muted">Ejemplos: AliExpress, Amazon móvil, Mercado Pago Web.</p>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-sec-move" aria-labelledby="tab-sec-move" class="tab-panel" hidden style="margin-top:8px">
+            <div class="split">
+              <div class="phone-mock" aria-hidden="true">
+                <span class="pm-notch"></span>
+                <div class="pm-body">
+                  <span class="pm-bar w45"></span>
+                  <div class="pm-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 6 6-2.5 6 2.5 6-2.5v14.5L15 20.5 9 18l-6 2.5Z"/><path d="M9 3.5V18M15 6v14.5"/></svg></div>
+                  <span class="pm-bar"></span><span class="pm-bar w70"></span>
+                  <span class="pm-cta"></span>
+                </div>
+              </div>
+              <div class="stack">
+                <h3>Movilidad y Mapas</h3>
+                <ul class="points">
+                  <li><strong>Rutas en tiempo real:</strong> el mapa se actualiza sin descargar una app pesada.</li>
+                  <li><strong>Bajo consumo de datos:</strong> tiles vectoriales y caché reducen el tráfico frente a un cliente nativo.</li>
+                  <li><strong>Contexto inmediato:</strong> enlace compartido que abre la ruta exacta en el navegador.</li>
+                  <li><strong>Geolocalización:</strong> GPS + Wi-Fi + celdas con permiso puntual, no permanente.</li>
+                </ul>
+                <div class="row wrap"><span class="tag">Geolocation</span><span class="tag">Cache API</span><span class="tag">SVG</span></div>
+                <p class="micro muted">Ejemplos: Uber Lite <span class="mono">m.uber.com</span>, Google Maps Web.</p>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-sec-health" aria-labelledby="tab-sec-health" class="tab-panel" hidden style="margin-top:8px">
+            <div class="split">
+              <div class="phone-mock" aria-hidden="true">
+                <span class="pm-notch"></span>
+                <div class="pm-body">
+                  <span class="pm-bar w70"></span>
+                  <div class="pm-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10Z"/></svg></div>
+                  <div class="pm-row"><span></span><span></span></div>
+                  <span class="pm-bar w45"></span>
+                  <span class="pm-cta"></span>
+                </div>
+              </div>
+              <div class="stack">
+                <h3>Salud y Fitness</h3>
+                <ul class="points">
+                  <li><strong>Telemedicina en navegador:</strong> videollamada con <span class="mono">getUserMedia</span> sin instalar software.</li>
+                  <li><strong>Conexión con wearables:</strong> Web Bluetooth para básculas y monitores cardíacos compatibles.</li>
+                  <li><strong>Privacidad primero:</strong> el permiso de cámara y micrófono se concede por sesión y por origen.</li>
+                  <li><strong>Continuidad:</strong> historial accesible desde cualquier dispositivo con sesión iniciada.</li>
+                </ul>
+                <div class="row wrap"><span class="tag">getUserMedia</span><span class="tag">Web Bluetooth</span><span class="tag">Push</span></div>
+                <p class="micro muted">Ejemplo: Doctoralia (reserva y videoconsulta web).</p>
+              </div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-sec-media" aria-labelledby="tab-sec-media" class="tab-panel" hidden style="margin-top:8px">
+            <div class="split">
+              <div class="phone-mock" aria-hidden="true">
+                <span class="pm-notch"></span>
+                <div class="pm-body">
+                  <div class="pm-block"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4.5v15l13-7.5Z"/></svg></div>
+                  <span class="pm-bar w70"></span>
+                  <div class="pm-row"><span></span><span></span><span></span></div>
+                  <span class="pm-cta"></span>
+                </div>
+              </div>
+              <div class="stack">
+                <h3>Consumo Multimedia</h3>
+                <ul class="points">
+                  <li><strong>Streaming adaptativo:</strong> HLS/DASH ajusta la calidad según red y batería.</li>
+                  <li><strong>Segundo plano:</strong> audio continúa al cambiar de pestaña o bloquear la pantalla.</li>
+                  <li><strong>Controles del sistema:</strong> <span class="mono">Media Session API</span> publica título y carátula en la pantalla de bloqueo.</li>
+                  <li><strong>Descubrimiento:</strong> enlaces que reproducen al instante, sin fricción de tienda.</li>
+                </ul>
+                <div class="row wrap"><span class="tag">Media Session</span><span class="tag">MSE</span><span class="tag">Picture-in-Picture</span></div>
+                <p class="micro muted">Ejemplos: Spotify Web Player, YouTube Music Web, Pinterest.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 4.2 ============================ -->
+    <section class="slide" data-tone="light" data-accent="orange" aria-label="Web APIs para acceder al hardware">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Bloque 4 · Hardware desde el navegador</p>
+          <h2>Cinco APIs, un requisito: HTTPS y permiso</h2>
+          <p class="lead">El navegador es un intermediario desconfiado. Cada capacidad del dispositivo se concede por origen, por sesión y con consentimiento explícito.</p>
+        </header>
+
+        <div class="reveal split anim" data-reveal style="--d:1">
+          <div class="card center">
+            <svg class="dia" viewBox="0 0 320 320" role="group" aria-label="Esquema radial de APIs de hardware">
+              <g stroke="var(--border)" stroke-width="1.3" stroke-dasharray="4 5">
+                <path d="M160 92V74M226 122l14-10M214 214l12 14M106 214l-12 14M94 122l-14-10"/>
+              </g>
+              <rect x="136" y="98" width="48" height="100" rx="13" fill="var(--surface-solid)" stroke="var(--fg)" stroke-width="1.8"/>
+              <rect x="143" y="116" width="34" height="58" rx="7" fill="var(--soft)" stroke="var(--border)" stroke-width="1"/>
+              <text x="160" y="214" text-anchor="middle" font-size="8.5" class="t-muted">HTTPS</text>
+
+              <g class="hot node-chip" data-key="geo" role="button" tabindex="0" aria-pressed="true" aria-label="Geolocalización">
+                <circle cx="160" cy="46" r="28" fill="var(--surface-solid)" stroke="var(--accent)" stroke-width="1.8"/>
+                <text x="160" y="43" text-anchor="middle" font-size="9.5" font-weight="700">Geo</text>
+                <text x="160" y="55" text-anchor="middle" font-size="7.5" class="t-muted">GPS</text>
+              </g>
+              <g class="hot node-chip" data-key="media" role="button" tabindex="0" aria-pressed="false" aria-label="Cámara y micrófono">
+                <circle cx="270" cy="122" r="28" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="270" y="119" text-anchor="middle" font-size="9.5" font-weight="700">Media</text>
+                <text x="270" y="131" text-anchor="middle" font-size="7.5" class="t-muted">cámara</text>
+              </g>
+              <g class="hot node-chip" data-key="motion" role="button" tabindex="0" aria-pressed="false" aria-label="Sensores de movimiento">
+                <circle cx="250" cy="254" r="28" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="250" y="251" text-anchor="middle" font-size="9.5" font-weight="700">Motion</text>
+                <text x="250" y="263" text-anchor="middle" font-size="7.5" class="t-muted">giro</text>
+              </g>
+              <g class="hot node-chip" data-key="push" role="button" tabindex="0" aria-pressed="false" aria-label="Notificaciones push">
+                <circle cx="70" cy="254" r="28" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="70" y="251" text-anchor="middle" font-size="9.5" font-weight="700">Push</text>
+                <text x="70" y="263" text-anchor="middle" font-size="7.5" class="t-muted">alertas</text>
+              </g>
+              <g class="hot node-chip" data-key="ble" role="button" tabindex="0" aria-pressed="false" aria-label="Web Bluetooth y Web NFC">
+                <circle cx="50" cy="122" r="28" fill="var(--surface-solid)" stroke="var(--border)" stroke-width="1.5"/>
+                <text x="50" y="119" text-anchor="middle" font-size="9" font-weight="700">BLE</text>
+                <text x="50" y="131" text-anchor="middle" font-size="7.5" class="t-muted">NFC</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="reveal-panels stack">
+            <article class="reveal-panel card is-on" data-panel="geo">
+              <div class="row between"><h3>Geolocalización</h3><span class="tag">Geolocation API</span></div>
+              <p class="small muted" style="margin:4px 0 6px">Combina GPS, Wi-Fi y redes celulares. Devuelve latitud, longitud, precisión, velocidad y rumbo. Requiere HTTPS y permiso; en segundo plano el navegador puede degradar la precisión.</p>
+              <p class="mono micro" style="color:var(--muted)">navigator.geolocation.getCurrentPosition(ok, err, { enableHighAccuracy: true })</p>
+            </article>
+            <article class="reveal-panel card" data-panel="media">
+              <div class="row between"><h3>Cámara y micrófono</h3><span class="tag">MediaDevices</span></div>
+              <p class="small muted" style="margin:4px 0 6px">Videollamadas, escaneo de QR o tarjetas y base para Realidad Aumentada con WebXR. El usuario ve qué dispositivo se solicita y puede revocarlo.</p>
+              <p class="mono micro" style="color:var(--muted)">navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })</p>
+            </article>
+            <article class="reveal-panel card" data-panel="motion">
+              <div class="row between"><h3>Sensores de movimiento</h3><span class="tag">DeviceMotion</span></div>
+              <p class="small muted" style="margin:4px 0 6px">Acelerómetro y giroscopio: inclinación, rotación, sacudidas y podómetro aproximado. Sin permiso en iOS y subject to sensor throttling.</p>
+              <p class="mono micro" style="color:var(--muted)">DeviceOrientationEvent.requestPermission() · 'devicemotion'</p>
+            </article>
+            <article class="reveal-panel card" data-panel="push">
+              <div class="row between"><h3>Notificaciones push</h3><span class="tag">Push + Notifications</span></div>
+              <p class="small muted" style="margin:4px 0 6px">El Service Worker recibe el evento con la app cerrada. Requiere suscripción PushManager, claves VAPID y permiso explícito; nunca debe pedirse en la primera visita.</p>
+              <p class="mono micro" style="color:var(--muted)">registration.pushManager.subscribe({ userVisibleOnly: true })</p>
+            </article>
+            <article class="reveal-panel card" data-panel="ble">
+              <div class="row between"><h3>Bluetooth y NFC</h3><span class="tag">Web Bluetooth / NFC</span></div>
+              <p class="small muted" style="margin:4px 0 6px">BLE para básculas y monitores cardíacos; NFC para etiquetas de proximidad y credenciales. Soporte desigual: no disponible en Safari iOS.</p>
+              <p class="mono micro" style="color:var(--muted)">navigator.bluetooth.requestDevice({ acceptAllDevices: true })</p>
+            </article>
+            <p class="micro muted">Regla: pide el permiso en el momento en que el usuario entiende para qué sirve (Just-in-Time), no al cargar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 5.1 ============================ -->
+    <section class="slide" data-tone="dark" data-accent="teal" aria-label="Conectividad y resiliencia en redes móviles">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <div class="between">
+            <div>
+              <p class="eyebrow">Bloque 5 · Vazquez García Carlos Angel</p>
+              <h2>La red no es una línea: es un supuesto que falla</h2>
+            </div>
+            <span class="net-status" id="netStatus" role="status" aria-live="polite">
+              <span class="net-dot" aria-hidden="true"></span><span id="netLabel">Comprobando red…</span>
+            </span>
+          </div>
+        </header>
+
+        <div class="grid-3 anim" style="--d:1">
+          <div class="acc-item">
+            <button class="acc-btn" type="button" aria-expanded="false" aria-controls="netAcc1">
+              <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-wifi"></use></svg></span>El reto móvil</span>
+              <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+            </button>
+            <div class="acc-panel" id="netAcc1" hidden>Latencia variable, pérdida de paquetes y <em>handover</em> entre antena y Wi-Fi. Una petición puede tardar 40 ms o agotar el tiempo de espera; la interfaz debe asumirlo.</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-btn" type="button" aria-expanded="false" aria-controls="netAcc2">
+              <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg></span>Service Worker</span>
+              <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+            </button>
+            <div class="acc-panel" id="netAcc2" hidden>Proxy programable entre la UI y la red. Puede responder desde caché, reintentar, encolar escrituras y servir una página offline propia.</div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-btn" type="button" aria-expanded="false" aria-controls="netAcc3">
+              <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></span>Estrategias</span>
+              <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+            </button>
+            <div class="acc-panel" id="netAcc3" hidden><strong>Stale-While-Revalidate:</strong> responde rápido desde caché y actualiza en segundo plano. <strong>Background Sync:</strong> guarda la operación fallida y la reintenta al volver la conexión.</div>
+          </div>
+        </div>
+
+        <div class="card glass anim" style="--d:2">
+          <div class="between" style="margin-bottom:6px">
+            <h3>Simulador de flujo de red</h3>
+            <span class="chip" id="flowState">En línea · sin solicitudes</span>
+          </div>
+
+          <svg class="flow dia" id="netFlow" viewBox="0 0 640 150" role="img" aria-label="Flujo App Web hacia Service Worker hacia Servidor">
+            <path class="flow-wire" d="M158 66h94"/>
+            <path class="flow-wire to-server" d="M388 66h94"/>
+            <path class="flow-wire" d="M252 118c0 22 22 22 32 22h72c10 0 32 0 32-22" opacity=".18" stroke-dasharray="4 6"/>
+            <g class="flow-node">
+              <rect x="18" y="34" width="140" height="64" rx="16"/>
+              <text x="88" y="60" text-anchor="middle" font-size="12" font-weight="700">App Web</text>
+              <text x="88" y="78" text-anchor="middle" font-size="9.5" class="n-sub">UI · fetch()</text>
             </g>
+            <g class="flow-node">
+              <rect x="252" y="34" width="136" height="64" rx="16" stroke="var(--accent)"/>
+              <text x="320" y="60" text-anchor="middle" font-size="12" font-weight="700">Service Worker</text>
+              <text x="320" y="78" text-anchor="middle" font-size="9.5" class="n-sub">fetch · cache · sync</text>
+            </g>
+            <g class="flow-node">
+              <rect x="482" y="34" width="140" height="64" rx="16"/>
+              <text x="552" y="60" text-anchor="middle" font-size="12" font-weight="700">Servidor</text>
+              <text x="552" y="78" text-anchor="middle" font-size="9.5" class="n-sub">API / pedido</text>
+            </g>
+            <circle class="packet" id="netPacket" cx="160" cy="66" r="5" opacity="0"/>
+            <text x="320" y="143" text-anchor="middle" font-size="9" fill="var(--muted)">La solicitud no siempre llega al servidor: el SW decide</text>
           </svg>
-          <div class="scale-sides anim" style="--d:3">
-            <button type="button" class="scale-side" data-side="docs"><svg class="ic" aria-hidden="true"><use href="#i-file"></use></svg> Menos: documentación</button>
-            <button type="button" class="scale-side" data-side="valor"><svg class="ic" aria-hidden="true"><use href="#i-smile"></use></svg> Más: valor al usuario</button>
-          </div>
-        </div>
-      </section>
 
-      <!-- ============ SLIDE 8 ============ -->
-      <section class="slide s8">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">08 · El Ciclo Continuo</div>
-          <h2 class="anim" style="--d:1">El Motor de Lean UX</h2>
-          <ul class="points anim" style="--d:2">
-            <li>Bucle infinito: <strong>Construir → Medir → Aprender</strong></li>
-            <li>Mejora constante e iterativa, no una línea recta</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Haz clic en cada fase del bucle para ver su detalle</p>
-        </div>
-        <div class="art-col">
-          <div class="loop-wrap">
-            <div class="loop anim" style="--d:2">
-              <div class="loop-ring"></div>
-              <svg class="loop-arrows" viewBox="0 0 300 300" aria-hidden="true">
-                <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="rgba(255,255,255,.7)"/></marker></defs>
-                <path d="M150 40 A110 110 0 0 1 245.3 95" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
-                <path d="M245.3 95 A110 110 0 0 1 54.7 95" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
-                <path d="M54.7 95 A110 110 0 0 1 150 40" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arr)"/>
-              </svg>
-              <button type="button" class="loop-node" data-phase="construir" style="top:13.3%;left:50%;">
-                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-tool"></use></svg></span><span class="n-lbl">Construir</span>
-              </button>
-              <button type="button" class="loop-node" data-phase="medir" style="top:31.7%;left:81.8%;">
-                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg></span><span class="n-lbl">Medir</span>
-              </button>
-              <button type="button" class="loop-node" data-phase="aprender" style="top:31.7%;left:18.2%;">
-                <span class="n-ico"><svg class="ic" aria-hidden="true"><use href="#i-bulb"></use></svg></span><span class="n-lbl">Aprender</span>
-              </button>
-            </div>
-            <div class="detail-box card-standard anim" style="--d:3" id="loopDetail">Clic en una fase para ver su micro-explicación</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ SLIDE 9 ============ -->
-      <section class="slide s9">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">09 · Experimentación</div>
-          <h2 class="anim" style="--d:1">De Asunciones a Experimentos</h2>
-          <ul class="points anim" style="--d:2">
-            <li>Fórmula: «Creemos que <strong>[Interfaz X]</strong> logrará <strong>[Resultado Y]</strong>»</li>
-            <li>Diseñamos experimentos, no certezas absolutas</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Haz clic en las variables de la derecha para simular la hipótesis</p>
-        </div>
-        <div class="art-col">
-          <div class="hypo-formula card-standard anim" style="--d:2">
-            Creemos que <button type="button" class="hypo-var" id="varX">un checkout en un solo paso</button>
-            logrará <button type="button" class="hypo-var" id="varY">aumentar la conversión un 15%</button>
-          </div>
-          <div class="detail-box card-standard anim" style="--d:3" id="hypoReadout">Haz clic en las variables para simular la hipótesis <svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></div>
-        </div>
-      </section>
-
-      <!-- ============ SLIDE 10 ============ -->
-      <section class="slide s10">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">10 · Validación Rápida</div>
-          <h2 class="anim" style="--d:1">Producto Mínimo Viable (MVP)</h2>
-          <ul class="points anim" style="--d:2">
-            <li>La versión más simple con <strong>valor funcional desde el día 1</strong></li>
-            <li>Validar con el mercado real con el menor esfuerzo posible</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Alterna las vistas para entender la diferencia</p>
-        </div>
-        <div class="art-col">
-          <div class="mvp-toggle anim" style="--d:2">
-            <button type="button" class="mvp-opt active" data-view="mvp"><svg class="ic" aria-hidden="true"><use href="#i-check"></use></svg> MVP: Patinete → Auto</button>
-            <button type="button" class="mvp-opt" data-view="incompleto"><svg class="ic" aria-hidden="true"><use href="#i-x"></use></svg> Rueda suelta</button>
-          </div>
-          <div class="mvp-view anim" style="--d:3">
-            <div class="mvp-stage show" data-view="mvp">
-              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-scooter"></use></svg><span class="mvp-lbl">Patinete</span></div>
-              <span class="mvp-arrow">→</span>
-              <span class="mvp-arrow">→</span>
-              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-car"></use></svg><span class="mvp-lbl">Auto</span></div>
-              <span class="mvp-check"><svg class="ic" aria-hidden="true"><use href="#i-check"></use></svg> Valor desde el día 1</span>
-            </div>
-            <div class="mvp-stage" data-view="incompleto">
-              <div class="mvp-step"><svg class="mvp-veh" aria-hidden="true"><use href="#i-wheel"></use></svg><span class="mvp-lbl">Rueda suelta</span></div>
-              <span class="mvp-x"><svg class="ic" aria-hidden="true"><use href="#i-x"></use></svg> Falta el resto del vehículo</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ SLIDE 11 ============ -->
-      <section class="slide s11">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">11 · UX + Desarrollo</div>
-          <h2 class="anim" style="--d:1">Trabajo Codo a Codo</h2>
-          <ul class="points anim" style="--d:2">
-            <li><strong>Sprints compartidos:</strong> diseñadores y desarrolladores desde el día 1</li>
-            <li><strong>Dual-Track:</strong> diseñar lo de hoy mientras se valida lo del mañana</li>
-          </ul>
-          <p class="hint anim" style="--d:3">Avanza los sprints y mira girar los engranajes en sincronía</p>
-        </div>
-        <div class="art-col">
-          <div class="gears anim" style="--d:2">
-            <div class="gear-wrap a" id="gearA">
-              <svg viewBox="0 0 100 100" aria-hidden="true">
-                <defs><rect id="tooth" x="-5" y="-42" width="10" height="14" rx="3" fill="rgba(255,255,255,.5)"/></defs>
-                <use href="#tooth"/>
-                <use href="#tooth" transform="rotate(45 50 50)"/>
-                <use href="#tooth" transform="rotate(90 50 50)"/>
-                <use href="#tooth" transform="rotate(135 50 50)"/>
-                <use href="#tooth" transform="rotate(180 50 50)"/>
-                <use href="#tooth" transform="rotate(225 50 50)"/>
-                <use href="#tooth" transform="rotate(270 50 50)"/>
-                <use href="#tooth" transform="rotate(315 50 50)"/>
-                <circle cx="50" cy="50" r="34" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="13" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="4" fill="#fff"/>
-              </svg>
-              <span class="gear-lbl">Diseño</span>
-            </div>
-            <div class="gear-wrap b" id="gearB">
-              <svg viewBox="0 0 100 100" aria-hidden="true">
-                <defs><rect id="tooth2" x="-5" y="-42" width="10" height="14" rx="3" fill="rgba(255,255,255,.5)"/></defs>
-                <use href="#tooth2"/>
-                <use href="#tooth2" transform="rotate(45 50 50)"/>
-                <use href="#tooth2" transform="rotate(90 50 50)"/>
-                <use href="#tooth2" transform="rotate(135 50 50)"/>
-                <use href="#tooth2" transform="rotate(180 50 50)"/>
-                <use href="#tooth2" transform="rotate(225 50 50)"/>
-                <use href="#tooth2" transform="rotate(270 50 50)"/>
-                <use href="#tooth2" transform="rotate(315 50 50)"/>
-                <circle cx="50" cy="50" r="34" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="13" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-                <circle cx="50" cy="50" r="4" fill="#fff"/>
-              </svg>
-              <span class="gear-lbl">Desarrollo</span>
-            </div>
-          </div>
-          <div class="sprint anim" style="--d:3">
-            <button type="button" class="sprint-cell active" data-s="0">S1</button>
-            <button type="button" class="sprint-cell" data-s="1">S2</button>
-            <button type="button" class="sprint-cell" data-s="2">S3</button>
-            <button type="button" class="sprint-cell" data-s="3">S4</button>
-            <button type="button" class="sprint-cell" data-s="4">S5</button>
-            <button type="button" class="sprint-next" id="sprintNext"><svg class="ic" aria-hidden="true"><use href="#i-play"></use></svg> Siguiente</button>
-          </div>
-          <div class="detail-box card-standard anim" style="--d:4" id="sprintReadout">Sprint 1 activo · diseño y desarrollo en paralelo <svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></div>
-        </div>
-      </section>
-
-      <!-- ============ SLIDE 12 ============ -->
-      <section class="slide s12">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="eyebrow anim" style="--d:0">12 · Metodología Principal</div>
-        <h2 class="anim" style="--d:1">Design Sprint y Pruebas de Usabilidad</h2>
-        <p class="s12-sub anim" style="--d:2">Metodología de 5 Días · Google Ventures (Jake Knapp)</p>
-
-        <div class="s12-grid">
-          <div class="s12-sec anim" style="--d:3">
-            <div class="s12-sec-label">1 · Estructura de 5 Días</div>
-            <div class="days">
-              <button type="button" class="day card-standard" data-day="mapear">
-                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pin"></use></svg></span>
-                <span class="day-name">Lunes · Día 1</span>
-                <span class="day-task">Mapear</span>
-                <span class="day-desc">Definir objetivo y mapear la experiencia</span>
-              </button>
-              <button type="button" class="day card-standard" data-day="bocetar">
-                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg></span>
-                <span class="day-name">Martes · Día 2</span>
-                <span class="day-task">Bocetar</span>
-                <span class="day-desc">Generar múltiples soluciones e ideas</span>
-              </button>
-              <button type="button" class="day card-standard" data-day="decidir">
-                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-target"></use></svg></span>
-                <span class="day-name">Miércoles · Día 3</span>
-                <span class="day-task">Decidir</span>
-                <span class="day-desc">Seleccionar la mejor propuesta</span>
-              </button>
-              <button type="button" class="day card-standard" data-day="prototipar">
-                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-monitor"></use></svg></span>
-                <span class="day-name">Jueves · Día 4</span>
-                <span class="day-task">Prototipar</span>
-                <span class="day-desc">Crear un prototipo realista</span>
-              </button>
-              <button type="button" class="day card-standard" data-day="probar">
-                <span class="day-ico"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg></span>
-                <span class="day-name">Viernes · Día 5</span>
-                <span class="day-task">Probar</span>
-                <span class="day-desc">Validar con 5 usuarios reales</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <p class="hint anim" style="--d:4">Pasa el cursor o haz clic en cada día para resaltarlo</p>
-      </section>
-
-      <!-- ============ SLIDE 13 ============ -->
-      <section class="slide s13">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="eyebrow anim" style="--d:0">13 · Prototipado y Validación</div>
-        <h2 class="anim" style="--d:1">Validar Antes de Construir</h2>
-        <p class="s12-sub anim" style="--d:2">Del boceto de papel al test con usuarios reales</p>
-
-        <div class="s12-row">
-          <div class="s12-col anim" style="--d:3">
-            <div class="s12-sec-label">2 · Prototipado</div>
-            <div class="proto-toggle">
-              <button type="button" class="proto-opt active" data-mode="baja"><svg class="ic" aria-hidden="true"><use href="#i-pencil"></use></svg> Baja fidelidad</button>
-              <button type="button" class="proto-opt" data-mode="alta"><svg class="ic" aria-hidden="true"><use href="#i-star"></use></svg> Alta fidelidad</button>
-            </div>
-            <div class="proto-stage">
-              <div class="proto-view show" data-mode="baja">
-                <div class="sketch">
-                  <div class="sk-line"></div>
-                  <div class="sk-line short"></div>
-                  <div class="sk-block"></div>
-                  <div class="sk-block tall"></div>
-                  <div class="sk-line dash"></div>
-                  <div class="sk-btn"></div>
-                </div>
+          <div class="between" style="margin-top:6px">
+            <div class="row wrap">
+              <label class="switch">
+                <input type="checkbox" id="offlineToggle">
+                <span class="track" aria-hidden="true"></span>
+                Simular túnel / sin señal
+              </label>
+              <div class="segmented tiny" role="group" aria-label="Modo de red">
+                <button type="button" data-netmode="legacy" aria-pressed="true">Modo tradicional</button>
+                <button type="button" data-netmode="offline" aria-pressed="false">Modo Offline-First</button>
               </div>
-              <div class="proto-view" data-mode="alta">
-                <div class="rendered">
-                  <div class="r-top"><span class="r-logo"></span><span class="r-pill"><svg class="ic" aria-hidden="true"><use href="#i-cart"></use></svg> 2</span></div>
-                  <div class="r-title"></div>
-                  <div class="r-title short"></div>
-                  <div class="r-desc"></div>
-                  <div class="r-desc short"></div>
-                  <button type="button" class="r-btn">Comprar ahora</button>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm" id="sendOrderBtn">
+              <svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg> Enviar pedido
+            </button>
+          </div>
+
+          <div class="grid-2" style="margin-top:8px">
+            <div>
+              <p class="micro muted" style="margin-bottom:4px">Cola de Background Sync</p>
+              <div class="queue" id="syncQueue"><span class="micro muted">Sin operaciones pendientes.</span></div>
+            </div>
+            <div>
+              <p class="micro muted" style="margin-bottom:4px">Registro de red</p>
+              <div class="console" id="netConsole" role="log" aria-live="polite"><span class="muted-c">Esperando una solicitud…</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 5.2 ============================ -->
+    <section class="slide" data-tone="dark" data-accent="orange" aria-label="Rendimiento, consumo y Core Web Vitals">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <div class="between">
+            <div>
+              <p class="eyebrow">Bloque 5 · Rendimiento físico</p>
+              <h2>Cuando el JavaScript calienta el teléfono</h2>
+            </div>
+            <span class="chip warn"><svg class="ic" aria-hidden="true"><use href="#i-alert"></use></svg> Thermal throttling · batería</span>
+          </div>
+        </header>
+
+        <div class="grid anim" style="--d:1;grid-template-columns:1.05fr .95fr">
+          <div class="stack">
+            <div class="cwv" role="group" aria-label="Métricas Core Web Vitals">
+              <button type="button" class="cwv-card" data-cwv="lcp" data-state="good" aria-pressed="true">
+                <span class="cwv-name">LCP <span class="cwv-lamp" aria-hidden="true"></span></span>
+                <span class="cwv-val">&lt; 2.5 s · carga visual</span>
+              </button>
+              <button type="button" class="cwv-card" data-cwv="inp" data-state="good" aria-pressed="false">
+                <span class="cwv-name">INP <span class="cwv-lamp" aria-hidden="true"></span></span>
+                <span class="cwv-val">&lt; 200 ms · respuesta</span>
+              </button>
+              <button type="button" class="cwv-card" data-cwv="cls" data-state="good" aria-pressed="false">
+                <span class="cwv-name">CLS <span class="cwv-lamp" aria-hidden="true"></span></span>
+                <span class="cwv-val">&lt; 0.1 · estabilidad</span>
+              </button>
+            </div>
+
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="true" aria-controls="perfAcc">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg></span>Estrategia de mitigación</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="perfAcc">
+                <strong>Code Splitting:</strong> divide el bundle y carga solo la ruta actual. <strong>Lazy Loading:</strong> imágenes y componentes fuera de pantalla bajo demanda. <strong>Formatos:</strong> AVIF/WebP, tamaño correcto con <span class="mono">srcset</span>. <strong>Presupuesto:</strong> reserva espacio para evitar CLS y ejecuta tareas largas en <span class="mono">requestIdleCallback</span>.
+              </div>
+            </div>
+
+            <div class="card" style="padding:9px 11px">
+              <div class="between" style="margin-bottom:6px">
+                <span class="micro muted">Simulador de bloqueo del hilo principal</span>
+                <span class="chip" id="threadState">Hilo libre</span>
+              </div>
+              <div class="row wrap">
+                <button type="button" class="btn btn-sm" id="heavyBtn" style="background:rgba(255,59,48,.16);border-color:rgba(255,59,48,.4);color:#FFB4AE">Ejecutar JS pesado</button>
+                <button type="button" class="btn btn-sm" id="splitBtn" style="background:rgba(52,199,89,.16);border-color:rgba(52,199,89,.4);color:#8DF0AE">Ejecutar con Code Splitting</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card stack">
+            <div class="between">
+              <div>
+                <p class="micro muted">INP medido</p>
+                <div class="inp-readout good" id="inpReadout"><span class="num" id="inpValue">18</span><span class="unit">ms</span></div>
+              </div>
+              <div class="stack" style="gap:6px;align-items:flex-end">
+                <div class="thermal">
+                  <svg viewBox="0 0 24 40" aria-hidden="true">
+                    <rect x="8" y="3" width="8" height="24" rx="4" fill="none" stroke="var(--border)" stroke-width="2"/>
+                    <rect class="fill" id="thermFill" x="10" y="20" width="4" height="5" rx="2" fill="var(--ios-green)"/>
+                    <circle cx="12" cy="31" r="6" fill="none" stroke="var(--border)" stroke-width="2"/>
+                    <circle cx="12" cy="31" r="3" fill="var(--ios-green)" id="thermDot"/>
+                  </svg>
+                  <span class="micro muted" id="thermLabel">Temp. normal</span>
+                </div>
+                <div class="row" style="gap:6px">
+                  <div class="battery" aria-hidden="true"><i id="battFill"></i></div>
+                  <span class="micro muted" id="battLabel">82%</span>
                 </div>
               </div>
             </div>
-            <div class="proto-caption" id="protoCaption">Papel, lápiz y Balsamiq — valida flujos e ideas rápido, sin gastar recursos.</div>
+
+            <div>
+              <div class="between" style="margin-bottom:4px">
+                <span class="micro muted">Hilo principal (Main Thread)</span>
+                <span class="micro muted" id="threadMs">0 ms bloqueados</span>
+              </div>
+              <div class="thread-track">
+                <div class="thread-block clear" id="threadBlock"><span id="threadBlockLbl"></span></div>
+              </div>
+              <div class="thread-axis" aria-hidden="true"><span>0 ms</span><span>400</span><span>800</span><span>1200</span></div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" id="tapInterfaceBtn">
+              <svg class="ic" aria-hidden="true"><use href="#i-hand"></use></svg> Tocar interfaz
+            </button>
+
+            <div class="console" id="perfConsole" role="log" aria-live="polite"><span class="muted-c">Toca la interfaz para medir INP.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ 5.3 ============================ -->
+    <section class="slide" data-tone="dark" data-accent="green" aria-label="Seguridad, permisos y almacenamiento local">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <div class="between">
+            <div>
+              <p class="eyebrow">Bloque 5 · Seguridad del cliente</p>
+              <h2>Permisos justos y tokens que no se filtren</h2>
+            </div>
+            <span class="chip" id="secureBadge"><svg class="ic" aria-hidden="true"><use href="#i-lock"></use></svg> HTTPS requerido</span>
+          </div>
+        </header>
+
+        <div class="anim" style="--d:1">
+          <div class="tabs-role" role="tablist" aria-label="Permisos o almacenamiento">
+            <button type="button" role="tab" id="tab-sec-perm" aria-controls="panel-sec-perm" aria-selected="true">Permisos</button>
+            <button type="button" role="tab" id="tab-sec-store" aria-controls="panel-sec-store" aria-selected="false" tabindex="-1">Almacenamiento</button>
           </div>
 
-          <div class="s12-col wide anim" style="--d:4">
-            <div class="s12-sec-label">3 · Técnicas de Validación</div>
-            <div class="vcards">
-              <div class="vcard card-standard">
-                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-flask"></use></svg> Pruebas de Usabilidad</div>
-                <div class="v-sub">Moderadas <span>(en vivo · cualitativo)</span> vs No moderadas <span>(automatizadas · cuantitativo)</span></div>
-                <div class="v-chips">
-                  <button type="button" class="v-chip active">Moderadas · cualitativo</button>
-                  <button type="button" class="v-chip">No moderadas · cuantitativo</button>
+          <div role="tabpanel" id="panel-sec-perm" aria-labelledby="tab-sec-perm" class="tab-panel" style="margin-top:8px">
+            <div class="split">
+              <div class="stack">
+                <div class="card">
+                  <div class="row" style="margin-bottom:5px"><span class="icon-badge green"><svg class="ic" aria-hidden="true"><use href="#i-hand"></use></svg></span><h3>Patrón Just-in-Time</h3></div>
+                  <p class="small muted">Pide el permiso en el instante en que la función lo necesita y explica el beneficio antes del prompt del sistema. Un permiso denegado no se puede volver a preguntar desde la página.</p>
+                  <div class="row wrap" style="margin-top:7px"><span class="tag">Permissions API</span><span class="tag">HTTPS</span><span class="tag">gesto de usuario</span></div>
                 </div>
+                <button type="button" class="btn btn-primary" id="permBtn">
+                  <svg class="ic" aria-hidden="true"><use href="#i-gps"></use></svg> Consultar permiso de ubicación
+                </button>
+                <p class="micro muted">La consulta no lanza el prompt invasivo: solo lee el estado actual.</p>
               </div>
-              <div class="vcard card-standard">
-                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-chart"></use></svg> Pruebas A/B</div>
-                <div class="v-sub">Comparación directa de dos variantes <span>(A vs B)</span> frente a usuarios reales.</div>
+
+              <div class="card stack">
+                <h3>Estado real del permiso</h3>
+                <div class="perm-result" id="permResult" role="status" aria-live="polite">
+                  <span class="chip">sin consultar</span>
+                  <span class="small muted">Pulsa el botón para leer <span class="mono">navigator.permissions.query</span>.</span>
+                </div>
+                <div class="grid-3" style="margin-top:4px">
+                  <div class="kpi"><b class="mono">granted</b><span>concedido</span></div>
+                  <div class="kpi"><b class="mono">prompt</b><span>por decidir</span></div>
+                  <div class="kpi"><b class="mono">denied</b><span>bloqueado</span></div>
+                </div>
+                <p class="micro muted">Si la API no existe o el navegador la restringe, el <span class="mono">try/catch</span> muestra un respaldo en lugar de romper la interfaz.</p>
               </div>
-              <div class="vcard card-standard">
-                <div class="v-title"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg> Evaluación Heurística</div>
-                <div class="v-sub">Auditoría de expertos bajo las <span>10 Heurísticas de Jakob Nielsen</span>.</div>
+            </div>
+          </div>
+
+          <div role="tabpanel" id="panel-sec-store" aria-labelledby="tab-sec-store" class="tab-panel" hidden style="margin-top:8px">
+            <div class="split wide-right">
+              <div class="card">
+                <h3 style="margin-bottom:6px">Dónde vive cada dato</h3>
+                <table class="matrix">
+                  <thead><tr><th scope="col">Almacén</th><th scope="col">Uso correcto</th><th scope="col">Riesgo</th></tr></thead>
+                  <tbody>
+                    <tr><td class="mono">localStorage</td><td>Preferencias no sensibles</td><td class="lose">Legible por cualquier JS (XSS)</td></tr>
+                    <tr><td class="mono">Cookie HttpOnly</td><td>Token de sesión</td><td class="win">Inaccesible para JS</td></tr>
+                    <tr><td class="mono">IndexedDB</td><td>Datos offline estructurados</td><td class="lose">Origen comprometido = datos expuestos</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="card">
+                <div class="between" style="margin-bottom:6px">
+                  <h3>Simulador de ataque XSS</h3>
+                  <button type="button" class="btn btn-sm" id="xssBtn" style="background:rgba(255,59,48,.2);color:#FFB4AE;border-color:rgba(255,59,48,.4)">Simular ataque XSS</button>
+                </div>
+                <div class="xss-grid">
+                  <div class="xss-box" id="xssLocal">
+                    <span class="xb-head"><svg class="ic" aria-hidden="true"><use href="#i-db"></use></svg> localStorage</span>
+                    <span class="token" id="xssLocalToken">eyJhbGciOiJIUzI1NiIsInR5cCI6…</span>
+                    <span class="xb-msg" id="xssLocalMsg">Token legible por JavaScript</span>
+                  </div>
+                  <div class="xss-box" id="xssCookie">
+                    <span class="xb-head"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg> Cookie HttpOnly</span>
+                    <span class="token" id="xssCookieToken">••••••••••••••••••••••••</span>
+                    <span class="xb-msg" id="xssCookieMsg">No accesible desde document.cookie</span>
+                  </div>
+                </div>
+                <div class="console" id="xssConsole" style="margin-top:8px" role="log" aria-live="polite"><span class="muted-c">Pulsa “Simular ataque XSS”.</span></div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="s12-footer anim" style="--d:5">
-“Para que todos estos diseños probados se mantengan organizados y sean medibles a escala, se aplican los Sistemas de Diseño y Métricas UX…”
-        </div>
-      </section>
+    <!-- ============================ 5.4 ============================ -->
+    <section class="slide" data-tone="dark" data-accent="red" aria-label="Riesgos en WebViews y apps híbridas">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <div class="between">
+            <div>
+              <p class="eyebrow">Bloque 5 · Superficie de ataque híbrida</p>
+              <h2>El puente nativo es una frontera, no un atajo</h2>
+            </div>
+            <span class="shield-badge" id="shieldBadge"><svg class="ic" aria-hidden="true"><use href="#i-alert"></use></svg> Sin blindaje</span>
+          </div>
+          <p class="lead">Capacitor, Cordova e In-App Browsers ejecutan contenido web dentro de un contenedor con acceso a APIs nativas. Todo lo que entra al WebView puede intentar cruzar el puente.</p>
+        </header>
 
-      <!-- ============ SLIDE 14 ============ -->
-      <section class="slide s14">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
-        </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">14 · Construcción del Sistema</div>
-          <h2 class="anim" style="--d:1">Escalabilidad en UX</h2>
-          <p class="lead anim" style="--d:2">Interfaces capaces de crecer en funciones, datos y usuarios sin romperse ni volverse caóticas.</p>
-          <ul class="points anim" style="--d:3">
-            <li><strong>Design Systems:</strong> componentes reutilizables integrados a código (React, Vue)</li>
-            <li><strong>Design Tokens:</strong> variables globales de color, tipografía y espaciado</li>
-            <li><strong>Arquitectura Flexible:</strong> menús y layouts adaptables a nuevos módulos</li>
-          </ul>
-          <p class="hint anim" style="--d:4">Prueba los estados del botón y mira los tokens tipográficos</p>
-        </div>
-        <div class="art-col">
-          <div class="ds-panel anim" style="--d:2">
-            <div class="ds-tokens card-standard">
-              <div class="ds-token"><span class="ds-tag">$H1$</span><span class="ds-sample h1">Título principal</span></div>
-              <div class="ds-token"><span class="ds-tag">$H2$</span><span class="ds-sample h2">Subtítulo</span></div>
-              <div class="ds-token"><span class="ds-tag">$Body$</span><span class="ds-sample body">Cuerpo de texto</span></div>
+        <div class="split wide-right anim" style="--d:1">
+          <div class="stack">
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="wvAcc1">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-shield"></use></svg></span>CSP estricta</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="wvAcc1" hidden><span class="mono">Content-Security-Policy</span> con <span class="mono">default-src 'self'</span>, sin <span class="mono">unsafe-inline</span> ni <span class="mono">unsafe-eval</span>. Bloquea scripts inyectados y orígenes no declarados antes de que se ejecuten.</div>
             </div>
-            <div class="ds-btn-row">
-              <div class="ds-states">
-                <button type="button" class="ds-state active" data-state="normal">Normal</button>
-                <button type="button" class="ds-state" data-state="hover">Hover</button>
-                <button type="button" class="ds-state" data-state="active">Active</button>
-                <button type="button" class="ds-state" data-state="disabled">Disabled</button>
-              </div>
-              <button type="button" class="ds-btn" id="dsBtn">Componente</button>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="wvAcc2">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-globe"></use></svg></span>Allowlists de navegación</span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="wvAcc2" hidden>Lista blanca de hosts permitidos dentro del WebView y en aperturas externas. Cualquier redirección fuera del dominio conocido se cancela y se registra, en lugar de abrirse.</div>
             </div>
-            <div class="ds-card card-standard">
-              <div class="ds-avatar"></div>
-              <div class="ds-card-lines"><span></span><span></span></div>
-              <span class="ds-card-tag">Card · reutilizable</span>
+            <div class="acc-item">
+              <button class="acc-btn" type="button" aria-expanded="false" aria-controls="wvAcc3">
+                <span class="acc-title"><span class="acc-ico"><svg class="ic" aria-hidden="true"><use href="#i-lock"></use></svg></span>Bloqueo de <span class="mono">file://</span></span>
+                <span class="chev"><svg class="ic" aria-hidden="true"><use href="#i-chev"></use></svg></span>
+              </button>
+              <div class="acc-panel" id="wvAcc3" hidden>Deshabilita el acceso a archivos locales y la carga de contenido mixto. Un <span class="mono">file://</span> mal configurado permite leer recursos del dispositivo y saltarse el modelo de origen.</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="between" style="margin-bottom:6px">
+              <h3>Capas y puente nativo</h3>
+              <label class="switch">
+                <input type="checkbox" id="shieldToggle">
+                <span class="track" aria-hidden="true"></span>
+                Activar blindaje
+              </label>
+            </div>
+
+            <svg class="dia" id="wvSvg" viewBox="0 0 360 250" role="img" aria-label="Diagrama de capas del WebView y el puente nativo">
+              <rect x="8" y="8" width="344" height="234" rx="18" fill="none" stroke="var(--border)" stroke-width="1.5" stroke-dasharray="5 5"/>
+              <text x="20" y="26" font-size="8.5" class="t-muted">SISTEMA OPERATIVO</text>
+
+              <rect x="24" y="36" width="312" height="76" rx="14" fill="var(--surface)" stroke="var(--border)" stroke-width="1.4"/>
+              <text x="180" y="54" text-anchor="middle" font-size="10" font-weight="700">Contenedor WebView</text>
+              <rect x="40" y="62" width="128" height="38" rx="9" fill="var(--soft)" stroke="var(--border)"/>
+              <text x="104" y="78" text-anchor="middle" font-size="8.5" font-weight="700">HTML / CSS / JS</text>
+              <text x="104" y="91" text-anchor="middle" font-size="7.5" class="t-muted">contenido remoto</text>
+              <rect x="192" y="62" width="128" height="38" rx="9" fill="var(--soft)" stroke="var(--border)"/>
+              <text x="256" y="78" text-anchor="middle" font-size="8.5" font-weight="700">In-App Browser</text>
+              <text x="256" y="91" text-anchor="middle" font-size="7.5" class="t-muted">terceros</text>
+
+              <path id="wvShieldArc" d="M84 112h192" stroke="var(--border)" stroke-width="2" opacity=".25"/>
+              <g id="wvShieldG" opacity="0">
+                <path d="M132 112h96" stroke="var(--ios-green)" stroke-width="3"/>
+                <path d="M180 100l14 12-14 12-14-12Z" fill="var(--ios-green)" opacity=".25" stroke="var(--ios-green)" stroke-width="2"/>
+                <text x="180" y="116" text-anchor="middle" font-size="8" font-weight="700" fill="var(--ios-green)">CSP</text>
+              </g>
+
+              <rect x="112" y="124" width="136" height="34" rx="10" fill="var(--surface-solid)" stroke="var(--accent)" stroke-width="1.6"/>
+              <text x="180" y="145" text-anchor="middle" font-size="9.5" font-weight="700">JavaScript Bridge</text>
+
+              <path id="wvAttackPath" d="M180 158v22" stroke="var(--border)" stroke-width="2.5" fill="none"/>
+              <rect x="32" y="182" width="296" height="46" rx="12" fill="var(--surface)" stroke="var(--border)" stroke-width="1.4"/>
+              <text x="180" y="200" text-anchor="middle" font-size="9" font-weight="700">APIs nativas · cámara · archivos · contactos</text>
+              <text x="180" y="216" text-anchor="middle" font-size="7.5" class="t-muted">acceso concedido solo al código confiable</text>
+              <text x="180" y="236" text-anchor="middle" font-size="8" id="wvStatus" class="t-muted">Sin ataques en curso</text>
+            </svg>
+
+            <div class="row wrap" style="margin-top:8px">
+              <button type="button" class="btn btn-sm" id="injectBtn">Inyectar script externo</button>
+              <button type="button" class="btn btn-sm" id="redirectBtn">Redirigir a dominio malicioso</button>
+            </div>
+            <div class="attack-log" id="wvLog" role="log" aria-live="polite" style="margin-top:6px">
+              <div class="line"><span class="micro muted">El registro mostrará el bloqueo o la alerta.</span></div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- ============ SLIDE 15 ============ -->
-      <section class="slide s15">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
+    <!-- ============================ CIERRE ============================ -->
+    <section class="slide" data-tone="light" data-accent="indigo" aria-label="Cierre y transición al quiz">
+      <div class="decor" aria-hidden="true"></div>
+      <div class="slide-scroll">
+        <header class="slide-head anim" style="--d:0">
+          <p class="eyebrow">Cierre · 5 bloques, una idea</p>
+          <h2>El dispositivo es el contexto; la web es la capa que se adapta</h2>
+          <p class="lead">Clasificar el hardware, entender el ecosistema y respetar los límites de red, rendimiento y seguridad es lo que separa una demo de un producto móvil.</p>
+        </header>
+
+        <div class="summary-grid anim" style="--d:1">
+          <button type="button" class="summary-card" data-jump="1">
+            <span class="sc-num">BLOQUE 1</span>
+            <span class="sc-title">Clasificación</span>
+            <span class="sc-sub">Hardware, forma e interfaz</span>
+          </button>
+          <button type="button" class="summary-card" data-jump="2">
+            <span class="sc-num">BLOQUE 2</span>
+            <span class="sc-title">Ecosistemas</span>
+            <span class="sc-sub">Android, iOS y motores</span>
+          </button>
+          <button type="button" class="summary-card" data-jump="3">
+            <span class="sc-num">BLOQUE 3</span>
+            <span class="sc-title">Arquitectura web</span>
+            <span class="sc-sub">RWD, PWA e híbridas</span>
+          </button>
+          <button type="button" class="summary-card" data-jump="4">
+            <span class="sc-num">BLOQUE 4</span>
+            <span class="sc-title">Aplicaciones</span>
+            <span class="sc-sub">Sectores y Web APIs</span>
+          </button>
+          <button type="button" class="summary-card" data-jump="5">
+            <span class="sc-num">BLOQUE 5</span>
+            <span class="sc-title">Límites reales</span>
+            <span class="sc-sub">Red, INP y seguridad</span>
+          </button>
         </div>
-        <div class="text-col">
-          <div class="eyebrow anim" style="--d:0">15 · Evaluación Cuantitativa</div>
-          <h2 class="anim" style="--d:1">Métricas UX & Marco HEART</h2>
-          <p class="lead anim" style="--d:2">Validar si una interfaz funciona con datos objetivos e indicadores clave.</p>
-          <ul class="points anim" style="--d:3">
-            <li><strong>Task Success Rate</strong> — % de tareas completadas</li>
-            <li><strong>Time on Task</strong> — tiempo por tarea</li>
-            <li><strong>SUS Score</strong> — usabilidad percibida (0–100 pts)</li>
-          </ul>
-          <p class="hint anim" style="--d:4">Haz clic en las letras H·E·A·R·T para explorar cada métrica</p>
-        </div>
-        <div class="art-col">
-          <div class="heart anim" style="--d:2">
-            <div class="heart-letters">
-              <button type="button" class="heart-letter active" data-metric="h">H</button>
-              <button type="button" class="heart-letter" data-metric="e">E</button>
-              <button type="button" class="heart-letter" data-metric="a">A</button>
-              <button type="button" class="heart-letter" data-metric="r">R</button>
-              <button type="button" class="heart-letter" data-metric="t">T</button>
+
+        <div class="card tonal anim" style="--d:2">
+          <div class="between">
+            <div class="stack" style="gap:3px">
+              <h3>Equipo</h3>
+              <p class="micro muted">Diaz Vazquez Regina Valeria · Cruz Contreras Jonathan Ivan · Enriquez de la Cruz Emmanuel · Juarez Olivarez Armando Enrique · Vazquez García Carlos Angel</p>
             </div>
-            <div class="heart-panel card-standard">
-              <div class="heart-title" id="heartTitle">H · Happiness</div>
-              <div class="heart-desc" id="heartDesc">Satisfacción y percepción del usuario (CSAT, SUS).</div>
-              <div class="heart-chart" id="heartChart"></div>
-              <div class="heart-kpis" id="heartKpis"></div>
-            </div>
+            <span class="chip solid">Seminario de Desarrollo Web Móvil</span>
           </div>
         </div>
-      </section>
 
-      <!-- ============ SLIDE 16 ============ -->
-      <section class="slide s16">
-        <div class="decor">
-          <div class="dots"></div>
-          <div class="blob blob-a"></div>
-          <div class="blob blob-b"></div>
+        <div class="cover-cta anim" style="--d:3;margin-top:auto">
+          <button type="button" class="btn btn-primary" id="quizStartBtn">
+            <svg class="ic" aria-hidden="true"><use href="#i-users"></use></svg> Ir a la Dinámica por Equipos (5 preguntas)
+          </button>
+          <button type="button" class="btn btn-ghost" data-jump="0">
+            <svg class="ic" aria-hidden="true"><use href="#i-home"></use></svg> Volver a la portada
+          </button>
         </div>
-        <div class="eyebrow anim" style="--d:0">16 · Conclusión General</div>
-        <h2 class="anim" style="--d:1">El Ciclo Integral de la Metodología UX</h2>
-        <div class="steps">
-          <div class="step-card card-standard anim" style="--d:2">
-            <span class="step-num">1</span>
-            <div class="step-body">
-              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-search"></use></svg></span>
-              <span class="step-title">Descubrimiento y Entendimiento</span>
-              <span class="step-text">Entender al usuario antes de programar (User Research).</span>
-            </div>
-          </div>
-          <span class="step-arrow" aria-hidden="true">→</span>
-          <div class="step-card card-standard anim" style="--d:3">
-            <span class="step-num">2</span>
-            <div class="step-body">
-              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></span>
-              <span class="step-title">Validación e Iteración Rápida</span>
-              <span class="step-text">Prototipar y probar continuamente (Lean UX) para evitar reescribir código.</span>
-            </div>
-          </div>
-          <span class="step-arrow" aria-hidden="true">→</span>
-          <div class="step-card card-standard anim" style="--d:4">
-            <span class="step-num">3</span>
-            <div class="step-body">
-              <span class="step-ico"><svg class="ic" aria-hidden="true"><use href="#i-trend"></use></svg></span>
-              <span class="step-title">Escalabilidad e Impacto Medible</span>
-              <span class="step-text">Crecer con Design Systems y medir resultados con datos reales.</span>
-            </div>
-          </div>
-        </div>
-        <div class="quote-card anim" style="--d:5">
-          “El diseño UX no es solo estética visual; es una metodología estructurada que conecta la investigación con la arquitectura del software. Aplicar este ciclo nos garantiza crear productos web escalables, funcionales y respaldados por datos reales.”
-        </div>
-      </section>
+      </div>
+    </section>
 
-    </div><!-- /deck -->
+  </div><!-- /deck -->
 
-    <!-- Controles del slider -->
-    <button type="button" class="nav prev" id="prevBtn" aria-label="Diapositiva anterior">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 L8 12 L15 19"/></svg>
-    </button>
-    <button type="button" class="nav next" id="nextBtn" aria-label="Diapositiva siguiente">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 L16 12 L9 19"/></svg>
-    </button>
-    <div class="counter" id="counter" aria-live="polite">1 / 16</div>
-    <div class="pager" id="pager" role="group" aria-label="Ir a la diapositiva"></div>
+  <button type="button" class="nav prev" id="prevBtn" aria-label="Diapositiva anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+  </button>
+  <button type="button" class="nav next" id="nextBtn" aria-label="Diapositiva siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <div class="counter" id="counter" aria-live="polite">1 / 16</div>
+  <div class="pager" id="pager" role="group" aria-label="Ir a la diapositiva"></div>
 
-    <!-- Pantalla completa (también con la tecla F) -->
-    <button type="button" class="fs-btn" id="fsBtn" aria-label="Pantalla completa (F)" aria-pressed="false" title="Pantalla completa (F)">
-      <svg class="in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
-      <svg class="out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
-    </button>
+  <button type="button" class="fs-btn" id="fsBtn" aria-label="Pantalla completa (F)" aria-pressed="false" title="Pantalla completa (F)">
+    <svg class="in" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+    <svg class="out" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"/><path d="M21 8h-3a2 2 0 0 1-2-2V3"/><path d="M3 16h3a2 2 0 0 1 2 2v3"/><path d="M16 21v-3a2 2 0 0 1 2-2h3"/></svg>
+  </button>
 
-  </main>
+</main>
 
-  <!--
-    CÓMO AÑADIR UNA DIAPOSITIVA:
-    1) Copia un bloque <section class="slide sN"> dentro de #deck.
-    2) Define su paleta en el CSS:  .sN { --accent: <color>; background: <color>; }
-       (o cualquier clase nueva que declare ambas propiedades).
-    3) Reutiliza las utilidades existentes: .decor > .dots/.blob, .text-col,
-       .art-col, .eyebrow, h1/h2, .lead, ul.points, .badge y .anim con --d para el escalonado.
-    4) El slider detecta las secciones automáticamente: contador, puntos,
-       barra de progreso y paleta de controles se actualizan solos.
-  -->
+<!-- ============================ QUIZ ============================ -->
+<section class="view quiz-view" id="quizView" hidden aria-hidden="true" aria-label="Dinámica de evaluación por equipos">
+  <div class="quiz-shell">
+    <div class="quiz-top">
+      <div>
+        <p class="eyebrow" style="--accent:#5856D6">Actividad presencial en equipos</p>
+        <h2 style="font-size:clamp(20px,2.2vw,28px);margin-top:4px">Dinámica por equipos · 5 preguntas</h2>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" id="quizBack">
+        <svg class="ic" aria-hidden="true"><use href="#i-arrow"></use></svg> Volver a la presentación
+      </button>
+    </div>
+    <div class="row wrap" style="margin-bottom:8px">
+      <span class="chip" id="quizProgressChip">Pregunta 1 de 5</span>
+      <span class="chip">90 s por pregunta · anoten en su cuaderno</span>
+    </div>
+    <div class="quiz-bar" aria-hidden="true"><i id="quizBarFill"></i></div>
+    <div id="quizBody"></div>
+  </div>
+</section>
 
-  <script src="static/index.js" defer></script>
+<!-- ============================ MODAL INFO ============================ -->
+<div class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle" aria-hidden="true">
+  <div class="modal-sheet">
+    <div class="modal-head">
+      <div>
+        <p class="eyebrow" style="--accent:#007AFF">Prueba en dispositivo</p>
+        <h2 id="infoTitle" style="font-size:21px;margin-top:4px">Vista móvil / Info</h2>
+      </div>
+      <button type="button" class="modal-close" id="infoClose" aria-label="Cerrar">
+        <svg class="ic" aria-hidden="true" style="width:16px;height:16px"><use href="#i-close"></use></svg>
+      </button>
+    </div>
+    <p class="small muted">Esta presentación usa un escenario 16:9 en escritorio y una columna con scroll natural en móvil. Para validarla en hardware real:</p>
+    <div class="modal-list">
+      <div class="modal-item"><span class="icon-badge"><svg class="ic" aria-hidden="true"><use href="#i-wifi"></use></svg></span><div><b>Misma red local</b><p>Abre la URL desde el teléfono; no uses capturas de escritorio como prueba de responsive.</p></div></div>
+      <div class="modal-item"><span class="icon-badge green"><svg class="ic" aria-hidden="true"><use href="#i-hand"></use></svg></span><div><b>Zonas táctiles</b><p>Comprueba con el pulgar: acciones primarias al alcance, objetivos de al menos 44×44 px y sin estados hover como única pista.</p></div></div>
+      <div class="modal-item"><span class="icon-badge orange"><svg class="ic" aria-hidden="true"><use href="#i-ruler"></use></svg></span><div><b>Barras dinámicas</b><p>Haz scroll para que aparezca y desaparezca la barra del navegador; confirma que ninguna sección queda cortada.</p></div></div>
+      <div class="modal-item"><span class="icon-badge red"><svg class="ic" aria-hidden="true"><use href="#i-refresh"></use></svg></span><div><b>Rotación y gestos</b><p>Prueba vertical y horizontal, swipe entre diapositivas y navegación con teclado o lector de pantalla.</p></div></div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button type="button" class="btn btn-primary btn-block" id="infoOk">Entendido</button>
+    </div>
+  </div>
+</div>
+
+<script src="static/index.js" defer></script>
 </body>
 </html>
